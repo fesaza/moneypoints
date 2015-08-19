@@ -1,8 +1,8 @@
 ﻿<div class="row-fluid banner-ventas">
     <img src="css\images\Informacion-beneficiario.png" />
 </div>
-<div>
-    <div kendo-tab-strip k-content-urls="[ null, null]" id="margin">
+<div class="container css-form form-cliente" >
+    <div kendo-tab-strip k-content-urls="[ null, null]" id="" style="  background-color: rgba(255, 255, 255, 0) !important">
         <!-- tab list -->
         <ul>
 
@@ -105,7 +105,7 @@
         <div style="padding: 20px 1px" ng-show="showEstados">
             <!--<div ng-include="template.estadoCuentas"></div>-->
             <div>
-                Estado de cuentas
+                <h2 class="titles-vw">Estado de cuentas</h2>  
 
                 <kendo-mobile-list-view id="gridCuentasBeneficiario" options="cuentasBeneficiarioOptions" />
 
