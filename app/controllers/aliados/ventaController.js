@@ -1,14 +1,16 @@
 ﻿(function () {
     'use strict';
 
-    angular.module("moneyPointsApp").controller('ventaController', ['$scope', '$rootScope', '$', 'ventaService', 'tercerosService', ventaController]);
+    angular.module("moneyPointsApp")
+    .controller('ventaController', ['$scope', '$rootScope', '$', 'ventaService', 'tercerosService', 'authorizationService', ventaController]);
 
-    function ventaController($scope, $rootScope, $, ventaService, tercerosService) {
+    function ventaController($scope, $rootScope, $, ventaService, tercerosService, authorizationService) {
         $scope.text = "";
 
         //Se debe cambiar valor para que no este quemado (Usuario logueado
-        var clienteId = 3;
-        $scope.onlyNumber = /^\d+$/;
+        //var clienteId = 3;
+        var clienteId = authorizationService.getId();
+        //$scope.onlyNumber = /^\d+$/;
         $scope.venta = null;
 
         var updateGreetingMessage = function (text) {
@@ -42,8 +44,8 @@
             $scope.terceroBeneficiario = null;
 
             //Validar cedula
-            var cedula = $scope.venta.Identificacion
-            
+            var cedula = $scope.venta.Identificacion;
+
             var promiseGetbeneficiario = tercerosService.getByIdentificacion(cedula);
 
             promiseGetbeneficiario.then(function (pl) {
@@ -85,13 +87,13 @@
 
         $rootScope.$on("acceptGreet", function (e, message) {
             $scope.$apply(function () {
-                updateGreetingMessage(message)
+                updateGreetingMessage(message);
             });
         });
 
         $rootScope.$on("generarQRCompleted", function (e, message) {
             $scope.$apply(function () {
-                generarQRCompleted(message)
+                generarQRCompleted(message);
             });
         });
 
@@ -101,7 +103,7 @@
 
         $rootScope.$on("confirmarCompra", function (e, message) {
             $scope.$apply(function () {
-                confirmarCompraCallBack(message)
+                confirmarCompraCallBack(message);
             });
         });
     };

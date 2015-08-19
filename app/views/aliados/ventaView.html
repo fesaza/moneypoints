@@ -12,12 +12,13 @@
         <form  class="css-form" ng-submit="generarQR()" name="form" role="form">
             <div class="form-group">
                 <label>Valor</label>
-                <input type="text"  data-ng-model="venta.Valor" class="form-control" id="txtValor" name="txtValor" placeholder="Valor" required  ng-pattern="onlyNumber">
-                <span ng-show="form.txtValor.$error.pattern" class="help-block">verifique que el valor sea numérico</span>
+                <input type="number" data-ng-model="venta.Valor" class="form-control" id="txtValor" name="txtValor" placeholder="Valor" required>
+                <span ng-show="form.txtValor.$dirty && form.txtValor.$error.required" class="help-block">Valor es requerido</span>
             </div>
             <div class="form-group">
                 <label>Cedula cliente</label>
                 <input type="text" data-ng-model="venta.Identificacion" class="form-control" name="txtCedula" id="txtCedula" placeholder="Cédula" required>
+                <span ng-show="form.txtIdentificacion.$dirty && form.txtIdentificacion.$error.required" class="help-block">Cedula es requerida</span>
             </div>
 
 

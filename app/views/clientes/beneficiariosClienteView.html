@@ -2,9 +2,9 @@
     <img src="css\images\beneficiario.png" />
 </div>
 
-<div class="bg-body">
-    <div class="container pad-top">
-        <select id="cmbBeneficiario" name="cmbBeneficiario"
+<div class="form-cliente">
+    <div class="container pad-top" style="margin-left:-2%;   margin-top: 10px; margin-bottom: 10px;">
+        <select id="cmbBeneficiario" name="cmbBeneficiario" style="width:65%;"
                 kendo-drop-down-list="cmbBeneficiario" options="beneficiariosSelectOpts"
                 data-ng-model="benef"></select>
         <button ng-click="agregarBeneficiario()" class="btn btn-info">Agregar</button>
@@ -23,17 +23,17 @@
                     {{dataItem.Beneficiario.Tercero.Nombre}}
                 </h3>
                 <div>
-                    <label>Saldo:</label>
-                    {{dataItem.Saldo | currency: $ : 2}}
-                </div>
+                    <label class="lbl-list">Saldo:</label>
+                    <span class="vlr-list"> {{dataItem.Saldo | currency: $ : 2}}</span>
+</div>
                 <div>
-                    <label>Fecha Ingreso:</label>
-                    {{dataItem.FechaIngreso | date : 'dd-MM-yyyy'}}
-                </div>
+                    <label class="lbl-list">Fecha Ingreso:</label>
+                    <span class="vlr-list"> {{dataItem.FechaIngreso | date : 'dd-MM-yyyy'}}</span>
+</div>
                 <div>
-                    <label>Puntos:</label>
-                    {{dataItem.Puntos | number : 2}}
-                </div>
+                    <label class="lbl-list">Puntos:</label>
+                    <span class="vlr-list">{{dataItem.Puntos | number : 2}}</span>
+</div>
             </div>
         </a>
 

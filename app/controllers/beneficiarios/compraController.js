@@ -76,7 +76,7 @@
         };
 
         var scan = function () {
-
+            debugger;
             if (window.navigator.platform === "Win32") {
                 new PNotify({ text: "función no soportada en simulador", type: "danger", delay: 3000 });
                 //Esta linea es para pruebas en pc
@@ -117,7 +117,7 @@
         };
 
         $rootScope.$on("confirmarCompra", function (e, message) {
-            confirmarCompraCallBack(message)
+            confirmarCompraCallBack(message);
         });
 
     };

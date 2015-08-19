@@ -3,7 +3,7 @@
     <img src="css\images\Conciliaciones.jpg" />
 </div>
 <div class="form-cliente">
-    <div kendo-tab-strip k-content-urls="[ null, null]" id="" style="background-color: #E7E7E7 !important">
+    <div kendo-tab-strip k-content-urls="[ null, null]" id="" style="  background-color: rgba(255, 255, 255, 0) !important">
         <!-- tab list -->
         <ul>
             <li class="k-state-active">Enviar</li>
@@ -38,13 +38,13 @@
                 {{dataItem.AfiliadosCliente.Afiliado.Cliente.Tercero.Nombre}}
             </h3>
             <div>
-                <label>Valor:</label>
-                {{dataItem.Valor | currency: $ : 2}}
-            </div>
+                <label  class="lbl-list">Valor:</label>
+                <span class="vlr-list"> {{dataItem.Valor | currency: $ : 2}}</span>
+</div>
             <div>
-                <label>Fecha:</label>
-                {{dataItem.Fecha | date : 'dd-MM-yyyy'}}
-            </div>
+                <label class="lbl-list">Fecha:</label>
+                <span class="vlr-list">{{dataItem.Fecha | date : 'dd-MM-yyyy'}}</span>
+</div>
         </div>
     </a>
 </script>
@@ -64,5 +64,5 @@
                 {{dataItem.Fecha | date : 'dd-MM-yyyy'}}
             </div>
         </div>
-    </aclass="container>
+    </a class="container>
 </script>
