@@ -11,10 +11,6 @@
         <nav class="gn-menu-wrapper">
             <div class="gn-scroller">
                 <ul class="gn-menu">
-                    <li class="gn-search-item">
-                        <input placeholder="Buscar" type="search" class="gn-search">
-                        <a class="gn-icon gn-icon-search"><span></span></a>
-                    </li>
                     <li ng-repeat="asegurable in asegurables">
 
                         <a href="#{{asegurable.Asegurable.Ruta}}" class="{{asegurable.Asegurable.Class}}" ng-click="ocultar()">{{asegurable.Asegurable.Nombre}}</a>
