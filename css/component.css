@@ -104,14 +104,14 @@
 		overflow: hidden;
 		width: 60px;
 		border-top: 1px solid #c6d0da;
-		background: white;
+		background: #2a668a;
 		-webkit-transform: translateX(-60px);
 		-moz-transform: translateX(-60px);
 		transform: translateX(-60px);
 		-webkit-transition: -webkit-transform 0.3s, width 0.3s;
 		-moz-transition: -moz-transform 0.3s, width 0.3s;
 		transition: transform 0.3s, width 0.3s;
-            height: 100%;
+            
 }
 
 .gn-scroller {
