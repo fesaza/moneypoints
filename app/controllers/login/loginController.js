@@ -34,8 +34,8 @@ angular.module('moneyPointsApp')
                             $location.path('/vender');
                         } else if (response.RolId == 4) {//si el usuario logeado es Beneficiario
                             $location.path('/beneficiariosDetails/' + authorizationService.getId());
-                        } else {//si el usuario logeado es admin
-                            $location.path('/home');
+                        } else if (response.RolId == 1) {//si el usuario logeado es admin
+                            $location.path('/clientes');
                         }
                     });
                 } else {
