@@ -178,7 +178,8 @@ app.controller('indexCtrl', function ($scope, CordovaService, $location, $rootSc
     });
 
     $scope.ocultar = function () {
-        jQuery("#wrapper").toggleClass("toggled");
+        //cerrar menu
+        jQuery('nav').removeClass("gn-open-all");
     }
 
     $rootScope.$on('$locationChangeSuccess', function () {
