@@ -3,8 +3,8 @@
 angular.module('moneyPointsApp')
 
 .factory('authenticationService',
-    ['Base64', '$http', '$cookieStore', '$rootScope', '$timeout',
-    function (Base64, $http, $cookieStore, $rootScope, $timeout) {
+    ['Base64', '$http', '$cookieStore', '$rootScope', '$timeout', '$location',
+    function (Base64, $http, $cookieStore, $rootScope, $timeout, $location) {
         var service = {};
 
         service.changePassword = function (opts, callback) {
@@ -38,7 +38,7 @@ angular.module('moneyPointsApp')
         }
 
         service.login = function (username, password, callback) {
-            
+
             var pwd = Base64.encode(password);
 
             var usuario = {
@@ -80,7 +80,14 @@ angular.module('moneyPointsApp')
             $cookieStore.put('globals', $rootScope.globals);
         };
 
-
+        service.navigateDefaultPage = function () {
+            if ($rootScope.globals.currentUser.rolId == 2) //si el usuario logeado es cliente
+                $location.path('/vender');
+            else if ($rootScope.globals.currentUser.rolId == 4) //si el usuario logeado es Beneficiario
+                $location.path('/beneficiariosDetails/' + $rootScope.globals.currentUser.id);
+            else if ($rootScope.globals.currentUser.rolId == 1) //si el usuario logeado es admin
+                $location.path('/clientes');
+        }
 
         service.clearCredentials = function () {
             $rootScope.globals = {};

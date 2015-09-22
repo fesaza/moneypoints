@@ -29,14 +29,15 @@ angular.module('moneyPointsApp')
                             $scope.dataLoading = false;
                             kendo.ui.progress($("#form"), false);
                         });
-                        
-                        if (response.RolId == 2) {//si el usuario logeado es cliente
-                            $location.path('/vender');
-                        } else if (response.RolId == 4) {//si el usuario logeado es Beneficiario
-                            $location.path('/beneficiariosDetails/' + authorizationService.getId());
-                        } else if (response.RolId == 1) {//si el usuario logeado es admin
-                            $location.path('/clientes');
-                        }
+
+                        authenticationService.navigateDefaultPage();
+                        //if (response.RolId == 2) {//si el usuario logeado es cliente
+                        //    $location.path('/vender');
+                        //} else if (response.RolId == 4) {//si el usuario logeado es Beneficiario
+                        //    $location.path('/beneficiariosDetails/' + authorizationService.getId());
+                        //} else if (response.RolId == 1) {//si el usuario logeado es admin
+                        //    $location.path('/clientes');
+                        //}
                     });
                 } else {
                     $scope.error = response.Message;

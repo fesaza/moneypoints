@@ -127,7 +127,7 @@ app.config(function ($routeProvider, $httpProvider) {
     function ($rootScope, $location, $cookieStore, $http) {
 
 
-        
+
         //Mantener usuario logueado
         $rootScope.globals = $cookieStore.get('globals') || {};
         if ($rootScope.globals.currentUser) {
@@ -159,7 +159,7 @@ app.controller('indexCtrl', function ($scope, CordovaService, $location, $rootSc
     };
 
     $scope.logout = function () {
-        
+
         authenticationService.clearCredentials();
         $scope.asegurables = {};
         $location.path('/login');
@@ -168,12 +168,14 @@ app.controller('indexCtrl', function ($scope, CordovaService, $location, $rootSc
 
     //$rootScope.baseAddress = "http://localhost/se.moneypoints.api";
     //$rootScope.baseAddress = "http://atenas:90/moneypoints_pru";
-    $rootScope.baseAddress = "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru";
+    //$rootScope.baseAddress = "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru";
+    //http://moneypoints.azurewebsites.net/
+    $rootScope.baseAddress = "http://moneypoints.azurewebsites.net/";
 
     $scope.tcdevicePixelRatio = window.devicePixelRatio;
 
     $rootScope.$on('refreshMenu', function (event, data) {
-        
+
         $scope.asegurables = data;
     });
 
@@ -186,11 +188,13 @@ app.controller('indexCtrl', function ($scope, CordovaService, $location, $rootSc
     $rootScope.$on('$locationChangeSuccess', function () {
 
         if ($location.path() == '/login' || $location.path() == '/registrarse/0') {
-            $scope.hideMenus = false;
+            if (!$rootScope.globals.currentUser)
+                $scope.hideMenus = false;
+            else {
+                authenticationService.navigateDefaultPage();
+            }
         }
-
         else {
-
             //Mostrar menu
             $scope.hideMenus = true;
         }

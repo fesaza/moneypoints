@@ -4,12 +4,13 @@
     angular.module("moneyPointsApp").controller('beneficiariosDetailsController', ['$rootScope', '$scope', '$routeParams', 'beneficiariosService', 'authorizationService', 'Base64', beneficiariosDetailsController]);
 
     function beneficiariosDetailsController($rootScope, $scope, $routeParams, beneficiariosService, authorizationService, Base64) {
-                
 
-        var beneficiarioId = $routeParams.beneficiarioId
+
+        var beneficiarioId = $routeParams.beneficiarioId;
         $scope.onlyNumber = /^\d+$/;
         $scope.canDelete = false;
         $scope.canCancel = false;
+        $scope.isDeleting = false;
 
         var user = authorizationService.getCurrentUser();
         if (user && user.rolId == 1) {
@@ -80,6 +81,8 @@
 
         //Guardar beneficiario
         $scope.guardarbeneficiario = function () {
+            if ($scope.isDeleting) return;
+
             if ($scope.IsEditing) {
                 var promiseGuadarbeneficiario = beneficiariosService.put($scope.beneficiario.BeneficiarioId, $scope.beneficiario);
                 promiseGuadarbeneficiario.then(function (pl) {
@@ -122,7 +125,8 @@
 
         //Eliminar beneficiario
         $scope.deletebeneficiario = function () {
-            var promiseDeletebeneficiario = beneficiariosService.delete($scope.beneficiario.beneficiarioId);
+            $scope.isDeleting = true;
+            var promiseDeletebeneficiario = beneficiariosService.delete($scope.beneficiario.BeneficiarioId);
             promiseDeletebeneficiario.then(function (pl) {
                 //$scope.mensaje = "Eliminado satisfactoriamente.";
                 new PNotify({
