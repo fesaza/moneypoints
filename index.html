@@ -30,11 +30,11 @@
 
 <body>
     <div ng-app="moneyPointsApp">
+
+
+        <div ng-include="'menu.html'" ng-show="hideMenus" style="align-content:center" class="bs-box" ng-controller="indexCtrl">
+        </div>
         <kendo-mobile-view ng-controller="indexCtrl" scroller='{"elastic": false}'>
-
-            <div ng-include="'menu.html'" ng-show="hideMenus" style="align-content:center" class="bs-box" ng-controller="indexCtrl">
-            </div>
-
             <div ng-view>
             </div>
         </kendo-mobile-view>

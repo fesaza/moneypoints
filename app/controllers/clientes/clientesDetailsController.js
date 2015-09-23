@@ -7,8 +7,8 @@
 
     function clientesDetailsController($rootScope, $scope, $routeParams, clientesService, beneficiariosService,
         equivalenciasService, afiliadosClientesService, authorizationService, Base64) {
-        
-        var clienteId = $routeParams.ClienteId
+
+        var clienteId = $routeParams.ClienteId;
 
         $scope.canDelete = false;
         $scope.canCancel = false;
@@ -77,7 +77,8 @@
                         delay: 3000
                     });
                     kendo.ui.progress($("#divDetailCliente"), false);
-                },
+                        $scope.goPath('/clientes');
+                    },
                 function (errorPl) {
                     handleError(errorPl);
                     kendo.ui.progress($("#divDetailCliente"), false);
