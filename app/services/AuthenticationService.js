@@ -3,11 +3,13 @@
 angular.module('moneyPointsApp')
 
 .factory('authenticationService',
-    ['Base64', '$http', '$cookieStore', '$rootScope', '$timeout', '$location',
-    function (Base64, $http, $cookieStore, $rootScope, $timeout, $location) {
+    ['Base64', '$http', '$cookieStore', '$rootScope', '$timeout', '$location','authorizationService','tercerosService',
+    function (Base64, $http, $cookieStore, $rootScope, $timeout, $location,authorizationService,tercerosService) {
         var service = {};
+        var newPassw = "";
 
         service.changePassword = function (opts, callback) {
+            newPassw = opts.newPassword;
             $http.post($rootScope.baseAddress + '/api/authentication/ChangePassword', JSON.stringify(opts),
                 {
                     headers: {
@@ -15,6 +17,8 @@ angular.module('moneyPointsApp')
                     }
                 })
                 .success(function (response) {
+                    var username = $rootScope.globals.currentUser.username;
+                    service.login(username, Base64.decode(newPassw));
                     callback(response);
                 }).error(function (data, status, headers, config) {
                     data.success = false;
@@ -54,10 +58,28 @@ angular.module('moneyPointsApp')
                 })
                 .success(function (response) {
                     response.success = true;
-                    callback(response);
+                    service.setCredentials(response);
+
+                    tercerosService.get(response.TerceroId).then(function (pl) {
+                        var res = pl.data;
+                        authorizationService.setId(res);
+
+                        //Consultar asegurables
+                        if (callback) {
+                            authorizationService.getAsegurables(function(response) {
+                                for (var i = 0; i < response.length; i++) {
+                                    response[i].Asegurable.Ruta = response[i].Asegurable.Ruta.replace("{id}", authorizationService.getId());
+                                }
+                                $rootScope.$emit('refreshMenu', response);
+                                service.navigateDefaultPage();
+                                callback(response);
+                            });
+                        }
+                    });
                 }).error(function (data, status, headers, config) {
                     data.success = false;
-                    callback(data);
+                    if (callback)
+                        callback(data);
                 });
         };
 

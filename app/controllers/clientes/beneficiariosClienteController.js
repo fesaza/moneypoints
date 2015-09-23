@@ -29,7 +29,7 @@ function beneficiariosClienteController($rootScope, $scope, $routeParams, author
             requestEnd: function (e) {
                 kendo.ui.progress($("#divBenefCliente"), false);
             },
-            pageSize: 5,
+            pageSize: 100,
             serverPaging: true,
             serverSorting: true,
             serverFiltering: true,

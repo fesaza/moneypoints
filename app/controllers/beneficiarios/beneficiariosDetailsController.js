@@ -59,7 +59,7 @@
                     requestEnd: function (e) {
                         kendo.ui.progress($("#gridCuentasBeneficiario"), false);
                     },
-                    pageSize: 50,
+                    pageSize: 100,
                     serverPaging: true,
                     serverSorting: true
                 },
