@@ -14,25 +14,24 @@
     <div id="space"></div>
 
     <div id="example">
-        <kendo-mobile-list-view options="clientesGridOptions" />
+        <kendo-mobile-list-view options="clientesGridOptions"/>
+        
     </div>
-
+    <!--<div kendo-pager k-data-source="source"></div>-->
     <div id="space"></div>
 
 
     <script id="tmpClientes" type="text/x-kendo-tmpl">
         <a class="container list-style line-list" href="\#/clientesDetails/{{dataItem.ClienteId}}">
-            <tr>
-                <td>
-                    {{dataItem.Tercero.Nombre}}
-                </td>
-                <td>
-                    {{dataItem.Tercero.Identificacion}}
-                </td>
-                <td>
-                    {{dataItem.Tercero.Telefono}}
-                </td>
-            </tr>
+            <div>
+
+                {{dataItem.Tercero.Nombre}}
+
+                <div>
+                    <label class="lbl-list">Identificacion:</label>
+                    <span class="vlr-list">{{dataItem.Tercero.Identificacion}}</span>
+                </div>
+            </div>
         </a>
     </script>
 

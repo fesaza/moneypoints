@@ -16,12 +16,19 @@
     <link rel="stylesheet" href="Content/bootstrap-theme.min.css" />
     <link rel="stylesheet" href="css/pnotify.custom.min.css" />
 
-    <link rel="stylesheet" href="css/kendo.common.min.css" />
-    <link rel="stylesheet" href="css/kendo.silver.min.css" />
-    <link rel="stylesheet" href="css/kendo.dataviz.min.css" />
-    <link rel="stylesheet" href="css/kendo.dataviz.bootstrap.min.css" />
-    <link href="css/kendo.silver.mobile.min.css" rel="stylesheet" />
-    <link href="css/kendo.mobile.all.min.css" rel="stylesheet" />
+    <!--<link rel="stylesheet" href="css/kendo.common.min.css"/>
+
+    <link rel="stylesheet" href="css/kendo.silver.min.css"/>
+    <link rel="stylesheet" href="css/kendo.dataviz.min.css"/>
+    <link rel="stylesheet" href="css/kendo.dataviz.bootstrap.min.css"/>
+    <link href="css/kendo.silver.mobile.min.css" rel="stylesheet"/>
+    <link href="css/kendo.mobile.all.min.css" rel="stylesheet"/>-->
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.2.902/styles/kendo.common.min.css">
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.2.902/styles/kendo.rtl.min.css">
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.2.902/styles/kendo.default.min.css">
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.2.805/styles/kendo.dataviz.min.css">
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.2.805/styles/kendo.dataviz.default.min.css">
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.2.902/styles/kendo.mobile.all.min.css">
     <link rel="stylesheet" href="css/simple-sidebar.css" />
 
 
@@ -34,7 +41,7 @@
 
         <div ng-include="'menu.html'" ng-show="hideMenus" style="align-content:center" class="bs-box" ng-controller="indexCtrl">
         </div>
-        <kendo-mobile-view ng-controller="indexCtrl" scroller='{"elastic": false}'>
+        <kendo-mobile-view ng-controller="indexCtrl">
             <div ng-view>
             </div>
         </kendo-mobile-view>
@@ -49,13 +56,15 @@
 
     <script src="scripts/angular-route.js"></script>
     <script src="scripts/angular-cookies.js"></script>
-    <script src="scripts/kendo.all.min.js"></script>
+    <!--<script src="scripts/kendo.all.min.js"></script>-->
+    <script src="http://kendo.cdn.telerik.com/2015.2.902/js/kendo.all.min.js"></script>
+    <script src="http://kendo.cdn.telerik.com/2015.2.902/js/jszip.min.js"></script>
     <script src="scripts/jquery.signalR-2.2.0.js"></script>
 
     <!--<script src="http://localhost/moneypoints/signalr/hubs"></script>-->
     <!--<script src="http://aplicaciones.softwareestrategico.com:90/moneypoints_pru/signalr/hubs"></script>-->
     <script type="text/javascript" src="http://moneypoints.azurewebsites.net/signalr/hubs"></script>
-    <!--<script src="scripts/kendo.angular.min.js"></script>-->
+
     <!-- Cordova reference, this is added to your app when it's built. -->
     <script src="cordova.js"></script>
 
@@ -63,7 +72,7 @@
     <script src="scripts/platformOverrides.js"></script>
     <script src="scripts/index.js"></script>
     <script src="app/app.js"></script>
-    <script src="app/cbpFWTabs.js"></script>
+    <!--<script src="app/cbpFWTabs.js"></script>-->
 
     <script src="app/services/AfiliadosService.js"></script>
     <script src="app/services/AuthenticationService.js"></script>
