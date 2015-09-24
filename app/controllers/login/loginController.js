@@ -3,22 +3,30 @@
 angular.module('moneyPointsApp')
 
 .controller('loginController',
-    ['$scope', '$rootScope', '$location', 'authenticationService', 'authorizationService', 'Base64', '$http', 'tercerosService',
-    function ($scope, $rootScope, $location, authenticationService, authorizationService, Base64, $http, tercerosService) {
+    ['$scope', '$rootScope', '$location', 'authenticationService',
+    function ($scope, $rootScope, $location, authenticationService) {
 
-     
+
         $scope.login = function () {
-            
-            kendo.ui.progress($("#form"), true);
-            $scope.dataLoading = true;
-            $scope.error = "";
-            authenticationService.login($scope.username, $scope.password, function (response) {
-                if (!response.success) {
-                    $scope.error = response.Message;
+            try {
+
+
+                kendo.ui.progress($("#form"), true);
+                $scope.dataLoading = true;
+                $scope.error = "Iniciando";
+                authenticationService.login($scope.username, $scope.password, function (response) {
+                    $scope.error = "Login respuesta";
+                    if (!response.success) {
+                        $scope.error = "Error";
+                        $scope.error = response.Message;
+                    } else {
+                        $scope.error = "sin error";
+                    }
                     $scope.dataLoading = false;
-                }
-                $scope.dataLoading = false;
-                kendo.ui.progress($("#form"), false);
-            });
+                    kendo.ui.progress($("#form"), false);
+                });
+            } catch (e) {
+                $scope.error = "error" + e.message;
+            }
         };
     }]);

@@ -8,7 +8,7 @@
         defaultlocale="en-US">
   <name>Money Points</name>
   <description>Aplicacion para redencion y administracion de puntos</description>
-  <author href="http://cordova.io" email="dev@cordova.apache.org">Software Estrategico SAS</author>
+  <author href="http://www.softwareestrategico.com" email="dev@cordova.apache.org">Software Estrategico SAS</author>
   <content src="index.html" />
   <access origin="*" />
   <vs:features />
