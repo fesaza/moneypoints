@@ -419,6 +419,14 @@ label {
   max-height: 768px;
 }
 
+.form-password{
+    background-image:url("images/bg-ap.png");
+  /* background:#3088A1;*/
+    padding: 3%;
+    padding-bottom: 6%;
+    
+  max-height: 768px;
+}
 
 /*--------styles listas----------*/
 .list-style{
