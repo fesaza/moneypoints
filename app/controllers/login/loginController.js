@@ -8,17 +8,17 @@ angular.module('moneyPointsApp')
         $scope.login = function () {
             kendo.ui.progress($("#form"), true);
             $scope.dataLoading = true;
-            $scope.error = "Inicia";
+            $scope.error = "";
             authenticationService.login($scope.username, $scope.password, function (response) {
-                new PNotify({ text: "fin de login", type: "info", delay: 3000 });
+                
                 if (response.success) {
                     authenticationService.setCredentials(response);
-                    new PNotify({ text: "fin de logi222222n", type: "info", delay: 3000 });
+                    
                     //ConsultarId
                     tercerosService.get(response.TerceroId).then(function (pl) {
                         var res = pl.data;
                         authorizationService.setId(res);
-                        new PNotify({ text: "buscando asegurables", type: "info", delay: 3000 });
+                        
 
                         //Consultar asegurables
                         authorizationService.getAsegurables(function (response) {
