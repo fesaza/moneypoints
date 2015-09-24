@@ -27,6 +27,7 @@ angular.module('moneyPointsApp')
                 });
             } catch (e) {
                 $scope.error = "error" + e.message;
+                new PNotify({ text: "Error: " + e.message, type: "danger", delay: 3000 });
             }
         };
     }]);
