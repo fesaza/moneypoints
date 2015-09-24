@@ -3,10 +3,9 @@
 angular.module('moneyPointsApp')
 
 .controller('loginController',
-    ['$scope', '$rootScope', '$location', 'authenticationService','authorizationService','tercerosService',
-    function ($scope, $rootScope, $location, authenticationService,authorizationService,tercerosService) {
+    ['$scope', '$rootScope', '$location', 'authenticationService', 'authorizationService', 'tercerosService',
+    function ($scope, $rootScope, $location, authenticationService, authorizationService, tercerosService) {
         $scope.login = function () {
-            new PNotify({ text: "La información se modificó satisfactoriamente", type: "info", delay: 3000 });
             kendo.ui.progress($("#form"), true);
             $scope.dataLoading = true;
             $scope.error = "Inicia";
@@ -42,8 +41,8 @@ angular.module('moneyPointsApp')
                         //}
                     });
                 } else {
-                    new PNotify({ text: "fin de login con error" + response.Message, type: "info", delay: 3000 });
-                    $scope.error = response.Message;
+                    new PNotify({ text: "fin de login con error" + response.toString() + response.message, type: "info", delay: 3000 });
+                    $scope.error = "Error raro" + response.Message;
                     $scope.dataLoading = false;
                     kendo.ui.progress($("#form"), false);
                 }
