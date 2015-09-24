@@ -10,7 +10,7 @@ angular.module('moneyPointsApp')
         $scope.login = function () {
             try {
 
-
+                $scope.error = "Iniciando";
                 kendo.ui.progress($("#form"), true);
                 $scope.dataLoading = true;
                 $scope.error = "Iniciando";
