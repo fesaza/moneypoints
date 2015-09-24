@@ -14,10 +14,12 @@ angular.module('moneyPointsApp')
                 new PNotify({ text: "fin de login", type: "info", delay: 3000 });
                 if (response.success) {
                     authenticationService.setCredentials(response);
+                    new PNotify({ text: "fin de logi222222n", type: "info", delay: 3000 });
                     //ConsultarId
                     tercerosService.get(response.TerceroId).then(function (pl) {
                         var res = pl.data;
                         authorizationService.setId(res);
+                        new PNotify({ text: "buscando asegurables", type: "info", delay: 3000 });
 
                         //Consultar asegurables
                         authorizationService.getAsegurables(function (response) {
@@ -28,6 +30,7 @@ angular.module('moneyPointsApp')
                             $scope.dataLoading = false;
                             kendo.ui.progress($("#form"), false);
                         });
+                        new PNotify({ text: "fin de logi22222n", type: "info", delay: 3000 });
 
                         authenticationService.navigateDefaultPage();
                         //if (response.RolId == 2) {//si el usuario logeado es cliente
@@ -39,6 +42,7 @@ angular.module('moneyPointsApp')
                         //}
                     });
                 } else {
+                    new PNotify({ text: "fin de login con error" + response.Message, type: "info", delay: 3000 });
                     $scope.error = response.Message;
                     $scope.dataLoading = false;
                     kendo.ui.progress($("#form"), false);
