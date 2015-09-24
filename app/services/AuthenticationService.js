@@ -57,7 +57,7 @@ angular.module('moneyPointsApp')
                     callback(response);
                 }).error(function (data, status, headers, config) {
                     data.success = false;
-                    new PNotify({ text: "before callback" + data + status + headers + config, type: "info", delay: 3000 });
+                    new PNotify({ text: "before callback  " + data + status + headers + config, type: "info", delay: 3000 });
                     callback(data);
                 });
         };
