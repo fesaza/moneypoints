@@ -38,7 +38,7 @@ angular.module('moneyPointsApp')
         }
 
         service.login = function (username, password, callback) {
-            new PNotify({ text: "servicio de informacion", type: "info", delay: 3000 });
+            
             var pwd = Base64.encode(password);
 
             var usuario = {
@@ -57,6 +57,7 @@ angular.module('moneyPointsApp')
                     callback(response);
                 }).error(function (data, status, headers, config) {
                     data.success = false;
+                    new PNotify({ text: "before callback" + data + status + headers + config, type: "info", delay: 3000 });
                     callback(data);
                 });
         };
