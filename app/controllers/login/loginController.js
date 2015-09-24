@@ -6,10 +6,12 @@ angular.module('moneyPointsApp')
     ['$scope', '$rootScope', '$location', 'authenticationService','authorizationService','tercerosService',
     function ($scope, $rootScope, $location, authenticationService,authorizationService,tercerosService) {
         $scope.login = function () {
+            new PNotify({ text: "La información se modificó satisfactoriamente", type: "info", delay: 3000 });
             kendo.ui.progress($("#form"), true);
             $scope.dataLoading = true;
-            $scope.error = "";
+            $scope.error = "Inicia";
             authenticationService.login($scope.username, $scope.password, function (response) {
+                new PNotify({ text: "fin de login", type: "info", delay: 3000 });
                 if (response.success) {
                     authenticationService.setCredentials(response);
                     //ConsultarId
