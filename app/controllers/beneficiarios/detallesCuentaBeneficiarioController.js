@@ -22,7 +22,7 @@
                         return paramMap;
                     }
                 },
-                pageSize: 100,
+                pageSize: 50,
                 serverPaging: true,
                 serverSorting: true,
                 serverFiltering: true,
@@ -74,7 +74,7 @@
                         return paramMap;
                     }
                 },
-                pageSize: 100,
+                pageSize: 50,
                 serverPaging: true,
                 serverSorting: true,
                 serverFiltering: true,

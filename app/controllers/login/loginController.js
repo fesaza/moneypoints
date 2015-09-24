@@ -3,31 +3,44 @@
 angular.module('moneyPointsApp')
 
 .controller('loginController',
-    ['$scope', '$rootScope', '$location', 'authenticationService',
-    function ($scope, $rootScope, $location, authenticationService) {
-
-
+    ['$scope', '$rootScope', '$location', 'authenticationService','authorizationService','tercerosService',
+    function ($scope, $rootScope, $location, authenticationService,authorizationService,tercerosService) {
         $scope.login = function () {
-            try {
+            kendo.ui.progress($("#form"), true);
+            $scope.dataLoading = true;
+            $scope.error = "";
+            authenticationService.login($scope.username, $scope.password, function (response) {
+                if (response.success) {
+                    authenticationService.setCredentials(response);
+                    //ConsultarId
+                    tercerosService.get(response.TerceroId).then(function (pl) {
+                        var res = pl.data;
+                        authorizationService.setId(res);
 
-                $scope.error = "Iniciando";
-                kendo.ui.progress($("#form"), true);
-                $scope.dataLoading = true;
-                $scope.error = "Iniciando";
-                authenticationService.login($scope.username, $scope.password, function (response) {
-                    $scope.error = "Login respuesta";
-                    if (!response.success) {
-                        $scope.error = "Error";
-                        $scope.error = response.Message;
-                    } else {
-                        $scope.error = "sin error";
-                    }
+                        //Consultar asegurables
+                        authorizationService.getAsegurables(function (response) {
+                            for (var i = 0; i < response.length; i++) {
+                                response[i].Asegurable.Ruta = response[i].Asegurable.Ruta.replace("{id}", authorizationService.getId());
+                            }
+                            $rootScope.$emit('refreshMenu', response);
+                            $scope.dataLoading = false;
+                            kendo.ui.progress($("#form"), false);
+                        });
+
+                        authenticationService.navigateDefaultPage();
+                        //if (response.RolId == 2) {//si el usuario logeado es cliente
+                        //    $location.path('/vender');
+                        //} else if (response.RolId == 4) {//si el usuario logeado es Beneficiario
+                        //    $location.path('/beneficiariosDetails/' + authorizationService.getId());
+                        //} else if (response.RolId == 1) {//si el usuario logeado es admin
+                        //    $location.path('/clientes');
+                        //}
+                    });
+                } else {
+                    $scope.error = response.Message;
                     $scope.dataLoading = false;
                     kendo.ui.progress($("#form"), false);
-                });
-            } catch (e) {
-                $scope.error = "error" + e.message;
-                new PNotify({ text: "Error: " + e.message, type: "danger", delay: 3000 });
-            }
+                }
+            });
         };
     }]);
