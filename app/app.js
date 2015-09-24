@@ -168,8 +168,8 @@ app.controller('indexCtrl', function ($scope, CordovaService, $location, $rootSc
 
     //$rootScope.baseAddress = "http://localhost/se.moneypoints.api";
     //$rootScope.baseAddress = "http://atenas:90/moneypoints_pru";
-    $rootScope.baseAddress = "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru";
-    //$rootScope.baseAddress = "http://moneypoints.azurewebsites.net/";
+    //$rootScope.baseAddress = "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru";
+    $rootScope.baseAddress = "http://moneypoints.azurewebsites.net/";
 
     $scope.tcdevicePixelRatio = window.devicePixelRatio;
 
