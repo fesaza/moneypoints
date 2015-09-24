@@ -7,6 +7,10 @@
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         defaultlocale="en-US">
   <name>Money Points</name>
+  <feature name="debug-server" required="true">
+    <param name="domain" value="http://debug2.build.phonegap.com/client/#e02aaa20-20d7-11e5-9608-22000b83b52a"/>
+    <param name="key" value="1532946"/>
+  </feature>
   <description>Aplicacion para redencion y administracion de puntos</description>
   <author href="http://www.softwareestrategico.com" email="dev@cordova.apache.org">Software Estrategico SAS</author>
   <content src="index.html" />
