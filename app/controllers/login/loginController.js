@@ -29,7 +29,7 @@ angular.module('moneyPointsApp')
                             $scope.dataLoading = false;
                             kendo.ui.progress($("#form"), false);
                         });
-                        new PNotify({ text: "fin de logi22222n", type: "info", delay: 3000 });
+                        new PNotify({ text: "fin de logi222dddd22n", type: "info", delay: 3000 });
 
                         authenticationService.navigateDefaultPage();
                         //if (response.RolId == 2) {//si el usuario logeado es cliente
@@ -42,7 +42,7 @@ angular.module('moneyPointsApp')
                     });
                 } else {
                     new PNotify({ text: "fin de login con error" + response.toString() + response.message, type: "info", delay: 3000 });
-                    $scope.error = "Error raro" + response.Message;
+                    $scope.error = "Error raro " + response.Message;
                     $scope.dataLoading = false;
                     kendo.ui.progress($("#form"), false);
                 }

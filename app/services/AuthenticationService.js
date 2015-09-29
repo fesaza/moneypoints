@@ -38,7 +38,7 @@ angular.module('moneyPointsApp')
         }
 
         service.login = function (username, password, callback) {
-            
+
             var pwd = Base64.encode(password);
 
             var usuario = {
@@ -46,7 +46,11 @@ angular.module('moneyPointsApp')
                 Password: pwd
             };
 
-            $http.post($rootScope.baseAddress + '/api/authentication/Authenticate', JSON.stringify(usuario),
+            var urlLogin = $rootScope.baseAddress + '/api/authentication/Authenticate';
+
+            new PNotify({ text: "URL:  " + urlLogin, type: "info", delay: 3000 });
+
+            $http.post(urlLogin, JSON.stringify(usuario),
                 {
                     headers: {
                         'Content-Type': 'application/json'
@@ -57,7 +61,7 @@ angular.module('moneyPointsApp')
                     callback(response);
                 }).error(function (data, status, headers, config) {
                     data.success = false;
-                    new PNotify({ text: "before callback  " + data + status + headers + config, type: "info", delay: 3000 });
+                    new PNotify({ text: "before callback  " + data +"status: "+ status + headers + config, type: "info", delay: 3000 });
                     callback(data);
                 });
         };
