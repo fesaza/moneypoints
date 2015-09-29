@@ -1,18 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<widget xmlns:cdv="http://cordova.apache.org/ns/1.0" 
-        xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps" 
-        id="io.cordova.myapp4a98e3ab01bd4161a03b7dedb89fb073" 
-        version="1.4.0" 
-        xmlns="http://www.w3.org/ns/widgets" 
-        xmlns:gap   = "http://phonegap.com/ns/1.0"
-        defaultlocale="en-US">
+<widget xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps" 
+        id="io.cordova.myapp4a98e3ab01bd4161a03b7dedb89fb073" version="1.2.0" 
+  xmlns="http://www.w3.org/ns/widgets" 
+  xmlns:gap   = "http://phonegap.com/ns/1.0"
+  defaultlocale="en-US">
   <name>Money Points</name>
-  <feature name="debug-server" required="true">
-    <param name="domain" value="http://debug2.build.phonegap.com/client/#e02aaa20-20d7-11e5-9608-22000b83b52a"/>
-    <param name="key" value="1532946"/>
-  </feature>
   <description>Aplicacion para redencion y administracion de puntos</description>
-  <author href="http://www.softwareestrategico.com" email="dev@cordova.apache.org">Software Estrategico SAS</author>
+  <author href="http://cordova.io" email="dev@cordova.apache.org">Software Estrategico SAS</author>
   <content src="index.html" />
   <access origin="*" />
   <vs:features />
