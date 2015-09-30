@@ -56,21 +56,23 @@ angular.module('moneyPointsApp')
                         'Content-Type': 'application/json'
                     }
                 })
-                .success(function (response) {
+                .then(function (response) {
                     new PNotify({ text: "Ok", type: "info", delay: 3000 });
                     response.success = true;
                     callback(response);
-                }).error(function (data, status, headers, config) {
+                }, function (response) {
                     new PNotify({ text: "NOT Ok", type: "info", delay: 3000 });
-                    new PNotify({ text: "before callback  " + data + "status: " + status + headers + config, type: "info", delay: 3000 });
-                    data.success = false;
-                    callback(data);
+                    new PNotify({ text: response.config.url + response.config.data + response.statusText, type: "info", delay: 3000 });
+                    //new PNotify({ text: "before callback  " + data + "status: " + status + headers + config, type: "info", delay: 3000 });
+
+                    response.success = false;
+                    callback(response);
                 });
         };
 
         service.setCredentials = function (response) {
-            var username = response.Login;
-            var password = response.Password;
+            var username = response.data.Login;
+            var password = response.data.Password;
 
             var authdata = Base64.encode(username + ':' + Base64.decode(password));
 
@@ -78,8 +80,8 @@ angular.module('moneyPointsApp')
                 currentUser: {
                     username: username,
                     authdata: authdata,
-                    rolId: response.RolId,
-                    usuarioId: response.UsuarioId
+                    rolId: response.data.RolId,
+                    usuarioId: response.data.UsuarioId
                 }
             };
 

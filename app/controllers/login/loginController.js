@@ -10,15 +10,15 @@ angular.module('moneyPointsApp')
             $scope.dataLoading = true;
             $scope.error = "";
             authenticationService.login($scope.username, $scope.password, function (response) {
-                
+
                 if (response.success) {
                     authenticationService.setCredentials(response);
-                    
+
                     //ConsultarId
-                    tercerosService.get(response.TerceroId).then(function (pl) {
+                    tercerosService.get(response.data.TerceroId).then(function (pl) {
                         var res = pl.data;
                         authorizationService.setId(res);
-                        
+
 
                         //Consultar asegurables
                         authorizationService.getAsegurables(function (response) {
@@ -29,7 +29,7 @@ angular.module('moneyPointsApp')
                             $scope.dataLoading = false;
                             kendo.ui.progress($("#form"), false);
                         });
-                        new PNotify({ text: "fin de logi222dddd22n", type: "info", delay: 3000 });
+                        new PNotify({ text: "Correcto", type: "info", delay: 3000 });
 
                         authenticationService.navigateDefaultPage();
                         //if (response.RolId == 2) {//si el usuario logeado es cliente
@@ -41,8 +41,7 @@ angular.module('moneyPointsApp')
                         //}
                     });
                 } else {
-                    new PNotify({ text: "fin de login con error" + response.toString() + response.message, type: "info", delay: 3000 });
-                    $scope.error = "Error raro " + response.Message;
+                    $scope.error = "Error raro " + response.statusText;
                     $scope.dataLoading = false;
                     kendo.ui.progress($("#form"), false);
                 }
