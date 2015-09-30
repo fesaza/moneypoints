@@ -57,11 +57,13 @@ angular.module('moneyPointsApp')
                     }
                 })
                 .success(function (response) {
+                    new PNotify({ text: "Ok", type: "info", delay: 3000 });
                     response.success = true;
                     callback(response);
                 }).error(function (data, status, headers, config) {
+                    new PNotify({ text: "NOT Ok", type: "info", delay: 3000 });
                     data.success = false;
-                    new PNotify({ text: "before callback  " + data +"status: "+ status + headers + config, type: "info", delay: 3000 });
+                    new PNotify({ text: "before callback  " + data + "status: " + status + headers + config, type: "info", delay: 3000 });
                     callback(data);
                 });
         };
