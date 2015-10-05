@@ -3,8 +3,8 @@
 angular.module('moneyPointsApp')
 
 .factory('authenticationService',
-    ['Base64', '$http', '$cookieStore', '$rootScope', '$timeout', '$location',
-    function (Base64, $http, $cookieStore, $rootScope, $timeout, $location) {
+    ['Base64', '$http', '$cookieStore', '$rootScope', '$timeout',
+    function (Base64, $http, $cookieStore, $rootScope, $timeout) {
         var service = {};
 
         service.changePassword = function (opts, callback) {
@@ -38,7 +38,7 @@ angular.module('moneyPointsApp')
         }
 
         service.login = function (username, password, callback) {
-
+            
             var pwd = Base64.encode(password);
 
             var usuario = {
@@ -46,33 +46,24 @@ angular.module('moneyPointsApp')
                 Password: pwd
             };
 
-            var urlLogin = $rootScope.baseAddress + '/api/authentication/Authenticate';
-
-            new PNotify({ text: "URL:  " + urlLogin, type: "info", delay: 3000 });
-
-            $http.post(urlLogin, JSON.stringify(usuario),
+            $http.post($rootScope.baseAddress + '/api/authentication/Authenticate', JSON.stringify(usuario),
                 {
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 })
-                .then(function (response) {
-                    new PNotify({ text: "Ok", type: "info", delay: 3000 });
+                .success(function (response) {
                     response.success = true;
                     callback(response);
-                }, function (response) {
-                    new PNotify({ text: "NOT Ok", type: "info", delay: 3000 });
-                    new PNotify({ text: response.config.url + response.config.data + response.statusText, type: "info", delay: 3000 });
-                    //new PNotify({ text: "before callback  " + data + "status: " + status + headers + config, type: "info", delay: 3000 });
-
-                    response.success = false;
-                    callback(response);
+                }).error(function (data, status, headers, config) {
+                    data.success = false;
+                    callback(data);
                 });
         };
 
         service.setCredentials = function (response) {
-            var username = response.data.Login;
-            var password = response.data.Password;
+            var username = response.Login;
+            var password = response.Password;
 
             var authdata = Base64.encode(username + ':' + Base64.decode(password));
 
@@ -80,8 +71,8 @@ angular.module('moneyPointsApp')
                 currentUser: {
                     username: username,
                     authdata: authdata,
-                    rolId: response.data.RolId,
-                    usuarioId: response.data.UsuarioId
+                    rolId: response.RolId,
+                    usuarioId: response.UsuarioId
                 }
             };
 
@@ -89,14 +80,7 @@ angular.module('moneyPointsApp')
             $cookieStore.put('globals', $rootScope.globals);
         };
 
-        service.navigateDefaultPage = function () {
-            if ($rootScope.globals.currentUser.rolId == 2) //si el usuario logeado es cliente
-                $location.path('/vender');
-            else if ($rootScope.globals.currentUser.rolId == 4) //si el usuario logeado es Beneficiario
-                $location.path('/beneficiariosDetails/' + $rootScope.globals.currentUser.id);
-            else if ($rootScope.globals.currentUser.rolId == 1) //si el usuario logeado es admin
-                $location.path('/clientes');
-        }
+
 
         service.clearCredentials = function () {
             $rootScope.globals = {};

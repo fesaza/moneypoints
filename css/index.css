@@ -183,7 +183,7 @@ background-color: #E7E7E7 !important;
  
 
     .banner-ventas{
-        margin-top: 13%;
+        margin-top: -7%;
     }
 
     .banner-ventas img {
@@ -533,7 +533,7 @@ color:#c9c9c9 !important;
 
 .bg-login{
       width: 100%;
-  min-height: 590px;
+  min-height: 540px;
   background-color: #46474b;
   max-height: 900px;
 }
@@ -579,10 +579,6 @@ label.lbl-list {
 }
 
 
-input[type="search"] {
-    width: 52% !important;
-}
-
 
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
   /* background-color: #333; */
@@ -593,10 +589,6 @@ input[type="search"] {
 
 /*------------End styles login-------------------*/
 
-.fa {
-   
-    margin-right: 20px;
-}
 
 @media (min-width:480px){
  .login-logo {

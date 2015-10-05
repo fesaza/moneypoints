@@ -2,17 +2,16 @@
     'use strict';
 
     angular.module("moneyPointsApp").controller('clientesDetailsController', ['$rootScope',
-    '$scope', '$routeParams', 'clientesService', 'beneficiariosService', 'equivalenciasService', 'afiliadosClientesService', 'authorizationService','Base64',
+    '$scope', '$routeParams', 'clientesService', 'beneficiariosService', 'equivalenciasService', 'afiliadosClientesService', 'authorizationService',
     clientesDetailsController]);
 
     function clientesDetailsController($rootScope, $scope, $routeParams, clientesService, beneficiariosService,
-        equivalenciasService, afiliadosClientesService, authorizationService, Base64) {
-
-        var clienteId = $routeParams.ClienteId;
+        equivalenciasService, afiliadosClientesService, authorizationService) {
+        
+        var clienteId = $routeParams.ClienteId
 
         $scope.canDelete = false;
         $scope.canCancel = false;
-        $scope.isDeleting = false;
 
         var user = authorizationService.getCurrentUser();
 
@@ -23,7 +22,6 @@
 
         if (clienteId == 0) {
             $scope.IsEditing = false;
-            $scope.canDelete = false;
         } else {
             var promiseGetCliente = clientesService.get(clienteId);
             //divDetailCliente
@@ -46,7 +44,6 @@
 
         //Guardar Cliente
         $scope.guardarCliente = function () {
-            if ($scope.isDeleting) return;
             kendo.ui.progress($("#divDetailCliente"), true);
             if ($scope.IsEditing) {
                 var promiseGuardarCliente = clientesService.put($scope.cliente.ClienteId, $scope.cliente);
@@ -77,8 +74,7 @@
                         delay: 3000
                     });
                     kendo.ui.progress($("#divDetailCliente"), false);
-                        $scope.goPath('/clientes');
-                    },
+                },
                 function (errorPl) {
                     handleError(errorPl);
                     kendo.ui.progress($("#divDetailCliente"), false);
@@ -90,7 +86,6 @@
 
         //Eliminar cliente
         $scope.deleteCliente = function () {
-            $scope.isDeleting = true;
             kendo.ui.progress($("#divDetailCliente"), true);
             var promiseDeleteCliente = clientesService.delete($scope.cliente.ClienteId);
             promiseDeleteCliente.then(function (pl) {
@@ -99,9 +94,8 @@
                     type: 'info',
                     delay: 3000
                 });
-                    
+                //$scope.goPath('/clientes');
                 kendo.ui.progress($("#divDetailCliente"), false);
-                $scope.goPath('/clientes');
             },
             function (errorPl) {
                 handleError(errorPl);

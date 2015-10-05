@@ -8,12 +8,12 @@
 
 <ul id="gn-menu" class="gn-menu-main">
     <li class="gn-trigger">
-        <a id="mainMenuIcon" class="gn-icon gn-icon-menu"><span>Menu</span></a>
+        <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
         <nav class="gn-menu-wrapper">
             <div class="gn-scroller">
                 <ul class="gn-menu">
                     <li ng-repeat="asegurable in asegurables">
-                        <a href="#{{asegurable.Asegurable.Ruta}}" ng-click="ocultar()">
+                        <a href="#{{asegurable.Asegurable.Ruta}}"  ng-click="ocultar()">
                             &nbsp;<i class="{{asegurable.Asegurable.Class}}"></i>&nbsp; {{asegurable.Asegurable.Nombre}}
                         </a>
                     </li>
@@ -32,18 +32,4 @@
 <script src="js/gnmenu.js"></script>
 <script>
     new gnMenu(document.getElementById('gn-menu'));
-</script>
-<script>
-    $("#menu-toggle").click(function (e) {
-
-        $("#wrapper").toggleClass("toggled");
-    });
-</script>
-
-<script>
-    var $nav = jQuery('a');
-    $nav.on('click', function (e) {
-        jQuery("#wrapper").toggleClass("toggled");
-
-    });
 </script>
