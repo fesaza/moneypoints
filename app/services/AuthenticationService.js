@@ -17,9 +17,30 @@ angular.module('moneyPointsApp')
                 .success(function (response) {
                     callback(response);
                 }).error(function (data, status, headers, config) {
+                    alert(data + status + headers + config);
                     data.success = false;
                     callback(data);
+
+                    var settings = {
+                        "async": true,
+                        "crossDomain": true,
+                        "url": "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru/api/authentication/Authenticate",
+                        "method": "POST",
+                        "headers": {
+                            "content-type": "application/json",
+                            "cache-control": "no-cache"
+                        },
+                        "processData": false,
+                        "data": "{\"Login\":\"admin\",\"Password\":\"cXdlcg==\"}"
+                    }
+
+                    $.ajax(settings).done(function (response) {
+                        alert(response);
+                        console.log(response);
+                    });
                 });
+
+
         }
 
         service.changePIN = function (opts, callback) {
@@ -38,7 +59,7 @@ angular.module('moneyPointsApp')
         }
 
         service.login = function (username, password, callback) {
-            
+
             var pwd = Base64.encode(password);
 
             var usuario = {

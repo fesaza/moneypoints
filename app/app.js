@@ -175,7 +175,7 @@ app.controller('indexCtrl', function ($scope, CordovaService, $location, $rootSc
     $rootScope.$on('refreshMenu', function (event, data) {
         
         $scope.asegurables = data;
-    });
+    })  ;
 
     $scope.ocultar = function () {
         jQuery("#wrapper").toggleClass("toggled");
