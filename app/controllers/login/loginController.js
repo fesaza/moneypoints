@@ -39,6 +39,7 @@ angular.module('moneyPointsApp')
                         }
                     });
                 } else {
+                    
                     $scope.error = response.Message;
                     $scope.dataLoading = false;
                     kendo.ui.progress($("#form"), false);

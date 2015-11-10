@@ -15,6 +15,8 @@ angular.module('moneyPointsApp')
                     }
                 })
                 .success(function (response) {
+                    alert("Entro bien");
+                    response.success = true;
                     callback(response);
                 }).error(function (data, status, headers, config) {
                     alert(data + status + headers + config);
