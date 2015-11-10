@@ -16,45 +16,17 @@ angular.module('moneyPointsApp')
                 })
                 .success(function (response) {
                     //alert("Entro bien");
-                    new PNotify({
-                        text: 'Entro bien',
-                        type: 'info',
-                        delay: 3000
-                    });
-                    response.success = true;
+
+                    //response.success = true;
                     callback(response);
+
                 }).error(function (data, status, headers, config) {
                     //alert(data + status + headers + config);
-                    new PNotify({
-                        text: data + status + headers + config,
-                        type: 'info',
-                        delay: 3000
-                    });
+
                     data.success = false;
                     callback(data);
 
-                    var settings = {
-                        "async": true,
-                        "crossDomain": true,
-                        "url": "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru/api/authentication/Authenticate",
-                        "method": "POST",
-                        "headers": {
-                            "content-type": "application/json",
-                            "cache-control": "no-cache"
-                        },
-                        "processData": false,
-                        "data": "{\"Login\":\"admin\",\"Password\":\"cXdlcg==\"}"
-                    }
 
-                    $.ajax(settings).done(function (response) {
-                        //alert(response);
-                         new PNotify({
-                        text: response,
-                        type: 'info',
-                        delay: 3000
-                    });
-                        console.log(response);
-                    });
                 });
 
 
@@ -91,11 +63,44 @@ angular.module('moneyPointsApp')
                     }
                 })
                 .success(function (response) {
+                    new PNotify({
+                        text: 'Goliamos reimon!!!',
+                        type: 'info',
+                        delay: 5000
+                    });
                     response.success = true;
                     callback(response);
                 }).error(function (data, status, headers, config) {
+                    new PNotify({
+                        text: data + status + headers + config,
+                        type: 'info',
+                        delay: 9000
+                    });
                     data.success = false;
                     callback(data);
+
+                    var settings = {
+                        "async": true,
+                        "crossDomain": true,
+                        "url": "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru/api/authentication/Authenticate",
+                        "method": "POST",
+                        "headers": {
+                            "content-type": "application/json",
+                            "cache-control": "no-cache"
+                        },
+                        "processData": false,
+                        "data": "{\"Login\":\"admin\",\"Password\":\"cXdlcg==\"}"
+                    }
+
+                    $.ajax(settings).done(function (response) {
+                        //alert(response);
+                        new PNotify({
+                            text: response,
+                            type: 'info',
+                            delay: 3000
+                        });
+                        console.log(response);
+                    });
                 });
         };
 
