@@ -33,3 +33,15 @@
 <script>
     new gnMenu(document.getElementById('gn-menu'));
 </script>
+<script>
+    $("#menu-toggle").click(function (e) {
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
+
+<script>
+    var $nav = jQuery('a');
+    $nav.on('click', function (e) {
+        jQuery("#wrapper").toggleClass("toggled");
+    });
+</script>

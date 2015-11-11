@@ -167,24 +167,30 @@ app.controller('indexCtrl', function ($scope, CordovaService, $location, $rootSc
 
 
     //$rootScope.baseAddress = "http://localhost/se.moneypoints.api";
-    //$rootScope.baseAddress = "http://atenas:90/moneypoints_pru";
-    $rootScope.baseAddress = "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru";
+    $rootScope.baseAddress = "http://atenas:90/moneypoints_pru";
+    //$rootScope.baseAddress = "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru";
 
     $scope.tcdevicePixelRatio = window.devicePixelRatio;
 
     $rootScope.$on('refreshMenu', function (event, data) {
         
         $scope.asegurables = data;
-    })  ;
+    });
 
     $scope.ocultar = function () {
-        jQuery("#wrapper").toggleClass("toggled");
+        //jQuery("#wrapper").toggleClass("toggled");
+        jQuery('nav').removeClass("gn-open-all");
+        jQuery('#mainMenuIcon').removeClass("gn-selected");
     }
 
     $rootScope.$on('$locationChangeSuccess', function () {
 
         if ($location.path() == '/login' || $location.path() == '/registrarse/0') {
-            $scope.hideMenus = false;
+            if (!$rootScope.globals.currentUser)
+                $scope.hideMenus = false;
+            else {
+                authenticationService.navigateDefaultPage();
+            }
         }
 
         else {

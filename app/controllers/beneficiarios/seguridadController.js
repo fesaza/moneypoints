@@ -42,6 +42,7 @@
                 sec.newPIN = null;
                 sec.newPINConfirm = null;
                 new PNotify({ text: "La información se modificó satisfactoriamente", type: "info", delay: 3000 });
+                authenticationService.navigateDefaultPage();
             }
         }
 

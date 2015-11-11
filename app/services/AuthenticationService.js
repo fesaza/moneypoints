@@ -3,11 +3,13 @@
 angular.module('moneyPointsApp')
 
 .factory('authenticationService',
-    ['Base64', '$http', '$cookieStore', '$rootScope', '$timeout',
-    function (Base64, $http, $cookieStore, $rootScope, $timeout) {
+    ['Base64', '$http', '$cookieStore', '$rootScope', '$timeout', '$location', 'authorizationService', 'tercerosService',
+    function (Base64, $http, $cookieStore, $rootScope, $timeout, $location, authorizationService, tercerosService) {
         var service = {};
+        var newPassw = "";
 
         service.changePassword = function (opts, callback) {
+            newPassw = opts.newPassword;
             $http.post($rootScope.baseAddress + '/api/authentication/ChangePassword', JSON.stringify(opts),
                 {
                     headers: {
@@ -15,21 +17,13 @@ angular.module('moneyPointsApp')
                     }
                 })
                 .success(function (response) {
-                    //alert("Entro bien");
-
-                    //response.success = true;
+                    var username = $rootScope.globals.currentUser.username;
+                    service.login(username, Base64.decode(newPassw));
                     callback(response);
-
                 }).error(function (data, status, headers, config) {
-                    //alert(data + status + headers + config);
-
                     data.success = false;
                     callback(data);
-
-
                 });
-
-
         }
 
         service.changePIN = function (opts, callback) {
@@ -63,79 +57,30 @@ angular.module('moneyPointsApp')
                     }
                 })
                 .success(function (response) {
-                    new PNotify({
-                        text: 'Goliamos reimon!!!',
-                        type: 'info',
-                        delay: 5000
-                    });
                     response.success = true;
-                    callback(response);
+                    //callback(response);
+                    service.setCredentials(response);
+
+                    tercerosService.get(response.TerceroId).then(function (pl) {
+                        var res = pl.data;
+                        authorizationService.setId(res);
+
+                        //Consultar asegurables
+                        if (callback) {
+                            authorizationService.getAsegurables(function (response) {
+                                for (var i = 0; i < response.length; i++) {
+                                    response[i].Asegurable.Ruta = response[i].Asegurable.Ruta.replace("{id}", authorizationService.getId());
+                                }
+                                $rootScope.$emit('refreshMenu', response);
+                                service.navigateDefaultPage();
+                                callback(response);
+                            });
+                        }
+                    });
                 }).error(function (data, status, headers, config) {
-                    new PNotify({
-                        text: data + status + headers + config,
-                        type: 'info',
-                        delay: 9000
-                    });
                     data.success = false;
-                    callback(data);
-
-                    var settings = {
-                        "async": true,
-                        "crossDomain": true,
-                        "url": "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru/api/authentication/Authenticate",
-                        "method": "POST",
-                        "headers": {
-                            "content-type": "application/json",
-                            "cache-control": "no-cache"
-                        },
-                        "processData": false,
-                        "data": "{\"Login\":\"admin\",\"Password\":\"cXdlcg==\"}"
-                    }
-
-                    $.ajax(settings).done(function (response) {
-                        //alert(response);
-                        new PNotify({
-                            text: response,
-                            type: 'info',
-                            delay: 3000
-                        });
-                        console.log(response);
-                    }).fail(function (jqXHR, textStatus, errorThrown) {
-                       new PNotify({
-                           text: jqXHR.status + jqXHR + textStatus + errorThrown.responseText,
-                            type: 'info',
-                            delay: 3000
-                        });
-                    });
-
-
-                    var settingsGet = {
-                        "async": true,
-                        "crossDomain": true,
-                        "url": "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru/api/terceros",
-                        "method": "GET",
-                        "headers": {
-                            "content-type": "application/json",
-                            "cache-control": "no-cache"
-                        },
-                        "processData": false
-                    }
-
-                    $.ajax(settingsGet).done(function (response) {
-                        //alert(response);
-                        new PNotify({
-                            text: response,
-                            type: 'info',
-                            delay: 3000
-                        });
-                        console.log(response);
-                    }).fail(function (jqXHR, textStatus, errorThrown) {
-                        new PNotify({
-                            text: jqXHR.status + jqXHR + textStatus + errorThrown.responseText,
-                            type: 'info',
-                            delay: 3000
-                        });
-                    });
+                    if (callback)
+                        callback(data);
                 });
         };
 
@@ -158,7 +103,14 @@ angular.module('moneyPointsApp')
             $cookieStore.put('globals', $rootScope.globals);
         };
 
-
+        service.navigateDefaultPage = function () {
+            if ($rootScope.globals.currentUser.rolId == 2) //si el usuario logeado es cliente
+                $location.path('/vender');
+            else if ($rootScope.globals.currentUser.rolId == 4) //si el usuario logeado es Beneficiario
+                $location.path('/beneficiariosDetails/' + $rootScope.globals.currentUser.id);
+            else if ($rootScope.globals.currentUser.rolId == 1) //si el usuario logeado es admin
+                $location.path('/clientes');
+        }
 
         service.clearCredentials = function () {
             $rootScope.globals = {};

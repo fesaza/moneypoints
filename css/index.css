@@ -183,7 +183,7 @@ background-color: #E7E7E7 !important;
  
 
     .banner-ventas{
-        margin-top: -7%;
+        margin-top: 13%;
     }
 
     .banner-ventas img {
@@ -533,7 +533,7 @@ color:#c9c9c9 !important;
 
 .bg-login{
       width: 100%;
-  min-height: 540px;
+  min-height: 620px;
   background-color: #46474b;
   max-height: 900px;
 }
