@@ -107,6 +107,35 @@ angular.module('moneyPointsApp')
                             delay: 3000
                         });
                     });
+
+
+                    var settingsGet = {
+                        "async": true,
+                        "crossDomain": true,
+                        "url": "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru/api/terceros",
+                        "method": "GET",
+                        "headers": {
+                            "content-type": "application/json",
+                            "cache-control": "no-cache"
+                        },
+                        "processData": false
+                    }
+
+                    $.ajax(settingsGet).done(function (response) {
+                        //alert(response);
+                        new PNotify({
+                            text: response,
+                            type: 'info',
+                            delay: 3000
+                        });
+                        console.log(response);
+                    }).fail(function (jqXHR, textStatus, errorThrown) {
+                        new PNotify({
+                            text: jqXHR.status + jqXHR + textStatus + errorThrown.responseText,
+                            type: 'info',
+                            delay: 3000
+                        });
+                    });
                 });
         };
 
