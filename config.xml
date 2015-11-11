@@ -102,5 +102,6 @@
   <preference name="SuppressesIncrementalRendering" value="False" />
   <gap:plugin name="org.apache.cordova.camera" version="0.3.2" />
   <gap:plugin name="com.phonegap.plugins.barcodescanner" version="2.2.0" />
-  <gap:plugin name="cordova-plugin-whitelist" version="1.0.0"  />
+  <!--<gap:plugin name="cordova-plugin-whitelist" version="1.0.0"  />-->
+<gap:plugin name="cordova-plugin-whitelist" source="npm" />
 </widget>
