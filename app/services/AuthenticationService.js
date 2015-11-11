@@ -100,6 +100,12 @@ angular.module('moneyPointsApp')
                             delay: 3000
                         });
                         console.log(response);
+                    }).fail(function (jqXHR, textStatus, errorThrown) {
+                       new PNotify({
+                           text: jqXHR.status + jqXHR + textStatus + errorThrown.responseText,
+                            type: 'info',
+                            delay: 3000
+                        });
                     });
                 });
         };
