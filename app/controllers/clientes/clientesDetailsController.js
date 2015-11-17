@@ -52,13 +52,15 @@
                 var promiseGuardarCliente = clientesService.put($scope.cliente.ClienteId, $scope.cliente);
                 promiseGuardarCliente.then(function (pl) {
                     new PNotify({
-                        text: 'Se Actualizo Correctamente el Cliente',
+                        text: 'Se Actualizó correctamente el cliente',
                         type: 'info',
                         delay: 3000
                     });
                     kendo.ui.progress($("#divDetailCliente"), false);
-                    $scope.goPath('/clientes');
-                },
+                        if (user && user.rolId == 1) {
+                            $scope.goPath('/clientes');
+                        }
+                    },
                 function (errorPl) {
                     handleError(errorPl);
                     kendo.ui.progress($("#divDetailCliente"), false);
@@ -78,6 +80,7 @@
                         delay: 3000
                     });
                     kendo.ui.progress($("#divDetailCliente"), false);
+                    $scope.goPath('/clientes');
                 },
                 function (errorPl) {
                     handleError(errorPl);

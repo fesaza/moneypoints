@@ -87,11 +87,14 @@
                 promiseGuadarbeneficiario.then(function (pl) {
                     //$scope.mensaje = "Actualizado satisfactoriamente";
                     new PNotify({
-                        text: 'Se Actualizo Correctamente',
+                        text: 'Se actualizó la información correctamente.',
                         type: 'info',
                         delay: 3000
                     });
-                    //$scope.goPath('/beneficiarios');
+
+                    if (user && user.rolId == 1) {
+                        $scope.goPath('/beneficiarios');
+                    }
                 }, function (errorPl) {
                     handleError(errorPl);
                 });

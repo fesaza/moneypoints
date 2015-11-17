@@ -552,6 +552,10 @@ label.lbl-list {
   font-weight: 600 !important;
 }
 
+input[type="search"] {
+    width: 52% !important;
+}
+
 
 .vlr-list{
     float:right;
@@ -589,6 +593,10 @@ label.lbl-list {
 
 /*------------End styles login-------------------*/
 
+.fa {
+   
+    margin-right: 20px;
+}
 
 @media (min-width:480px){
  .login-logo {
@@ -598,3 +606,4 @@ label.lbl-list {
  }
 
 }
+
