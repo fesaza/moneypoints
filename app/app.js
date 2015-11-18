@@ -183,6 +183,10 @@ app.controller('indexCtrl', function ($scope, CordovaService, $location, $rootSc
         jQuery('#mainMenuIcon').removeClass("gn-selected");
     }
 
+    $rootScope.$on("$routeChangeSuccess", function() {
+        window.scrollTo(0, 0);
+    });
+
     $rootScope.$on('$locationChangeSuccess', function () {
 
         if ($location.path() == '/login' || $location.path() == '/registrarse/0') {

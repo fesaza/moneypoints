@@ -128,12 +128,12 @@
         //Eliminar beneficiario
         $scope.deletebeneficiario = function () {
             $scope.isDeleting = true;
-            var promiseDeletebeneficiario = beneficiariosService.delete($scope.beneficiario.beneficiarioId);
+            var promiseDeletebeneficiario = beneficiariosService.delete($scope.beneficiario.BeneficiarioId);
             promiseDeletebeneficiario.then(function (pl) {
                 //$scope.mensaje = "Eliminado satisfactoriamente.";
                 new PNotify({
-                    text: 'Se Elimino Correctamente',
-                    type: 'danger',
+                    text: 'Se Eliminó correctamente',
+                    type: 'info',
                     delay: 3000
                 });
                 $scope.goPath('/beneficiarios');
