@@ -38,13 +38,17 @@
                 {{dataItem.AfiliadosCliente.Afiliado.Cliente.Tercero.Nombre}}
             </h3>
             <div>
-                <label  class="lbl-list">Valor:</label>
+                <label class="lbl-list">Valor:</label>
                 <span class="vlr-list"> {{dataItem.Valor | currency: $ : 2}}</span>
-</div>
+            </div>
             <div>
                 <label class="lbl-list">Fecha:</label>
                 <span class="vlr-list">{{dataItem.Fecha | date : 'dd-MM-yyyy'}}</span>
-</div>
+            </div>
+            <div>
+                <label class="lbl-list">Estado:</label>
+                <span class="vlr-list">{{dataItem.Estado}}</span>
+            </div>
         </div>
     </a>
 </script>
@@ -63,6 +67,10 @@
                 <label>Fecha:</label>
                 {{dataItem.Fecha | date : 'dd-MM-yyyy'}}
             </div>
+            <div>
+                <label class="lbl-list">Estado:</label>
+                <span class="vlr-list">{{dataItem.Estado}}</span>
+            </div>
         </div>
-    </a class="container>
+    </a>
 </script>
