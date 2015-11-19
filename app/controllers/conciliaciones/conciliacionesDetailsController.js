@@ -27,6 +27,14 @@
         //Guardar Conciliación
         $scope.guardarConciliacion = function () {
             if (!$scope.isEditing) {
+                if (!$scope.conciliacion.AfiliadosClienteId) {
+                    new PNotify({
+                        text: 'Seleccione un aliado',
+                        type: 'danger',
+                        delay: 3000
+                    });
+                    return;
+                }
                 var promiseGuardarConciliacion = conciliacionesService.post($scope.conciliacion);
                 promiseGuardarConciliacion.then(function (pl) {
                     new PNotify({
@@ -84,6 +92,8 @@
                 },
                 serverFiltering: true
             },
+            index: -1,
+            optionLabel: "Seleccione un aliado",
             dataTextField: "Afiliado.Cliente.Tercero.Nombre",
             dataValueField: "AfiliadosClienteId",
             change: function () {

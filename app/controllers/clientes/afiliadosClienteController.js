@@ -53,6 +53,8 @@ function afiliadosClienteController($rootScope, $scope, $routeParams, authorizat
             serverFiltering: true,
             filterable: true
         },
+        index: -1,
+        optionLabel: "Seleccione un afiliado",
         dataTextField: "Cliente.Tercero.Nombre",
         dataValueField: "AfiliadoId"
     };
@@ -64,6 +66,16 @@ function afiliadosClienteController($rootScope, $scope, $routeParams, authorizat
             FechaIngreso: new Date(),
             FechaBaja: null
         };
+
+        if (!aliadoCliente.AfiliadoId) {
+            new PNotify({
+                text: 'Seleccione un afiliado',
+                type: 'danger',
+                delay: 3000
+            });
+            return;
+        }
+
         afiliadosClientesService.post(aliadoCliente).then(
             function (pl) {
                 new PNotify({
