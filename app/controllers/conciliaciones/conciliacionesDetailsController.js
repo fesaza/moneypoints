@@ -57,10 +57,10 @@
 
         //Eliminar Conciliación
         $scope.deleteConciliacion = function () {
-            var promiseDeleteConciliacion = conciliacionesService.delete($scope.conciliacion.conciliacionId);
+            var promiseDeleteConciliacion = conciliacionesService.delete($scope.conciliacion.ConciliacionId);
             promiseDeleteConciliacion.then(function (pl) {
                 new PNotify({
-                    text: 'Se elimino Correctamente',
+                    text: 'Se eliminó Correctamente',
                     type: 'info',
                     delay: 3000
                 });

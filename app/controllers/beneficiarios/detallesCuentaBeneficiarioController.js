@@ -5,7 +5,9 @@
 
     function detallesCuentaBeneficiarioController($rootScope, $scope, $routeParams) {
 
-        var beneficiariosClienteId = $routeParams.beneficiariosClienteId
+        var beneficiariosClienteId = $routeParams.beneficiariosClienteId;
+        var nombreCliente = $routeParams.nombre;
+        $scope.nombreCliente = nombreCliente;
 
         $scope.historialPtsBeneficiarioOptions = {
 
@@ -35,7 +37,7 @@
             },
             sortable: true,
             pageable: true,
-            filterable: true,
+            filterable: false,
             scrollable: {
                 virtual: true
             },

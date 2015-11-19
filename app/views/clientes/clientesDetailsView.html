@@ -62,7 +62,7 @@
         <div class="spbut"></div>
         <div id="buttons" style="margin-top: 8%; ">
             <button type="submit" ng-disabled="form.$invalid || (security.newClave != security.newClaveConfirm && !IsEditing)" class="btn btn-info">Guardar</button>
-            <button class="btn btn-danger" ng-show="canDelete" ng-click="deleteCliente()">Eliminar</button>
+            <button class="btn btn-success" ng-show="canDelete" ng-click="deleteCliente()">Eliminar</button>
             <button class="btn btn-success" ng-show="canCancel" ng-click="goPath('/clientes')">Cancelar</button>
             <span>{{}}</span>
         </div>

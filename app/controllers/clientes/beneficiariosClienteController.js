@@ -53,6 +53,8 @@ function beneficiariosClienteController($rootScope, $scope, $routeParams, author
             serverFiltering: true,
             filterable: true
         },
+        index: -1,
+        optionLabel:"Seleccione un beneficiario",
         filterable:true,
         dataTextField: "Tercero.Nombre",
         dataValueField: "BeneficiarioId"
@@ -65,6 +67,17 @@ function beneficiariosClienteController($rootScope, $scope, $routeParams, author
             FechaIngreso: new Date(),
             FechaBaja: null
         };
+
+        if (!benefCliente.BeneficiarioId) {
+            new PNotify({
+                text: 'Seleccione un beneficiario',
+                type: 'warning',
+                delay: 3000
+            });
+
+            return;
+        }
+
         beneficiariosClienteService.post(benefCliente).then(
             function (pl) {
                 new PNotify({

@@ -95,7 +95,7 @@
 
                 <div id="buttons">
                     <button type="submit" ng-disabled="form.$invalid || (security.newClave != security.newClaveConfirm && !IsEditing)" class="btn btn-info">Guardar</button>
-                    <button class="btn btn-danger" ng-show="canDelete" ng-click="deletebeneficiario()">Eliminar</button>
+                    <button class="btn btn-success" ng-show="canDelete" ng-click="deletebeneficiario()">Eliminar</button>
                     <button class="btn btn-success" ng-show="canCancel" ng-click="goPath('/beneficiarios')">Cancelar</button>
                 </div>
             </form>
@@ -118,7 +118,7 @@
 </div>
 
 <script id="tmpCuentasBeneficiario" type="text/x-kendo-tmpl">
-    <a class="container list-style" href="\#/detallesCuentaBeneficiario/{{dataItem.BeneficiariosClienteId}}">
+    <a class="container list-style" href="\#/detallesCuentaBeneficiario/{{dataItem.BeneficiariosClienteId}}/{{dataItem.Cliente.Tercero.Nombre}}">
         <div>
             <h3 class="title-list">
                 {{dataItem.Cliente.Tercero.Nombre}}

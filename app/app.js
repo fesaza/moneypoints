@@ -96,7 +96,7 @@ app.config(function ($routeProvider, $httpProvider) {
             templateUrl: 'app/views/beneficiarios/beneficiariosDetailsView.html',
             controller: 'beneficiariosDetailsController'
         })
-         .when('/detallesCuentaBeneficiario/:beneficiariosClienteId', {
+         .when('/detallesCuentaBeneficiario/:beneficiariosClienteId/:nombre', {
              templateUrl: 'app/views/beneficiarios/detallesCuentaBeneficiario.html',
              controller: 'detallesCuentaBeneficiarioController'
          })
@@ -166,9 +166,9 @@ app.controller('indexCtrl', function ($scope, CordovaService, $location, $rootSc
     };
 
 
-    //$rootScope.baseAddress = "http://localhost/se.moneypoints.api";
+    $rootScope.baseAddress = "http://localhost/se.moneypoints.api";
     //$rootScope.baseAddress = "http://atenas:90/moneypoints_pru";
-    $rootScope.baseAddress = "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru";
+    //$rootScope.baseAddress = "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru";
 
     $scope.tcdevicePixelRatio = window.devicePixelRatio;
 
