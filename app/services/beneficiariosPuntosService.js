@@ -1,5 +1,13 @@
 ﻿angular.module('moneyPointsApp').service('beneficiariosPuntosService', function ($http, $rootScope) {
 
+     //Get todos los historicos beneficiariosPuntos by beneficiarioId
+    this.getbeneficiariosPuntosHistoricos = function (beneficiariosClienteId) {
+        return $http.get($rootScope.baseAddress + "/api/BeneficiariosPuntos?$filter= BeneficiariosClienteId eq " + beneficiariosClienteId);
+    }
+    this.getbeneficiariosComprasHistorico = function (beneficiariosClienteId) {
+        return $http.get($rootScope.baseAddress + "/api/BeneficiariosClientesCompras?$filter= BeneficiariosClienteId eq " + beneficiariosClienteId);
+    }
+
     //Create new beneficiariosPunto
     this.post = function (beneficiariosPunto) {
         var request = $http({

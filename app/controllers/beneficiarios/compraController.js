@@ -76,7 +76,7 @@
         };
 
         var scan = function () {
-            debugger;
+            //debugger;
             if (window.navigator.platform === "Win32") {
                 new PNotify({ text: "función no soportada en simulador", type: "danger", delay: 3000 });
                 //Esta linea es para pruebas en pc

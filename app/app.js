@@ -37,17 +37,25 @@ angular.module('fsMoneyPoints', [])
       }, 3000);
   }]);
 
-var app = angular.module('moneyPointsApp', ['fsMoneyPoints', 'ngRoute', 'ngCookies', 'kendo.directives']);
+var app = angular.module('moneyPointsApp', ['fsMoneyPoints', 'ngRoute', 'ngCookies', 'kendo.directives']).filter('pagination', function () {
+    return function (input, start) {
+        start = +start;
+        if (input != null)
+            return input.slice(start);
+    };
+});;
 
 
 app.config(function ($routeProvider, $httpProvider) {
     //$httpProvider.defaults.headers.common.Authorization = 'Basic VGFpc2VlckpvdWRlaDpZRUFSVkZGTw==';
+
     $routeProvider
         .when('/login', {
             controller: 'loginController',
             templateUrl: 'app/views/login/loginView.html',
             hideMenus: true
-        }).when('/afiliadosCliente', {
+        })
+        .when('/afiliadosCliente', {
             controller: 'afiliadosClienteController',
             templateUrl: 'app/views/clientes/afiliadosClienteView.html'
         })
@@ -88,6 +96,13 @@ app.config(function ($routeProvider, $httpProvider) {
             templateUrl: 'app/views/beneficiarios/beneficiariosView.html',
             controller: 'beneficiariosController'
         })
+        .when('/HomeBeneficiario', {
+            templateUrl: 'app/views/beneficiarios/HomeBeneficiarioView.html',
+            controller: 'HomeBeneficiarioController'
+        })
+         .when('/ComercioAsociado', {
+             templateUrl: 'app/views/beneficiarios/ComercioAsociadoView.html'
+         })
          .when('/beneficiariosDetails/:beneficiarioId', {
              templateUrl: 'app/views/beneficiarios/beneficiariosDetailsView.html',
              controller: 'beneficiariosDetailsController'
@@ -127,7 +142,7 @@ app.config(function ($routeProvider, $httpProvider) {
     function ($rootScope, $location, $cookieStore, $http) {
 
 
-        
+
         //Mantener usuario logueado
         $rootScope.globals = $cookieStore.get('globals') || {};
         if ($rootScope.globals.currentUser) {
@@ -159,21 +174,21 @@ app.controller('indexCtrl', function ($scope, CordovaService, $location, $rootSc
     };
 
     $scope.logout = function () {
-        
+
         authenticationService.clearCredentials();
         $scope.asegurables = {};
         $location.path('/login');
     };
 
 
-    //$rootScope.baseAddress = "http://localhost/se.moneypoints.api";
+    //$rootScope.baseAddress = "http://localhost/Se.MoneyPoints.Api";
     //$rootScope.baseAddress = "http://atenas:90/moneypoints_pru";
-    $rootScope.baseAddress = "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru";
+     $rootScope.baseAddress = "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru";
 
     $scope.tcdevicePixelRatio = window.devicePixelRatio;
 
     $rootScope.$on('refreshMenu', function (event, data) {
-        
+
         $scope.asegurables = data;
     });
 
@@ -183,13 +198,13 @@ app.controller('indexCtrl', function ($scope, CordovaService, $location, $rootSc
         jQuery('#mainMenuIcon').removeClass("gn-selected");
     }
 
-    $rootScope.$on("$routeChangeSuccess", function() {
+    $rootScope.$on("$routeChangeSuccess", function () {
         window.scrollTo(0, 0);
     });
 
     $rootScope.$on('$locationChangeSuccess', function () {
 
-        if ($location.path() == '/login' || $location.path() == '/registrarse/0') {
+        if ($location.path() == '/login' || $location.path() == '/registrarse/0' || $location.path() == '/RecuperarUser') {
             if (!$rootScope.globals.currentUser)
                 $scope.hideMenus = false;
             else {

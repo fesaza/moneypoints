@@ -7,24 +7,18 @@
         <form name="form" id="form" ng-submit="login()" class="css-form" role="form">
             <div class="form-group">
                 <!--<label for="username">Usuario</label>--->
-                <i class="fa fa-key"></i>
+                
                 <input type="text" name="username" id="username" class="form-control control-log" placeholder="Nombre de Usuario" ng-model="username" required />
                 <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block"></span>
             </div>
             <div class="form-group">
                 <!--<label for="password">Clave</label>-->
-                <i class="fa fa-lock"></i>
+               
                 <input type="password" name="password" id="password" class="form-control control-log" placeholder="Contraseña" ng-model="password" required />
                 <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Clave es requireda</span>
             </div>
 
-            <!--<label>
-                <input type="checkbox"> Recordarme
-            </label>-->
-
-            <!--<a style="float: right; margin-top: 2px;">¿Olvidaste tu conraseña?</a>-->
-
-            <!--<p style="text-align: center; margin-top: 10px;">tener presente antes registrarme leer <span style="color: #e8200a">Terminos y Condiciones</span> </p>-->
+            <!--<button type="button" ng-click="goPath('/RecuperarUser')" class="btn btn-link">Olvido su usuario y/0 contraseña?</button>-->
 
             <div class="form-actions">
                 <button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-lg btn-block btn-marg btn-ingresar ">Ingresar</button>

@@ -15,6 +15,10 @@
     this.get = function (beneficiarioId) {
         return $http.get($rootScope.baseAddress + "/api/beneficiarios/" + beneficiarioId);
     }
+     //Get beneficiario
+    this.getSaldoTotal = function (beneficiarioId) {
+        return $http.get($rootScope.baseAddress + "/api/Beneficiarios/GetSaldoTotal/" + beneficiarioId);
+    }
 
     //Get todos los beneficiarios
     this.getbeneficiarios = function () {

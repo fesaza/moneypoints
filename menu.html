@@ -12,7 +12,7 @@
         <nav class="gn-menu-wrapper">
             <div class="gn-scroller">
                 <ul class="gn-menu">
-                    <li ng-repeat="asegurable in asegurables">
+                    <li ng-repeat="asegurable in asegurables | orderBy: 'Orden'">
                         <a href="#{{asegurable.Asegurable.Ruta}}"  ng-click="ocultar()">
                             &nbsp;<i class="{{asegurable.Asegurable.Class}}"></i>&nbsp; {{asegurable.Asegurable.Nombre}}
                         </a>

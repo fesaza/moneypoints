@@ -5,8 +5,21 @@
 
     function beneficiariosDetailsController($rootScope, $scope, $routeParams, beneficiariosService, authorizationService, Base64) {
 
-
         var beneficiarioId = $routeParams.beneficiarioId;
+        if (beneficiarioId.indexOf("-cuenta") > -1) {
+            var splitbenificarioId = beneficiarioId.split('-');
+            beneficiarioId = splitbenificarioId[0];
+            var tabCuenta = angular.element(document.querySelector('#cuenta'));
+            tabCuenta.addClass('k-state-active');
+            //var tabPerfil = angular.element(document.querySelector('#perfil'));
+            //tabPerfil.removeClass('k-state-active');
+        }
+        else {
+            var tabPerfil = angular.element(document.querySelector('#perfil'));
+            tabPerfil.addClass('k-state-active');
+            // var tabCuenta = angular.element(document.querySelector('#cuenta'));
+            //tabCuenta.removeClass('k-state-active');
+        }
         $scope.onlyNumber = /^\d+$/;
         $scope.canDelete = false;
         $scope.canCancel = false;
@@ -21,6 +34,7 @@
         if (beneficiarioId == 0) {
             $scope.IsEditing = false;
             $scope.showEstados = false;
+            $scope.canCancel = true;
         } else {
             $scope.showEstados = true;
             var promiseGetbeneficiario = beneficiariosService.get(beneficiarioId);
@@ -100,10 +114,11 @@
                 });
             } else {
                 $scope.beneficiario.Tercero.Usuarios = [];
-                $scope.beneficiario.Pin = Base64.encode($scope.security.newPIN)
+                $scope.beneficiario.Pin = Base64.encode($scope.security.newPIN);
                 $scope.beneficiario.Tercero.Usuarios[0] = {
                     Login: $scope.security.Login,
-                    Password: Base64.encode($scope.security.newClave)
+                    Password: Base64.encode($scope.security.newClave),
+                    IsActivo: 0 //inactivamos el usuario.
                 };
 
                 var promiseGuadarbeneficiario = beneficiariosService.post($scope.beneficiario);
@@ -115,9 +130,9 @@
                     });
                     if ($scope.beneficiario.Tercero.TerceroId == undefined || $scope.beneficiario.Tercero.TerceroId == null || $scope.beneficiario.Tercero.TerceroId == 0) {
                         $scope.goPath('/login');
-                    }else{
+                    } else {
                         $scope.goPath('/beneficiarios');
-                    }                    
+                    }
                 },
                 function (errorPl) {
                     handleError(errorPl);
@@ -143,7 +158,7 @@
             });
         };
 
-        
+
     };
 
 })();

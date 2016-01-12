@@ -105,10 +105,15 @@ angular.module('moneyPointsApp')
 
         service.navigateDefaultPage = function () {
             if ($rootScope.globals.currentUser.rolId == 2) //si el usuario logeado es cliente
-                $location.path('/vender');
-            else if ($rootScope.globals.currentUser.rolId == 4) //si el usuario logeado es Beneficiario
-                $location.path('/beneficiariosDetails/' + $rootScope.globals.currentUser.id);
-            else if ($rootScope.globals.currentUser.rolId == 1) //si el usuario logeado es admin
+            {
+                //$location.path('/vender');
+                $location.path('/HomeBeneficiario');
+            } else if ($rootScope.globals.currentUser.rolId == 4) //si el usuario logeado es Beneficiario
+            {
+                // $location.path('/beneficiariosDetails/' + $rootScope.globals.currentUser.id);
+                $location.path('/HomeBeneficiario');
+
+            } else if ($rootScope.globals.currentUser.rolId == 1) //si el usuario logeado es admin
                 $location.path('/clientes');
         }
 
