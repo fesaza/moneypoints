@@ -60,6 +60,7 @@ function afiliadosClienteController($rootScope, $scope, $routeParams, authorizat
     };
 
     $scope.agregarAliado = function () {
+ 
         var aliadoCliente = {
             ClienteId: authorizationService.getId(),
             AfiliadoId: $scope.aliado,
@@ -82,9 +83,13 @@ function afiliadosClienteController($rootScope, $scope, $routeParams, authorizat
                     text: 'Se agregó correctamente el aliado',
                     type: 'info',
                     delay: 3000
+
                 });
+                $scope.aliado = null;
                 $scope.aliados.dataSource.read();
                 $scope.cmbAliado.dataSource.read();
+                
+
             },
             function (errorPl) {
                 console.log('Error registrando aliado', errorPl);

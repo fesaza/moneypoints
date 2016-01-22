@@ -36,7 +36,6 @@
         }
 
         $scope.generarQR = function () {
-
             kendo.ui.progress($("#frmVenta"), true);
 
             //Limpiar div

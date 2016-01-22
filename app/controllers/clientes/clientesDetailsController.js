@@ -93,7 +93,22 @@
 
         //Eliminar cliente
         $scope.deleteCliente = function () {
-            $scope.isDeleting = true;
+
+            var kendoWindow = $("<div />").kendoWindow({
+                title: "Confirmacion",
+                resizable: false,
+                modal: true
+            });
+
+            kendoWindow.data("kendoWindow")
+                .content($("#delete-confirmation").html())
+                .center().open();
+
+            kendoWindow
+                .find(".delete-confirm,.delete-cancel")
+                    .click(function () {
+                        if ($(this).hasClass("delete-confirm")) {
+                            $scope.isDeleting = true;
             kendo.ui.progress($("#divDetailCliente"), true);
             var promiseDeleteCliente = clientesService.delete($scope.cliente.ClienteId);
             promiseDeleteCliente.then(function (pl) {
@@ -111,7 +126,14 @@
                 console.log('Error eliminando cliente', errorPl);
                 kendo.ui.progress($("#divDetailCliente"), false);
             });
+                        }
+
+                        kendoWindow.data("kendoWindow").close();
+                    })
+                    .end()
+            
         };
     };
 
 })();
+

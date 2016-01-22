@@ -43,4 +43,15 @@
         });
         return request;
     }
+
+    //RecuperarContraseña
+
+    this.RecuperarContrasena = function (Tercero) {
+        var request = $http({
+            method: "post",
+            url: $rootScope.baseAddress + "/api/Recuperar",
+            data: Tercero
+        });
+        return request;
+    }
 });

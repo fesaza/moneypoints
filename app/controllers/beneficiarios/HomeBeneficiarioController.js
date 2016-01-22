@@ -6,6 +6,8 @@
     angular.module("moneyPointsApp").controller('HomeBeneficiarioController', ['$rootScope', '$scope', 'beneficiariosService', 'authorizationService', '$location', HomeBeneficiarioController]);
 
     function HomeBeneficiarioController($rootScope, $scope, beneficiariosService, authorizationService, $location) {
+
+
         kendo.ui.progress($("#form"), true);
         $scope.UserId = $rootScope.globals.currentUser.id;
         $scope.RolId = $rootScope.globals.currentUser.rolId;

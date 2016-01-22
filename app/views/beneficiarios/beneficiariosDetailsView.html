@@ -2,7 +2,7 @@
     <img src="css\images\Informacion-beneficiario.png" />
 </div>
 <div class="container css-form form-cliente" >
-    <div id="form" kendo-tab-strip k-content-urls="[ null, null]"  style="  background-color: rgba(255, 255, 255, 0) !important">
+    <div id="form" kendo-tab-strip k-content-urls="[ null, null]"  style="background-color: rgba(255, 255, 255, 0) !important">
         <!-- tab list -->
         <ul>
 
@@ -12,9 +12,9 @@
 
 
         <!--segundo tab-->
-        <div style="padding: 20px 1px">
-            <form name="form" ng-submit="guardarbeneficiario()" class="css-form" role="form">
-                <div class="col-md-12">
+        <div style="padding: 20px 1px" >
+            <form name="form" ng-submit="guardarbeneficiario()" class="css-form " role="form">
+                <div class="col-md-12 ">
 
                     <div class="space1"></div>
 
@@ -78,9 +78,15 @@
                         <span ng-show="form.txtpregunta3.$dirty && form.txtpregunta3.$error.required" class="help-block">Pregunta es requerida</span>
                     </div>
                     <div class="form-group">
-                        <label>Acepta Terminos y Condiciones</label>
-                        <input type="checkbox" ng-model="beneficiario.Tercero.AceptaTerminosCondiciones" required="required" class="form-control" id="check" name="check" required>
-                      <!--  <span ng-show="form.check.$dirty && form.check.$error.required" class="help-block">Aceptar los terminos</span>-->
+                        <div class="row-fluid">
+                            <div class="col-md-2">
+                                <label style="margin-left:11% !important; margin-top:3%; font-size:12px !important">Acepta Terminos y Condiciones</label>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="checkbox" ng-model="beneficiario.Tercero.AceptaTerminosCondiciones" required="required" class="form-control" id="check" name="check" required style="width:15px; margin-top:-7%; height:15px !important;">
+                            </div>
+                            <!--  <span ng-show="form.check.$dirty && form.check.$error.required" class="help-block">Aceptar los terminos</span>-->
+                        </div>
                     </div>
 
 
@@ -125,7 +131,7 @@
 
                 <div id="buttons">
                     <button type="submit" ng-disabled="form.$invalid || (security.newClave != security.newClaveConfirm && !IsEditing)" class="btn btn-info">Guardar</button>
-                    <button class="btn btn-success" ng-show="canDelete" ng-click="deletebeneficiario()">Eliminar</button>
+                    <button class="btn btn-success" ng-show="canDelete" ng-click="deletebeneficiario()" >Eliminar</button>
                     <button class="btn btn-danger" style="background: brown !important" ng-show="canCancel" ng-click="goPath('/beneficiarios')">Cancelar</button>
                 </div>
             </form>
@@ -162,3 +168,13 @@
 </div>
     </a>
 </script>
+
+
+
+<script id="delete-confirmation" type="text/x-kendo-template">
+    <p class="delete-message">Desea eliminar el beneficiario?</p>
+
+    <button class="delete-confirm k-button">Si</button>
+    <a href="#" class="delete-cancel">No</a>
+</script>
+

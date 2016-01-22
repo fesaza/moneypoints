@@ -85,6 +85,7 @@ function beneficiariosClienteController($rootScope, $scope, $routeParams, author
                     type: 'info',
                     delay: 3000
                 });
+                $scope.benef = null;
                 $scope.goPath('/beneficiariosCliente');
                 $scope.benefs.dataSource.read();
                 $scope.cmbBeneficiario.dataSource.read();

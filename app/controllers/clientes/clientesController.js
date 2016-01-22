@@ -21,7 +21,7 @@
                         return paramMap;
                     }
                 },
-                pageSize: 100,
+                pageSize: 10,
                 serverPaging: true,
                 serverSorting: true,
                 serverFiltering: true,

@@ -31,7 +31,7 @@
                 <input type="text" ng-model="terceroBeneficiario.Apellidos" class="form-control" id="formRegCli" placeholder="Apellidos" readonly>
             </div>
             <div id="buttons1">
-                <input ng-show="form.$valid" class="btn btn-primary btn-lg btn-block" type="button" name="generarQR" value="Generar QR" ng-click="generarQR()" />
+                <input ng-show="form.$valid" class="btn btn-primary btn-lg btn-block" type="button" name="generarQR" value="Generar QR" ng-click="generarQR()" ng-disabled="terceroBeneficiario" />
             </div>
         </form>
     </div>

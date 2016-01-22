@@ -135,6 +135,11 @@ app.config(function ($routeProvider, $httpProvider) {
             templateUrl: 'app/views/clientes/equivalenciasView.html',
             controller: 'equivalenciasController'
         })
+        .when('/recuperarContraseña', {
+            templateUrl: 'app/views/beneficiarios/RecuperarContrasena.html',
+            controller: 'RecuperarContrasenaController'
+            
+        })
          .otherwise({
              redirectTo: 'app/home.html'
          });
@@ -150,7 +155,7 @@ app.config(function ($routeProvider, $httpProvider) {
             $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
         } else {
             //Redireccionar al login
-            if ($location.path() !== '/login' && !$rootScope.globals.currentUser && $location.path() !== '/registrarse/0') {
+            if ($location.path() !== '/login' && !$rootScope.globals.currentUser && $location.path() !== '/registrarse/0' && $location.path() !== '/recuperarContraseña') {
                 $location.path('/login');
             }
         }
@@ -158,7 +163,7 @@ app.config(function ($routeProvider, $httpProvider) {
 
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
             //Redireccionar al login
-            if ($location.path() !== '/login' && !$rootScope.globals.currentUser && $location.path() !== '/registrarse/0') {
+            if ($location.path() !== '/login' && !$rootScope.globals.currentUser && $location.path() !== '/registrarse/0' && $location.path() !== '/recuperarContraseña') {
                 $location.path('/login');
             }
         });
@@ -182,8 +187,8 @@ app.controller('indexCtrl', function ($scope, CordovaService, $location, $rootSc
 
 
     //$rootScope.baseAddress = "http://localhost/Se.MoneyPoints.Api";
-    //$rootScope.baseAddress = "http://atenas:90/moneypoints_pru";
-     $rootScope.baseAddress = "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru";
+    $rootScope.baseAddress = "http://atenas:90/moneypoints_pru";
+    // $rootScope.baseAddress = "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru";
 
     $scope.tcdevicePixelRatio = window.devicePixelRatio;
 

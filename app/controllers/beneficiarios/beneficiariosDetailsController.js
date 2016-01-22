@@ -95,9 +95,11 @@
 
         //Guardar beneficiario
         $scope.guardarbeneficiario = function () {
+
             if ($scope.isDeleting) return;
             if ($scope.IsEditing) {
                 var promiseGuadarbeneficiario = beneficiariosService.put($scope.beneficiario.BeneficiarioId, $scope.beneficiario);
+                if($scope.isDeleting)
                 promiseGuadarbeneficiario.then(function (pl) {
                     //$scope.mensaje = "Actualizado satisfactoriamente";
                     new PNotify({
@@ -140,22 +142,43 @@
             }
         };
 
+
+
         //Eliminar beneficiario
-        $scope.deletebeneficiario = function () {
-            $scope.isDeleting = true;
-            var promiseDeletebeneficiario = beneficiariosService.delete($scope.beneficiario.BeneficiarioId);
-            promiseDeletebeneficiario.then(function (pl) {
-                //$scope.mensaje = "Eliminado satisfactoriamente.";
-                new PNotify({
-                    text: 'Se Eliminó correctamente',
-                    type: 'info',
-                    delay: 3000
-                });
-                $scope.goPath('/beneficiarios');
-            },
-            function (errorPl) {
-                handleError(errorPl);
+        $scope.deletebeneficiario = function (e) {
+            var kendoWindow = $("<div />").kendoWindow({
+                title: "Confirmacion",
+                resizable: false,
+                modal: true
             });
+
+            kendoWindow.data("kendoWindow")
+                .content($("#delete-confirmation").html())
+                .center().open();
+
+            kendoWindow
+                .find(".delete-confirm,.delete-cancel")
+                    .click(function () {
+                        if ($(this).hasClass("delete-confirm")) {
+                            $scope.isDeleting = true;
+                            var promiseDeletebeneficiario = beneficiariosService.delete($scope.beneficiario.BeneficiarioId);
+                            promiseDeletebeneficiario.then(function (pl) {
+                                //$scope.mensaje = "Eliminado satisfactoriamente.";
+                                new PNotify({
+                                    text: 'Se Eliminó correctamente',
+                                    type: 'info',
+                                    delay: 3000
+                                });
+                                $scope.goPath('/beneficiarios');
+                            },
+                            function (errorPl) {
+                                handleError(errorPl);
+                            });
+                        }
+
+                        kendoWindow.data("kendoWindow").close();
+                    })
+                    .end()
         };
 
 
