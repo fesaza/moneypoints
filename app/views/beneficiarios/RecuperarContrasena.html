@@ -2,7 +2,7 @@
 
 <div>
     <div class="container  css-form form-cliente">
-        <form name="form" role="form" ng-submit="RecuperarContrasena()">
+        <form name="formRecuperar" role="form" ng-submit="RecuperarContrasena()">
             <br />
             <hr />
             <div class="form-group">
@@ -30,7 +30,7 @@
                 <span ng-show="form.txtpregunta3.$dirty && form.txtpregunta3.$error.required" class="help-block">Pregunta es requerida</span>
             </div>
 
-            <button class="btn btn-lg btn-block btn-marg btn-registrar" type="submit">Aceptar</button>
+            <button class="btn btn-lg btn-block btn-marg btn-registrar" ng-disabled="form.$invalid || dataLoading"  type="submit">Aceptar</button>
 
         </form>
     </div>

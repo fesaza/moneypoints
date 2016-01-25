@@ -8,7 +8,10 @@
 
         //Recuperar Contraseña
         $scope.RecuperarContrasena = function () {
+            
             var Recuperar = beneficiariosService.RecuperarContrasena($scope.beneficiario.Tercero);
+            $scope.dataLoading = true;
+            kendo.ui.progress($("#formRecuperar"), true);
             Recuperar.then(function (pl) {
                 //$scope.mensaje = "Eliminado satisfactoriamente.";
                 new PNotify({
@@ -17,8 +20,11 @@
                     delay: 3000
                 });
                 $scope.goPath('/beneficiarios');
+                kendo.ui.progress($("#formRecuperar"), false);
             },
             function (errorPl) {
+                kendo.ui.progress($("#formRecuperar"), false);
+                $scope.dataLoading = false;
                 handleError(errorPl);
             });
 
