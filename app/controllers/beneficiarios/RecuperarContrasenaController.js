@@ -8,7 +8,6 @@
 
         //Recuperar Contraseña
         $scope.RecuperarContrasena = function () {
-            debugger;
             var Recuperar = beneficiariosService.RecuperarContrasena($scope.beneficiario.Tercero);
             $scope.dataLoading = true;
             kendo.ui.progress($("#formRecuperar"), true);
@@ -23,7 +22,6 @@
                 kendo.ui.progress($("#formRecuperar"), false);
             },
             function (errorPl) {
-                debugger;
                 kendo.ui.progress($("#formRecuperar"), false);
                 $scope.dataLoading = false;
                 handleError(errorPl);

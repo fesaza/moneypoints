@@ -12,10 +12,13 @@ angular.module('moneyPointsApp')
             kendo.ui.progress($("#form"), true);
             $scope.dataLoading = true;
             $scope.error = "";
-
             authenticationService.login($scope.username, $scope.password, function (response) {
                 if (!response.success) {
-                    $scope.error = response.Message;
+                    new PNotify({
+                        text: 'Error: ' + response.Message,
+                        type: 'danger',
+                        delay: 3000
+                    });
                     $scope.dataLoading = false;
                     kendo.ui.progress($("#form"), false);
                 }
