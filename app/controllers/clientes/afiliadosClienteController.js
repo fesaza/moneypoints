@@ -29,7 +29,7 @@ function afiliadosClienteController($rootScope, $scope, $routeParams, authorizat
             requestEnd: function (e) {
                 kendo.ui.progress($("#divAfiliadosCliente"), false);
             },
-            pageSize: 100,
+            pageSize: 10,
             serverPaging: true,
             serverSorting: true,
             serverFiltering: true,

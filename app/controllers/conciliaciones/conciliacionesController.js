@@ -25,7 +25,7 @@
                     kendo.ui.progress($("#divConciliacionesEnvia"), false);
                 },
                 group: "Estado",
-                pageSize: 100,
+                pageSize: 10,
                 serverPaging: true,
                 serverSorting: true
             },

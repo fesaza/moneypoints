@@ -76,9 +76,11 @@
                     pageSize: 50,
                     serverPaging: true,
                     serverSorting: true
+                    
                 },
                 sortable: true,
                 pageable: true,
+                serverPaging: true,
                 schema: {
                     model: {
                         fields: {
@@ -95,12 +97,11 @@
 
         //Guardar beneficiario
         $scope.guardarbeneficiario = function () {
-
             if ($scope.isDeleting) return;
             if ($scope.IsEditing) {
                 var promiseGuadarbeneficiario = beneficiariosService.put($scope.beneficiario.BeneficiarioId, $scope.beneficiario);
-                if($scope.isDeleting)
-                promiseGuadarbeneficiario.then(function (pl) {
+                    promiseGuadarbeneficiario.then(function (pl) {
+                        
                     //$scope.mensaje = "Actualizado satisfactoriamente";
                     new PNotify({
                         text: 'Se actualizó la información correctamente.',
@@ -146,8 +147,9 @@
 
         //Eliminar beneficiario
         $scope.deletebeneficiario = function (e) {
+            $scope.isDeleting = true;
             var kendoWindow = $("<div />").kendoWindow({
-                title: "Confirmacion",
+                title: "Confirmación",
                 resizable: false,
                 modal: true
             });
@@ -160,7 +162,7 @@
                 .find(".delete-confirm,.delete-cancel")
                     .click(function () {
                         if ($(this).hasClass("delete-confirm")) {
-                            $scope.isDeleting = true;
+                            
                             var promiseDeletebeneficiario = beneficiariosService.delete($scope.beneficiario.BeneficiarioId);
                             promiseDeletebeneficiario.then(function (pl) {
                                 //$scope.mensaje = "Eliminado satisfactoriamente.";

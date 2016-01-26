@@ -8,11 +8,11 @@ angular.module('moneyPointsApp')
 
      
         $scope.login = function () {
-            
+
             kendo.ui.progress($("#form"), true);
             $scope.dataLoading = true;
             $scope.error = "";
-           
+
             authenticationService.login($scope.username, $scope.password, function (response) {
                 if (!response.success) {
                     $scope.error = response.Message;

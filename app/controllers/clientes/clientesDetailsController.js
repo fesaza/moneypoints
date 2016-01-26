@@ -93,9 +93,9 @@
 
         //Eliminar cliente
         $scope.deleteCliente = function () {
-
+            $scope.isDeleting = true;
             var kendoWindow = $("<div />").kendoWindow({
-                title: "Confirmacion",
+                title: "Confirmación",
                 resizable: false,
                 modal: true
             });
@@ -113,7 +113,7 @@
             var promiseDeleteCliente = clientesService.delete($scope.cliente.ClienteId);
             promiseDeleteCliente.then(function (pl) {
                 new PNotify({
-                    text: 'Se Elimino Correctamente el Cliente',
+                    text: 'Se Eliminó Correctamente el Cliente',
                     type: 'info',
                     delay: 3000
                 });
