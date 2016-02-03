@@ -6,8 +6,8 @@
             <br />
             <hr />
             <div class="form-group">
-                <label>Cédula</label>
-                <input type="text" ng-model="beneficiario.Tercero.Identificacion" class="form-control" id="txtIdentificacion" name="txtIdentificacion" required placeholder="Cédula" ng-pattern="onlyNumber">
+                <label>Identificación</label>
+                <input type="text" ng-model="beneficiario.Tercero.Identificacion" class="form-control" id="txtIdentificacion" name="txtIdentificacion" required placeholder="Identificación">
                 <span ng-show="form.txtIdentificacion.$dirty && form.txtIdentificacion.$error.required" class="help-block">Identificación es requerida</span>
                 <span ng-show="form.txtIdentificacion.$error.pattern" class="help-block">Verifique que la identificación sea numérica</span>
             </div>

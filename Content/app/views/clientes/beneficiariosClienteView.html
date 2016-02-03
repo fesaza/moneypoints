@@ -1,0 +1,40 @@
+﻿<div class="row-fluid banner-ventas">
+    <img src="css\images\beneficiario.png" />
+</div>
+
+<div class="form-cliente">
+    <div class="container pad-top" style="margin-left:-2%;   margin-top: 10px; margin-bottom: 10px;">
+        <select id="cmbBeneficiario" selectedIndex="-1" name="cmbBeneficiario" style="width:65%;"
+                kendo-drop-down-list="cmbBeneficiario" options="beneficiariosSelectOpts"
+                data-ng-model="benef"></select>
+        <button ng-click="agregarBeneficiario()" class="btn btn-info">Agregar</button>
+    </div>
+
+    <div id="divBenefCliente" kendo-mobile-list-view="benefs" options="benefClienteOpts" />
+</div>
+
+
+
+    <script id="tmpBenefCliente" type="text/x-kendo-tmpl">
+
+        <a class="container list-style" href="\#/cargarPuntos/{{dataItem.BeneficiariosClienteId}}">
+            <div>
+                <h3 class="title-list">
+                    {{dataItem.Beneficiario.Tercero.Nombre}}
+                </h3>
+                <div>
+                    <label class="lbl-list">Saldo:</label>
+                    <span class="vlr-list"> {{dataItem.Saldo | currency: $ : 2}}</span>
+</div>
+                <div>
+                    <label class="lbl-list">Fecha Ingreso:</label>
+                    <span class="vlr-list"> {{dataItem.FechaIngreso | date : 'dd-MM-yyyy'}}</span>
+</div>
+                <div>
+                    <label class="lbl-list">Puntos:</label>
+                    <span class="vlr-list">{{dataItem.Puntos | number : 2}}</span>
+</div>
+            </div>
+        </a>
+
+    </script>

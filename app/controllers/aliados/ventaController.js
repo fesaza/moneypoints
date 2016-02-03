@@ -36,6 +36,7 @@
         }
 
         $scope.generarQR = function () {
+            debugger;
             kendo.ui.progress($("#frmVenta"), true);
 
             //Limpiar div
@@ -45,9 +46,13 @@
             //Validar cedula
             var cedula = $scope.venta.Identificacion;
 
+ 
             var promiseGetbeneficiario = tercerosService.getByIdentificacion(cedula);
 
+          
+
             promiseGetbeneficiario.then(function (pl) {
+                debugger;
                 var res = pl.data;
 
                 if (res.length == 0) {
@@ -59,11 +64,12 @@
                         return;
                     }
 
+              
                     $scope.terceroBeneficiario = tercero;
 
                     var textQR = ventaService.getConnectionId() + "_" + tercero.Beneficiarios[0].BeneficiarioId + "_" + $scope.venta.Valor + "_" + clienteId;
                     $scope.text = textQR;
-
+                    alert(textQR);
                     //generar qr
                     $('#divQR').qrcode({
                         "render": 'div',

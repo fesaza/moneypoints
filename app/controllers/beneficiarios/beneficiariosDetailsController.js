@@ -4,6 +4,13 @@
     angular.module("moneyPointsApp").controller('beneficiariosDetailsController', ['$rootScope', '$scope', '$routeParams', 'beneficiariosService', 'authorizationService', 'Base64', beneficiariosDetailsController]);
 
     function beneficiariosDetailsController($rootScope, $scope, $routeParams, beneficiariosService, authorizationService, Base64) {
+        //debugger;
+        //if (!$scope.hideMenus) {
+        //    //$scope.Espacio = { 'margin-top': '-43px' }
+        //    //$("#Espacio").css('margin-top: -43px');
+        //    var espacio = angular.element(document.querySelector('#Espacio'));
+        //    espacio.addClass('k-Espacio');
+        //}
 
         var beneficiarioId = $routeParams.beneficiarioId;
         if (beneficiarioId.indexOf("-cuenta") > -1) {
@@ -97,6 +104,7 @@
 
         //Guardar beneficiario
         $scope.guardarbeneficiario = function () {
+            $scope.Load = true;
             if ($scope.isDeleting) return;
             if ($scope.IsEditing) {
                 var promiseGuadarbeneficiario = beneficiariosService.put($scope.beneficiario.BeneficiarioId, $scope.beneficiario);
@@ -112,10 +120,12 @@
                     if (user && user.rolId == 1) {
                         $scope.goPath('/beneficiarios');
                     }
-                }, function (errorPl) {
+                    }, function (errorPl) {
+                        $scope.Load = false;
                     handleError(errorPl);
                 });
             } else {
+                debugger;
                 $scope.beneficiario.Tercero.Usuarios = [];
                 $scope.beneficiario.Pin = Base64.encode($scope.security.newPIN);
                 $scope.beneficiario.Tercero.Usuarios[0] = {
@@ -123,21 +133,26 @@
                     Password: Base64.encode($scope.security.newClave),
                     IsActivo: 0 //inactivamos el usuario.
                 };
-
+       
                 var promiseGuadarbeneficiario = beneficiariosService.post($scope.beneficiario);
                 promiseGuadarbeneficiario.then(function (pl) {
+                    debugger;
                     new PNotify({
                         text: 'Se insertó Correctamente',
                         type: 'info',
                         delay: 3000
                     });
-                    if ($scope.beneficiario.Tercero.TerceroId == undefined || $scope.beneficiario.Tercero.TerceroId == null || $scope.beneficiario.Tercero.TerceroId == 0) {
+                    //if ($scope.beneficiario.Tercero.TerceroId == undefined || $scope.beneficiario.Tercero.TerceroId == null || $scope.beneficiario.Tercero.TerceroId == 0) {
+                    if (!$scope.hideMenus) {
+
                         $scope.goPath('/login');
                     } else {
+                        debugger;
                         $scope.goPath('/beneficiarios');
                     }
                 },
                 function (errorPl) {
+                    $scope.Load = false;
                     handleError(errorPl);
                 });
             }

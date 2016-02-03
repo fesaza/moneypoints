@@ -13,9 +13,11 @@ angular.module('moneyPointsApp')
             $scope.dataLoading = true;
             $scope.error = "";
             authenticationService.login($scope.username, $scope.password, function (response) {
+    
                 if (!response.success) {
+    
                     new PNotify({
-                        text: 'Error: ' + response.Message,
+                        text: 'error: ' + response.data.Message,
                         type: 'danger',
                         delay: 3000
                     });

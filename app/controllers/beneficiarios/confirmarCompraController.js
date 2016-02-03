@@ -26,10 +26,12 @@
             }
             venta = dataVenta.getDataVenta();
             $scope.cuentasBeneficiarioOptionsCompra = {
+                
                 dataSource: {
                     type: "json",
                     transport: {
                         read: {
+
                             url: $rootScope.baseAddress + "/api/BeneficiariosClientes/GetCuentasByAliadoAndBeneficiario/" + venta.AliadoId + "/" + venta.BeneficiarioId,
                             dataType: "json",
                             beforeSend:$rootScope.beforeSendRequest
@@ -90,10 +92,12 @@
         };
 
         $scope.finalizarCompra = function () {
+            $scope.load = false;
             //permite finalizar la compra por parte del cliente
             venta.Pin = $('#formRegPin').val();  //Debe ser quitado, no se debe trabajar de esta manera
             venta.BeneficiariosClienteId = $scope.programa.BeneficiariosClienteId;
             ventaService.finalizarCompra(venta);
+            $scope.load = true;
         };
 
         consultarProgramas(false);

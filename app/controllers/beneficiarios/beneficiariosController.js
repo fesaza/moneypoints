@@ -5,6 +5,8 @@
     angular.module("moneyPointsApp").controller('beneficiariosController', ['$scope', '$rootScope', 'beneficiariosService', beneficiariosController]);
 
     function beneficiariosController($scope, $rootScope, beneficiariosService) {
+        //$scope.page = 1;
+        //$scope.rows = 5;
         $scope.beneficiariosGridOptions = {
             dataSource: {
                 type: "json",
@@ -56,5 +58,6 @@
             },
             template: kendo.template($("#rowBeneficiariosTemplate2").html()),
         };
+
     };
 })();

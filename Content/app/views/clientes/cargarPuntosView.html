@@ -1,0 +1,49 @@
+﻿<div class="row-fluid banner-ventas">
+    <img src="css\images\beneficiario.png" />
+</div>
+
+<div class="container css-form form-cliente" >
+    <h2 class="titles-vw"> Detalles beneficiario</h2>
+
+    <div class="form-group">
+        <label>Beneficiario</label>
+        <input type="text" readonly ng-model="benefCliente.Beneficiario.Tercero.Nombre" class="form-control"
+               id="formRegCli"
+               placeholder="Beneficiario">
+    </div>
+
+    <div class="form-group">
+        <label>Fecha ingreso</label>
+        <input type="text" readonly ng-model="benefCliente.FechaIngreso" class="form-control"
+               id="formRegCli"
+               placeholder="Fecha ingreso">
+    </div>
+
+    <div class="form-group">
+        <label>Saldo actual</label>
+        <input type="text" readonly ng-model="benefCliente.Saldo" class="form-control"
+               id="formRegCli"
+               placeholder="Saldo">
+    </div>
+
+    <div class="form-group">
+        <label>Puntos actuales</label>
+        <input type="text" readonly ng-model="benefCliente.Puntos" class="form-control"
+               id="formRegCli"
+               placeholder="Puntos">
+    </div>
+    <br />
+    <div>
+        <h2 class="titles-vw"> Cargar puntos</h2>
+        <div class="form-group">
+            <label>Puntos a cargar</label>
+            <input required type="text" ng-model="benefPuntos.Puntos" class="form-control"
+                   id="formRegCli"
+                   placeholder="Puntos">
+        </div>
+
+        <div class="buttons">
+            <button ng-click="cargarPuntos()" ng-disabled="!(benefPuntos.Puntos > 0)" class="btn btn-info">Cargar</button>
+        </div>
+    </div>
+</div>

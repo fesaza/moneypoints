@@ -65,21 +65,43 @@
 
         //Eliminar Conciliación
         $scope.deleteConciliacion = function () {
-            var promiseDeleteConciliacion = conciliacionesService.delete($scope.conciliacion.ConciliacionId);
-            promiseDeleteConciliacion.then(function (pl) {
-                new PNotify({
-                    text: 'Se eliminó Correctamente',
-                    type: 'info',
-                    delay: 3000
-                });
-                $scope.goPath('/conciliaciones');
-            },
-            function (errorPl) {
-                handleError(errorPl);
+  
+            var kendoWindow = $("<div />").kendoWindow({
+                title: "Confirmación",
+                resizable: false,
+                modal: true
             });
+
+            kendoWindow.data("kendoWindow")
+                .content($("#delete-confirmation").html())
+                .center().open();
+
+            kendoWindow
+                .find(".delete-confirm,.delete-cancel")
+                    .click(function () {
+                        if ($(this).hasClass("delete-confirm")) {
+                            var promiseDeleteConciliacion = conciliacionesService.delete($scope.conciliacion.ConciliacionId);
+                            promiseDeleteConciliacion.then(function (pl) {
+                                new PNotify({
+                                    text: 'Se eliminó Correctamente',
+                                    type: 'info',
+                                    delay: 3000
+                                });
+                                $scope.goPath('/conciliaciones');
+                            },
+                            function (errorPl) {
+                                handleError(errorPl);
+                            });
+                        }
+
+                        kendoWindow.data("kendoWindow").close();
+                    })
+                    .end()
+
         };
         //fin scope
 
+       
         //select
         $scope.SeleccionarOptions = {
             dataSource: {

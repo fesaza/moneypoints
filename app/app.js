@@ -1,5 +1,5 @@
 ﻿function handleError(pl) {
-
+    debugger;
     var msg = "";
 
     if (pl.data.ExceptionMessage)
@@ -48,6 +48,25 @@ var app = angular.module('moneyPointsApp', ['fsMoneyPoints', 'ngRoute', 'ngCooki
 
 app.config(function ($routeProvider, $httpProvider) {
     //$httpProvider.defaults.headers.common.Authorization = 'Basic VGFpc2VlckpvdWRlaDpZRUFSVkZGTw==';
+    $httpProvider.defaults.useXDomain = true;
+
+    console.log('logging out headers');
+    console.log($httpProvider.defaults);
+    console.log($httpProvider.defaults.headers.common);
+    console.log($httpProvider.defaults.headers.post);
+    console.log($httpProvider.defaults.headers.put);
+    console.log($httpProvider.defaults.headers.patch);
+    console.log('end logging out headers');
+
+    $httpProvider.defaults.headers.common = { Accept: "application/json, text/plain, */*" };
+    $httpProvider.defaults.headers.post = { "Content-Type": "application/json;charset=utf-8" };
+
+    console.log('after: logging out headers');
+    console.log($httpProvider.defaults.headers.common);
+    console.log($httpProvider.defaults.headers.post);
+    console.log($httpProvider.defaults.headers.put);
+    console.log($httpProvider.defaults.headers.patch);
+    console.log('after: end logging out headers');
 
     $routeProvider
         .when('/login', {
@@ -140,6 +159,10 @@ app.config(function ($routeProvider, $httpProvider) {
             controller: 'RecuperarContrasenaController'
             
         })
+        .when('/Listabeneficiarios', {
+            templateUrl: 'app/views/beneficiarios/beneficiariosView.html',
+            controller: 'beneficiariosController'
+        })
          .otherwise({
              redirectTo: 'app/home.html'
          });
@@ -186,9 +209,9 @@ app.controller('indexCtrl', function ($scope, CordovaService, $location, $rootSc
     };
 
 
-    //$rootScope.baseAddress = "http://localhost/Se.MoneyPoints.Api";
+    $rootScope.baseAddress = "http://localhost/Se.MoneyPoints.Api";
     //$rootScope.baseAddress = "http://atenas:90/moneypoints_pru";
-     $rootScope.baseAddress = "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru";
+     //$rootScope.baseAddress = "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru";
 
     $scope.tcdevicePixelRatio = window.devicePixelRatio;
 

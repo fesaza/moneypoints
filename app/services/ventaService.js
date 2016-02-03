@@ -22,6 +22,7 @@ app.service('ventaService', function ($, $rootScope) {
     };
 
     var getConnectionId = function () {
+        debugger;
         return $.connection.hub.id;
     };
 

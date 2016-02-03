@@ -20,9 +20,9 @@
     });
 
     angular.module("moneyPointsApp").controller('compraController',
-        ['$scope', '$rootScope', '$', 'ventaService', 'beneficiariosService', 'afiliadosService', 'dataVenta', compraController]);
+        ['$scope', '$rootScope', '$', 'ventaService', 'beneficiariosService', 'afiliadosService','clientesService', 'dataVenta', compraController]);
 
-    function compraController($scope, $rootScope, $, ventaService, beneficiariosService, afiliadosService, dataVenta) {
+    function compraController($scope, $rootScope, $, ventaService, beneficiariosService, afiliadosService, clientesService, dataVenta) {
 
         $scope.compra = null;
         $scope.text = "";
@@ -59,7 +59,7 @@
                 new PNotify({ text: "No se pudo consultar la información del beneficiario" + error.message, type: "danger", delay: 3000 });
             });
 
-            var prmAfiliado = afiliadosService.get(spl[3]);
+            var prmAfiliado = clientesService.get(spl[3]);
 
             prmAfiliado.then(function (pl) {
                 var res = pl.data;
@@ -69,18 +69,18 @@
                     return;
                 }
 
-                $scope.aliado = res;
+                $scope.aliado = res.Tercero;
             }, function (error) {
                 new PNotify({ text: "No se pudo consultar la información del aliado" + error.message, type: "danger", delay: 3000 });
             });
         };
 
         var scan = function () {
-            //debugger;
+        
             if (window.navigator.platform === "Win32") {
                 new PNotify({ text: "función no soportada en simulador", type: "danger", delay: 3000 });
                 //Esta linea es para pruebas en pc
-                setData('f7a164ba-d3d4-4136-80d3-5a0427ac8200_1_12000_3');
+                setData('f7a164ba-d3d4-4136-80d3-5a0427ac8200_5108_2_1090');
             }
             else {
                 cordova.plugins.barcodeScanner.scan(
@@ -102,12 +102,16 @@
         });
 
         $scope.confirmarCompra = function () {
-            if (!ventaServiceStarted) {
+            debugger;
+       $scope.unmensaje = false
+       if (!ventaServiceStarted && !$scope.unmessage) {
+           $scope.unmensaje = true;
                 ventaService.initialize();
             }
         };
 
         var confirmarCompraCallBack = function (message) {
+            
             ventaServiceStarted = true;
             new PNotify({ text: message, type: 'info', delay: 3000 });
 

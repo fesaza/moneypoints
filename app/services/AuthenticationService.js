@@ -42,7 +42,7 @@ angular.module('moneyPointsApp')
         }
 
         service.login = function (username, password, callback) {
-
+          
             var pwd = Base64.encode(password);
 
             var usuario = {
@@ -50,34 +50,37 @@ angular.module('moneyPointsApp')
                 Password: pwd
             };
 
+            //console.log(JSON.stringify(usuario));
+
             $http.post($rootScope.baseAddress + '/api/authentication/Authenticate', JSON.stringify(usuario),
                 {
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 })
-                .success(function (response) {
+                .then(function (response) {
+                 
                     response.success = true;
                     //callback(response);
-                    service.setCredentials(response);
+                    service.setCredentials(response.data);
 
-                    tercerosService.get(response.TerceroId).then(function (pl) {
+                    tercerosService.get(response.data.TerceroId).then(function (pl) {
                         var res = pl.data;
                         authorizationService.setId(res);
 
                         //Consultar asegurables
                         if (callback) {
-                            authorizationService.getAsegurables(function (response) {
-                                for (var i = 0; i < response.length; i++) {
-                                    response[i].Asegurable.Ruta = response[i].Asegurable.Ruta.replace("{id}", authorizationService.getId());
+                            authorizationService.getAsegurables(function (responseAsegurable) {
+                                for (var i = 0; i < responseAsegurable.length; i++) {
+                                    responseAsegurable[i].Asegurable.Ruta = responseAsegurable[i].Asegurable.Ruta.replace("{id}", authorizationService.getId());
                                 }
-                                $rootScope.$emit('refreshMenu', response);
+                                $rootScope.$emit('refreshMenu', responseAsegurable);
                                 service.navigateDefaultPage();
                                 callback(response);
                             });
                         }
                     });
-                }).error(function (data, status, headers, config) {
+                }, function (data, status, headers, config) {
                     data.success = false;
                     if (callback)
                         callback(data);
@@ -85,6 +88,7 @@ angular.module('moneyPointsApp')
         };
 
         service.setCredentials = function (response) {
+           
             var username = response.Login;
             var password = response.Password;
 

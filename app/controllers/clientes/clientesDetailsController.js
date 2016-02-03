@@ -9,7 +9,8 @@
         equivalenciasService, afiliadosClientesService, authorizationService, Base64) {
 
         var clienteId = $routeParams.ClienteId;
-
+        $scope.onlyNumber = /^\d+$/;
+       
         $scope.canDelete = false;
         $scope.canCancel = false;
         $scope.isDeleting = false;
@@ -46,6 +47,7 @@
 
         //Guardar Cliente
         $scope.guardarCliente = function () {
+            $scope.Load = true;
             if ($scope.isDeleting) return;
             kendo.ui.progress($("#divDetailCliente"), true);
             if ($scope.IsEditing) {
@@ -62,6 +64,7 @@
                         }
                     },
                 function (errorPl) {
+                    $scope.Load = false;
                     handleError(errorPl);
                     kendo.ui.progress($("#divDetailCliente"), false);
                 });
@@ -83,6 +86,7 @@
                     $scope.goPath('/clientes');
                 },
                 function (errorPl) {
+                    $scope.Load = false;
                     handleError(errorPl);
                     kendo.ui.progress($("#divDetailCliente"), false);
                 });
