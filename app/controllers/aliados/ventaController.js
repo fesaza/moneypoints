@@ -69,7 +69,7 @@
 
                     var textQR = ventaService.getConnectionId() + "_" + tercero.Beneficiarios[0].BeneficiarioId + "_" + $scope.venta.Valor + "_" + clienteId;
                     $scope.text = textQR;
-                    alert(textQR);
+                   
                     //generar qr
                     $('#divQR').qrcode({
                         "render": 'div',
