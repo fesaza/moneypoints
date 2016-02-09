@@ -55,5 +55,10 @@
         return request;
     }
 
+    //Beneficiarios con paginacion
+    this.BeneficiariosPaginados = function (page, rows, filter) {
+        return $http.get($rootScope.baseAddress + "/api/Beneficiarios/Paginado/" + page + "/" + rows+"/"+filter);
+    }
+
 
 });

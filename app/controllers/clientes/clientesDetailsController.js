@@ -16,7 +16,6 @@
         $scope.isDeleting = false;
 
         var user = authorizationService.getCurrentUser();
-
         if (user && user.rolId == 1) {
             $scope.canDelete = true;
             $scope.canCancel = true;
@@ -47,6 +46,7 @@
 
         //Guardar Cliente
         $scope.guardarCliente = function () {
+            debugger;
             $scope.Load = true;
             if ($scope.isDeleting) return;
             kendo.ui.progress($("#divDetailCliente"), true);

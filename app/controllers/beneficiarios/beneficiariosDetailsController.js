@@ -3,15 +3,8 @@
 
     angular.module("moneyPointsApp").controller('beneficiariosDetailsController', ['$rootScope', '$scope', '$routeParams', 'beneficiariosService', 'authorizationService', 'Base64', beneficiariosDetailsController]);
 
-    function beneficiariosDetailsController($rootScope, $scope, $routeParams, beneficiariosService, authorizationService, Base64) {
-        //debugger;
-        //if (!$scope.hideMenus) {
-        //    //$scope.Espacio = { 'margin-top': '-43px' }
-        //    //$("#Espacio").css('margin-top: -43px');
-        //    var espacio = angular.element(document.querySelector('#Espacio'));
-        //    espacio.addClass('k-Espacio');
-        //}
-
+    function beneficiariosDetailsController($rootScope, $scope, $routeParams, beneficiariosService, authorizationService, Base64) {      
+    
         var beneficiarioId = $routeParams.beneficiarioId;
         if (beneficiarioId.indexOf("-cuenta") > -1) {
             var splitbenificarioId = beneficiarioId.split('-');
@@ -33,7 +26,9 @@
         $scope.isDeleting = false;
 
         var user = authorizationService.getCurrentUser();
+       
         if (user && user.rolId == 1) {
+           
             $scope.canDelete = true;
             $scope.canCancel = true;
         }
@@ -42,6 +37,7 @@
             $scope.IsEditing = false;
             $scope.showEstados = false;
             $scope.canCancel = true;
+            $scope.canDelete = false;
         } else {
             $scope.showEstados = true;
             var promiseGetbeneficiario = beneficiariosService.get(beneficiarioId);
@@ -104,6 +100,7 @@
 
         //Guardar beneficiario
         $scope.guardarbeneficiario = function () {
+            
             $scope.Load = true;
             if ($scope.isDeleting) return;
             if ($scope.IsEditing) {
@@ -125,7 +122,7 @@
                     handleError(errorPl);
                 });
             } else {
-                debugger;
+               
                 $scope.beneficiario.Tercero.Usuarios = [];
                 $scope.beneficiario.Pin = Base64.encode($scope.security.newPIN);
                 $scope.beneficiario.Tercero.Usuarios[0] = {
@@ -136,7 +133,7 @@
        
                 var promiseGuadarbeneficiario = beneficiariosService.post($scope.beneficiario);
                 promiseGuadarbeneficiario.then(function (pl) {
-                    debugger;
+                   
                     new PNotify({
                         text: 'Se insertó Correctamente',
                         type: 'info',

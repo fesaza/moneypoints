@@ -37,4 +37,9 @@
         });
         return request;
     }
+
+    //BeneficiariosClientes con paginacion
+    this.BeneficiariosClientesPaginados = function (clienteid,page, rows, filter) {
+        return $http.get($rootScope.baseAddress + "/api/BeneficiariosClientes/BeneficiariosClientesByClientePaginado/" + clienteid + "/" + page + "/" + rows + "/" + filter);
+    }
 });

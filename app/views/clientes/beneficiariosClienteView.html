@@ -9,8 +9,23 @@
                 data-ng-model="benef"></select>
         <button ng-click="agregarBeneficiario()" class="btn btn-info">Agregar</button>
     </div>
+    <br />
+    <div class="form-group">
+        <input type="text" ng-model="filter6" class="form-control" id="txtFilter" name="txtFilter" style="width:80%; height:35px !important" placeholder="Search...">
+        <button ng-click="BeneficiariosClientesFiltrar()" class="btn btn-primary btn-lg btn-block fa fa-search" style="height:35px; width:35px; margin-left:250px; margin-top:-54px"></button>
+    </div>
 
     <div id="divBenefCliente" kendo-mobile-list-view="benefs" options="benefClienteOpts" />
+
+    <br />
+    <div>
+        <button type="button" class="btn btn-primary" ng-click="BeneficiariosClientesPaginadosPrev()" ng-disabled="Prev6">
+            &lt; PREV
+        </button>
+        <button type="button" class="btn btn-primary" ng-click="BeneficiariosClientesPaginadosNext()" ng-disabled="Next6" style="margin-left:135px">
+            NEXT &gt;
+        </button>
+    </div>
 </div>
 
 

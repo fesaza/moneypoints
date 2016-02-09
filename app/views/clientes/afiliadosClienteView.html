@@ -3,14 +3,29 @@
 </div>
 
 <div class="form-cliente">
+    
     <div style="margin-left:3%;   margin-top: 10px; margin-bottom: 10px;">
         <select id="cmbAliado" name="cmbAliado" style="width:68%"
                 kendo-drop-down-list="cmbAliado" options="aliadosSelectOpts"
                 data-ng-model="aliado"></select>
         <button ng-click="agregarAliado()" class="btn btn-info">Agregar</button>
+        
     </div>
-
+    <div class="form-group">
+        <input type="text" ng-model="filter5" class="form-control" id="txtFilter" name="txtFilter" style="width:80%; height:35px !important" placeholder="Search...">
+        <button ng-click="AfiliadosClientesFiltrar()" class="btn btn-primary btn-lg btn-block fa fa-search" style="height:35px; width:35px; margin-left:250px; margin-top:-54px"></button>
+    </div>
     <div id="divAfiliadosCliente"  kendo-mobile-list-view="aliados" options="aliadosClienteOpts" />
+
+    <br />
+    <div>
+        <button type="button" class="btn btn-primary" ng-click="AfiliadosClientesPaginadosPrev()" ng-disabled="Prev5">
+            &lt; PREV
+        </button>
+        <button type="button" class="btn btn-primary" ng-click="AfiliadosClientesPaginadosNext()" ng-disabled="Next5" style="margin-left:135px">
+            NEXT &gt;
+        </button>
+    </div>
 </div>
 
 <script id="tmpAfiliadosCliente" type="text/x-kendo-tmpl">
@@ -25,3 +40,4 @@
     </div>
 
 </script>
+

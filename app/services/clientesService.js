@@ -39,4 +39,10 @@
         });
         return request;
     }
+
+    //Clientes con paginacion
+    this.ClientesPaginados = function (page, rows, filter) {
+        return $http.get($rootScope.baseAddress + "/api/Clientes/Paginado/" + page + "/" + rows + "/" + filter);
+    }
+
 });

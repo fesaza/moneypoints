@@ -44,4 +44,15 @@ angular.module('moneyPointsApp').service('conciliacionesService', function ($htt
         });
         return request;
     }
+
+    ////ConciliacioneByCliente con paginacion
+    //this.ConciliacionesPaginadosByCliente = function (clienteId, page, rows, filter) {
+    //    return $http.get($rootScope.baseAddress + "/api/Conciliaciones/ConciliacionespaginadasByCliente/"+clienteId+"/" + page + "/" + rows + "/" + filter);
+    //}
+
+    ////ConciliacioneByAliado con paginacion
+    //this.ConciliacionesPaginadosByAliado = function (clienteId, page, rows, filter) {
+    //    return $http.get($rootScope.baseAddress + "/api/Conciliaciones/ConciliacionespaginadasByAliado/" + clienteId + "/" + page + "/" + rows + "/" + filter);
+    //}
+
 });

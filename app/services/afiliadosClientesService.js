@@ -43,4 +43,10 @@
         });
         return request;
     }
+
+    //Beneficiarios con paginacion
+    this.afiliadosClientesPaginados = function (clienteId, page, rows, filter) {
+        return $http.get($rootScope.baseAddress + "/api/AfiliadosClientes/AfiliadosClientesByClientePaginado/"+clienteId+"/" + page + "/" + rows + "/" + filter);
+    }
+
 });

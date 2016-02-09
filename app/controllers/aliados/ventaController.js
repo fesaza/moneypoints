@@ -5,8 +5,10 @@
     .controller('ventaController', ['$scope', '$rootScope', '$', 'ventaService', 'tercerosService', 'authorizationService', ventaController]);
 
     function ventaController($scope, $rootScope, $, ventaService, tercerosService, authorizationService) {
+    //debugger;
         $scope.text = "";
-
+        $scope.onlyNumber = /^\d+$/;
+        $scope.QR = false;
         //Se debe cambiar valor para que no este quemado (Usuario logueado
         //var clienteId = 3;
         var clienteId = authorizationService.getId();
@@ -36,7 +38,8 @@
         }
 
         $scope.generarQR = function () {
-            debugger;
+            
+            $scope.QR = true;
             kendo.ui.progress($("#frmVenta"), true);
 
             //Limpiar div

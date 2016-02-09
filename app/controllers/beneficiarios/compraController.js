@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module("moneyPointsApp").factory('dataVenta', function () {
-
+        
         var venta = null;
 
         var setDataVenta = function (data) {
@@ -80,7 +80,7 @@
             if (window.navigator.platform === "Win32") {
                 new PNotify({ text: "función no soportada en simulador", type: "danger", delay: 3000 });
                 //Esta linea es para pruebas en pc
-                setData('f7a164ba-d3d4-4136-80d3-5a0427ac8200_5108_2_1090');
+                setData('f7a164ba-d3d4-4136-80d3-5a0427ac8200_5108_5000_1090');
             }
             else {
                 cordova.plugins.barcodeScanner.scan(
@@ -102,7 +102,7 @@
         });
 
         $scope.confirmarCompra = function () {
-            debugger;
+          
        $scope.unmensaje = false
        if (!ventaServiceStarted && !$scope.unmessage) {
            $scope.unmensaje = true;

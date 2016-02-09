@@ -44,19 +44,19 @@
                     </div>
                     <div class="form-group">
                         <label>Nombre de su primera mascota?</label>
-                        <input type="password" ng-model="cliente.Tercero.Pregunta1" class="form-control" id="txtpregunta1" name="txtpregunta1" required>
+                        <input type="text" ng-model="cliente.Tercero.Pregunta1" class="form-control" id="txtpregunta1" name="txtpregunta1" required>
                         <span ng-show="form.txtpregunta1.$dirty && form.txtpregunta1.$error.required" class="help-block">Pregunta es requerida</span>
                     </div>
 
                     <div class="form-group">
                         <label>Nombre de su tío preferido?</label>
-                        <input type="password" ng-model="cliente.Tercero.Pregunta2" class="form-control" id="txtpregunta2" name="txtpregunta2" required>
+                        <input type="text" ng-model="cliente.Tercero.Pregunta2" class="form-control" id="txtpregunta2" name="txtpregunta2" required>
                         <span ng-show="form.txtpregunta2.$dirty && form.txtpregunta2.$error.required" class="help-block">Pregunta es requerida</span>
                     </div>
 
                     <div class="form-group">
                         <label>En que ciudad naciste?</label>
-                        <input type="password" ng-model="cliente.Tercero.Pregunta3" class="form-control" id="txtpregunta3" name="txtpregunta3" required>
+                        <input type="text" ng-model="cliente.Tercero.Pregunta3" class="form-control" id="txtpregunta3" name="txtpregunta3" required>
                         <span ng-show="form.txtpregunta3.$dirty && form.txtpregunta3.$error.required" class="help-block">Pregunta es requerida</span>
                     </div>
 
@@ -88,7 +88,7 @@
         <div class="spbut"></div>
         <div id="buttons" style="margin-top: 8%; ">
             <button type="submit" ng-disabled="form.$invalid || (security.newClave != security.newClaveConfirm && !IsEditing) || Load" class="btn btn-info">Guardar</button>
-            <button class="btn btn-success" ng-show="IsEditing" ng-click="deleteCliente()">Eliminar</button>
+            <button class="btn btn-success" ng-show="canDelete" ng-click="deleteCliente()" style="background: brown !important; border-color:brown !important ">Eliminar</button>
             <button class="btn btn-success" ng-show="canCancel" ng-click="goPath('/clientes')">Cancelar</button>
             <span>{{}}</span>
         </div>

@@ -1,7 +1,7 @@
 ﻿<div class="row-fluid banner-ventas">
     <!--<img src="css\images\Informacion-beneficiario3.png" />-->
 
-    <img style="margin-top:-43px"src="css\images\Informacion-beneficiario5.png" />
+    <img style="margin-top:-43px"src="css\images\Informacion-beneficiario6.png" />
 </div>
 <div class="container css-form form-cliente" >
     <div id="form" kendo-tab-strip k-content-urls="[ null, null]"  style="background-color: rgba(255, 255, 255, 0) !important">
@@ -64,19 +64,19 @@
                     </div>
                     <div class="form-group">
                         <label>Nombre de su primera mascota?</label>
-                        <input type="password" ng-model="beneficiario.Tercero.Pregunta1" class="form-control" id="txtpregunta1" name="txtpregunta1" required>
+                        <input type="text" ng-model="beneficiario.Tercero.Pregunta1" class="form-control" id="txtpregunta1" name="txtpregunta1" required>
                         <span ng-show="form.txtpregunta1.$dirty && form.txtpregunta1.$error.required" class="help-block">Pregunta es requerida</span>
                     </div>
 
                     <div class="form-group">
                         <label>Nombre de su tío preferido?</label>
-                        <input type="password" ng-model="beneficiario.Tercero.Pregunta2" class="form-control" id="txtpregunta2" name="txtpregunta2" required>
+                        <input type="text" ng-model="beneficiario.Tercero.Pregunta2" class="form-control" id="txtpregunta2" name="txtpregunta2" required>
                         <span ng-show="form.txtpregunta2.$dirty && form.txtpregunta2.$error.required" class="help-block">Pregunta es requerida</span>
                     </div>
 
                     <div class="form-group">
                         <label>En que ciudad naciste?</label>
-                        <input type="password" ng-model="beneficiario.Tercero.Pregunta3" class="form-control" id="txtpregunta3" name="txtpregunta3" required>
+                        <input type="text" ng-model="beneficiario.Tercero.Pregunta3" class="form-control" id="txtpregunta3" name="txtpregunta3" required>
                         <span ng-show="form.txtpregunta3.$dirty && form.txtpregunta3.$error.required" class="help-block">Pregunta es requerida</span>
                     </div>
                     <div class="form-group">
@@ -133,8 +133,8 @@
 
                 <div id="buttons">
                     <button type="submit" ng-disabled="form.$invalid || (security.newClave != security.newClaveConfirm && !IsEditing) || Load" class="btn btn-info">Guardar</button>
-                    <button class="btn btn-success" ng-show="IsEditing" ng-click="deletebeneficiario()" >Eliminar</button>
-                    <button class="btn btn-danger" style="background: brown !important" ng-show="canCancel" ng-click="goPath('/beneficiarios')">Cancelar</button>
+                    <button class="btn btn-success" style="background: brown !important; border-color:brown !important " ng-show="canDelete && !Nuevo" ng-click="deletebeneficiario()" >Eliminar</button>
+                    <button class="btn btn-danger" style="border-color:#018478 !important" ng-show="canCancel" ng-click="goPath('/beneficiarios')">Cancelar</button>
                 </div>
             </form>
         </div>

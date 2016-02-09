@@ -8,13 +8,20 @@ function afiliadosClienteController($rootScope, $scope, $routeParams, authorizat
     var clienteId = authorizationService.getId();
 
     //obtener la lista de beneficiarios por cliente
-
+    $scope.Prev5 = true;
+    $scope.Next5 = false;
+    $scope.page5 = 0;
+    $scope.rows5 = 10;
+    $scope.filter5 = null;
     $scope.aliadosClienteOpts = {
         dataSource: {
             type: "json",
             transport: {
                 read: {
-                    url: $rootScope.baseAddress + "/api/AfiliadosClientes/AfiliadosClientesByCliente/" + clienteId,
+                    url: function () {
+                        return $rootScope.baseAddress + "/api/AfiliadosClientes/AfiliadosClientesByClientePaginado/"+clienteId+"/" + $scope.page5 + "/" + $scope.rows5 + "/" + $scope.filter5
+                    },
+                    //url: $rootScope.baseAddress + "/api/AfiliadosClientes/AfiliadosClientesByCliente/" + clienteId,
                     dataType: "json",
                     beforeSend: $rootScope.beforeSendRequest
                 },
@@ -34,10 +41,10 @@ function afiliadosClienteController($rootScope, $scope, $routeParams, authorizat
             serverSorting: true,
             serverFiltering: true,
         },
-        filterable: {
-            field: "Afiliado.Cliente.Tercero.Nombre",
-            operator: "contains"
-        },
+        //filterable: {
+        //    field: "Afiliado.Cliente.Tercero.Nombre",
+        //    operator: "contains"
+        //},
         template: kendo.template($("#tmpAfiliadosCliente").html()),
     };
 
@@ -96,5 +103,53 @@ function afiliadosClienteController($rootScope, $scope, $routeParams, authorizat
             });
     };
 
+    //AfiliadosClientes paginados Prev
+    $scope.AfiliadosClientesPaginadosPrev = function () {
+        //debugger;
+        $scope.page5 = $scope.page5 - 1;
+        $scope.Rows5 = 10;
+        $scope.Next5 = false;
+        if ($scope.page5 == 0)
+            $scope.Prev5 = true;
+        angular.element("#divAfiliadosCliente").data("kendoMobileListView").dataSource.read();
+        angular.element("#divAfiliadosCliente").data("kendoMobileListView").refresh();
 
+    };
+
+    //Beneficiarios paginados Next
+    $scope.AfiliadosClientesPaginadosNext = function () {
+        //debugger;
+        $scope.page5 = $scope.page5 + 1;
+        $scope.Rows5 = 10;
+        if ($scope.page5 > 0)
+            $scope.Prev5 = false;
+        var AfiliadosClientes = afiliadosClientesService.afiliadosClientesPaginados(clienteId, $scope.page5, $scope.rows5, $scope.filter5)
+        angular.element("#divAfiliadosCliente").data("kendoMobileListView").dataSource.read();
+        angular.element("#divAfiliadosCliente").data("kendoMobileListView").refresh();
+
+        AfiliadosClientes.then(function (p1) {
+            var ben = p1.data;
+            if (ben.length < 10)
+                $scope.Next5 = true;
+        })
+    };
+
+ 
+    //Beneficiarios Paginados filtrar
+    $scope.AfiliadosClientesFiltrar = function () {
+        $scope.page5 = 0;
+        $scope.filter5;
+        $scope.Next5 = false;
+        if ($scope.filter5 == "")
+            $scope.filter5 = "null"
+        angular.element("#divAfiliadosCliente").data("kendoMobileListView").dataSource.read();
+        angular.element("#divAfiliadosCliente").data("kendoMobileListView").refresh();
+        var AfiliadosClientes = afiliadosClientesService.afiliadosClientesPaginados(clienteId, $scope.page5, $scope.rows5, $scope.filter5)
+        AfiliadosClientes.then(function (p1) {
+            var ben = p1.data;
+            if (ben.length < 10)
+                $scope.Next5 = true;
+        })
+        $scope.filter5 = null;
+    }
 }

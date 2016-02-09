@@ -12,18 +12,24 @@
 
 
 
-
+    <div class="form-group">
+        <input type="text" ng-model="filter" class="form-control" id="txtFilter" name="txtFilter" style="width:80%; height:35px !important" placeholder="Search...">
+        <button ng-click="BeneficiariosFiltrar()" class="btn btn-primary btn-lg btn-block fa fa-search" style="height:35px; width:35px; margin-left:250px; margin-top:-54px" ></button>
+    </div>
 
         <div id="example">
 
-            <kendo-mobile-list-view id="gridBeneficiarios" options="beneficiariosGridOptions">
+            <kendo-mobile-list-view id="gridBeneficiarios" options="beneficiariosGridOptions" data>
             </kendo-mobile-list-view>
 
         </div>
 
-        <div id="space"></div>
-
    
+
+        <div id="space"></div>
+    
+
+    
 
 
     <script id="rowBeneficiariosTemplate2" type="text/x-kendo-tmpl">
@@ -44,4 +50,13 @@
         </a>
     </script>
 
+
+    <div>
+        <button type="button" class="btn btn-primary" ng-click="BeneficiariosPaginadosPrev()"  ng-disabled="Prev">
+            &lt; PREV
+        </button>
+        <button type="button" class="btn btn-primary" ng-click="BeneficiariosPaginadosNext()"  ng-disabled="Next" style="margin-left:135px">
+            NEXT &gt;
+        </button>
+    </div>
 </div>

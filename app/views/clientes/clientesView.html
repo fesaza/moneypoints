@@ -13,8 +13,13 @@
 
     <div id="space"></div>
 
+    <div class="form-group">
+        <input type="text" ng-model="filter2" class="form-control" id="txtFilter" name="txtFilter" style="width:80%; height:35px !important" placeholder="Search...">
+        <button ng-click="ClientesFiltrar()" class="btn btn-primary btn-lg btn-block fa fa-search" style="height:35px; width:35px; margin-left:250px; margin-top:-54px"></button>
+    </div>
+
     <div id="example">
-        <kendo-mobile-list-view options="clientesGridOptions" />
+        <kendo-mobile-list-view options="clientesGridOptions" id="gridClientes" />
     </div>
 
     <div id="space"></div>
@@ -34,6 +39,17 @@
         </a>
     </script>
 
+    <div>
+
+        <button type="button" class="btn btn-primary" ng-click="ClientesPaginadosPrev()" ng-disabled="Prev2">
+            &lt; PREV
+        </button>
+
+        <button type="button" class="btn btn-primary" ng-click="ClientesPaginadosNext()" ng-disabled="Next2" style="margin-left:135px">
+            NEXT &gt;
+        </button>
+
+    </div>
 
 </div>
 
