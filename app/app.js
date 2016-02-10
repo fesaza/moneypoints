@@ -1,5 +1,5 @@
 ﻿function handleError(pl) {
-    debugger;
+    //debugger;
     var msg = "";
 
     if (pl.data.ExceptionMessage)
@@ -209,9 +209,9 @@ app.controller('indexCtrl', function ($scope, CordovaService, $location, $rootSc
     };
 
 
-    //$rootScope.baseAddress = "http://localhost/Se.MoneyPoints.Api";
+    $rootScope.baseAddress = "http://localhost/Se.MoneyPoints.Api";
     //$rootScope.baseAddress = "http://atenas:90/moneypoints_pru";
-     $rootScope.baseAddress = "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru";
+     //$rootScope.baseAddress = "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru";
 
     $scope.tcdevicePixelRatio = window.devicePixelRatio;
 

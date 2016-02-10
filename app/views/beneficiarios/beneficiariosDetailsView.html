@@ -3,19 +3,19 @@
 
     <img style="margin-top:-43px"src="css\images\Informacion-beneficiario6.png" />
 </div>
-<div class="container css-form form-cliente" >
+<div class="container css-form form-cliente" style="width:99%" >
     <div id="form" kendo-tab-strip k-content-urls="[ null, null]"  style="background-color: rgba(255, 255, 255, 0) !important">
         <!-- tab list -->
         <ul>
 
             <li id="perfil" ng-show="showEstados" >Perfil</li>
-            <li id="cuenta" ng-show="showEstados">Cuentas</li>
+            <li id="cuenta" ng-show="showEstados" >Cuentas</li>
         </ul>
 
 
         <!--segundo tab-->
         <div style="padding: 20px 1px" >
-            <form name="form" ng-submit="guardarbeneficiario()" class="css-form " role="form">
+            <form name="form" ng-submit="guardarbeneficiario()" class="css-form " role="form" >
                 <div class="col-md-12 ">
 
                     <div class="space1"></div>
@@ -147,11 +147,22 @@
 
                 <kendo-mobile-list-view id="gridCuentasBeneficiario" options="cuentasBeneficiarioOptions" />
 
+                    
+                
             </div>
         </div>
 
-    </div>
+        
 
+    </div>
+    <div ng-show="showEstados">
+        <button type="button" class="btn btn-primary" ng-click="EstadosCuentasPaginadosPrev()" ng-disabled="Preves">
+            &lt; PREV
+        </button>
+        <button type="button" class="btn btn-primary" ng-click="EstadosCuentasPaginadosNext()" ng-disabled="Nextes" style="margin-left:45%">
+            NEXT &gt;
+        </button>
+    </div>
 
 </div>
 

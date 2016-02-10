@@ -18,6 +18,7 @@
 
         //Consulta puntos
         $scope.beneficiariosPuntosHistoricos = beneficiariosPuntosService.getbeneficiariosPuntosHistoricos(beneficiariosClienteId);
+       
         $scope.beneficiariosPuntosHistoricos.then(function (pl) {
             var res = pl.data;
             $scope.ListBeneficiariosHistoricos = res;

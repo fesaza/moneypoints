@@ -46,7 +46,7 @@
 
         //Guardar Cliente
         $scope.guardarCliente = function () {
-            debugger;
+            //debugger;
             $scope.Load = true;
             if ($scope.isDeleting) return;
             kendo.ui.progress($("#divDetailCliente"), true);

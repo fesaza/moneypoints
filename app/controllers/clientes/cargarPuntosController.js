@@ -17,7 +17,7 @@ function cargarPuntosController($rootScope, $routeParams, $scope, beneficiariosC
     });
 
     $scope.cargarPuntos = function () {
-        debugger;
+        //debugger;
         $scope.benefPuntos.BeneficiariosClienteId = id;
         $scope.benefPuntos.Fecha = new Date();
         $scope.benefPuntos.Valor = 0;

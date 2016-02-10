@@ -42,4 +42,9 @@
     this.BeneficiariosClientesPaginados = function (clienteid,page, rows, filter) {
         return $http.get($rootScope.baseAddress + "/api/BeneficiariosClientes/BeneficiariosClientesByClientePaginado/" + clienteid + "/" + page + "/" + rows + "/" + filter);
     }
+
+//BeneficiariosClientes con paginacion
+    this.GetCuentasByAliadoAndBeneficiarioPaginado = function (aliadoId, BeneficiarioId, page, rows, filter) {
+        return $http.get($rootScope.baseAddress + "/api/BeneficiariosClientes/GetCuentasByAliadoAndBeneficiarioPaginado/" + aliadoId + "/" + BeneficiarioId + "/" + page + "/" + rows + "/" + filter);
+    }
 });

@@ -29,6 +29,7 @@
 
         var finalizarCompraCallBack = function (message) {
             new PNotify({ text: message, type: 'info', delay: 3000 });
+      
         };
 
         ventaService.initialize();
@@ -55,7 +56,7 @@
           
 
             promiseGetbeneficiario.then(function (pl) {
-                debugger;
+                //debugger;
                 var res = pl.data;
 
                 if (res.length == 0) {

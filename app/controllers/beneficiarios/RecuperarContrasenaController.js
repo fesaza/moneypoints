@@ -18,6 +18,7 @@
                     type: 'info',
                     delay: 3000
                 });
+                
                 $scope.goPath('/beneficiarios');
                 kendo.ui.progress($("#formRecuperar"), false);
             },

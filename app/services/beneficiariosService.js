@@ -60,5 +60,9 @@
         return $http.get($rootScope.baseAddress + "/api/Beneficiarios/Paginado/" + page + "/" + rows+"/"+filter);
     }
 
+    this.EstadosCuentasPaginados = function (beneficiarioId, page, rows) {
+        return $http.get($rootScope.baseAddress + "/api/BeneficiariosClientes/GetCuentasPaginado/" + beneficiarioId + "/" + page + "/" + rows);
+    }
+
 
 });

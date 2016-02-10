@@ -1,4 +1,5 @@
-﻿(function () {
+﻿var unavez = false;
+(function () {
     'use strict';
 
     angular.module("moneyPointsApp").factory('dataVenta', function () {
@@ -23,7 +24,7 @@
         ['$scope', '$rootScope', '$', 'ventaService', 'beneficiariosService', 'afiliadosService','clientesService', 'dataVenta', compraController]);
 
     function compraController($scope, $rootScope, $, ventaService, beneficiariosService, afiliadosService, clientesService, dataVenta) {
-
+        
         $scope.compra = null;
         $scope.text = "";
         var ventaServiceStarted = false;
@@ -80,7 +81,7 @@
             if (window.navigator.platform === "Win32") {
                 new PNotify({ text: "función no soportada en simulador", type: "danger", delay: 3000 });
                 //Esta linea es para pruebas en pc
-                setData('f7a164ba-d3d4-4136-80d3-5a0427ac8200_5108_5000_1090');
+                setData('f7a164ba-d3d4-4136-80d3-5a0427ac8200_5108_1.7391_1090');
             }
             else {
                 cordova.plugins.barcodeScanner.scan(
@@ -111,18 +112,25 @@
         };
 
         var confirmarCompraCallBack = function (message) {
-            
+           
             ventaServiceStarted = true;
-            new PNotify({ text: message, type: 'info', delay: 3000 });
+            //new PNotify({ text: message, type: 'info', delay: 3000 });
 
             $scope.goPath('/confirmarCompra');
             dataVenta.setDataVenta($scope.compra);
             $scope.$apply();
         };
 
-        $rootScope.$on("confirmarCompra", function (e, message) {
-            confirmarCompraCallBack(message);
-        });
-
+        if (unavez == false) {
+          
+            unavez = true;
+            $rootScope.$on("confirmarCompra", function (e, message) {
+                
+                e.stopPropagation();
+                e.preventDefault();
+                confirmarCompraCallBack(message);
+                
+            });
+        }
     };
 })();

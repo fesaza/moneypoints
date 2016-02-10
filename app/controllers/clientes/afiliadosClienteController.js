@@ -67,7 +67,7 @@ function afiliadosClienteController($rootScope, $scope, $routeParams, authorizat
     };
 
     $scope.agregarAliado = function () {
- 
+        //debugger;
         var aliadoCliente = {
             ClienteId: authorizationService.getId(),
             AfiliadoId: $scope.aliado,

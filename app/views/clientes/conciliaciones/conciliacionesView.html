@@ -2,32 +2,58 @@
 <div class="row-fluid banner-ventas">
     <img src="css\images\Conciliaciones.jpg" />
 </div>
-<div class="form-cliente">
-    <div kendo-tab-strip k-content-urls="[ null, null]" id="" style="  background-color: rgba(255, 255, 255, 0) !important">
+<div class="container css-form form-cliente" style="width:99%; position:static">
+    <div kendo-tab-strip k-content-urls="[ null, null]" id="" style=" ;background-color: rgba(255, 255, 255, 0) !important">
         <!-- tab list -->
         <ul>
             <li class="k-state-active">Enviar</li>
-            <li style="width:48%">Recibir</li>
+            <li >Recibir</li>
         </ul>
 
         <!-- Primer tab -->
-        <div style="padding:0em .0em !important;">
+        <div style="padding:0em .0em !important; position:static">
             <div class="bg-body">
                 <div id="example">
                     <div class="padd-btn">
                         <button ng-click="goPath('/conciliacionesNew')" class="btn btn-primary btn-lg btn-block">Nueva Conciliación</button>
                     </div>
 
+                    <div class="form-group">
+                        <input type="text" ng-model="filter8" class="form-control" id="txtFilter" name="txtFilter" style="width:80%; height:35px !important" placeholder="Search...">
+                        <button ng-click="ConciliacionespaginadasByClienteFiltrar()" class="btn btn-primary btn-lg btn-block fa fa-search" style="height:35px; width:35px; margin-left:87%; margin-top:-18%"></button>
+                    </div>
+
                     <kendo-mobile-list-view id="divConciliacionesEnvia" options="conciliacionAliadosGridOptions" />
+
                 </div>
+                <br />
+                <button type="button" class="btn btn-primary" ng-click="ConciliacionespaginadasByClientePrev()" ng-disabled="Prev8">
+                    &lt; PREV
+                </button>
+                <button type="button" class="btn btn-primary" ng-click="ConciliacionespaginadasByClienteNext()" ng-disabled="Next8" style="margin-left:45%">
+                    NEXT &gt;
+                </button>
             </div>
         </div>
 
         <!-- Segundo tab -->
         <div style="padding:0em .0em !important;">
             <div class="bg-body">
-                <kendo-mobile-list-view options="conciliacionClientesGridOptions" />
+
+                <div class="form-group">
+                    <input type="text" ng-model="filter10" class="form-control" id="txtFilter" name="txtFilter" style="width:80%; height:35px !important" placeholder="Search...">
+                    <button ng-click="ConciliacionespaginadasByAliadoFiltrar()" class="btn btn-primary btn-lg btn-block fa fa-search" style="height:35px; width:35px; margin-left:87%; margin-top:-18%"></button>
+                </div>
+
+                <kendo-mobile-list-view options="conciliacionClientesGridOptions" id="GridConciliaciones2"/>
             </div>
+            <br />
+            <button type="button" class="btn btn-primary" ng-click="ConciliacionespaginadasByAliadoPrev()" ng-disabled="Prev10">
+                &lt; PREV
+            </button>
+            <button type="button" class="btn btn-primary" ng-click="ConciliacionespaginadasByAliadoNext()" ng-disabled="Next10" style="margin-left:45%">
+                NEXT &gt;
+            </button>
         </div>
     </div>
 </div>

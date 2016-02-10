@@ -36,10 +36,10 @@
                             </button>
                         </li>
                         <li>
-                            <span>Page {{curPage1 + 1}} of {{ numberOfPages1() }}</span>
+                            <!--<span>Page {{curPage1 + 1}} of {{ numberOfPages1() }}</span>-->
                         </li>
                         <li>
-                            <button type="button" class="btn btn-primary"
+                            <button type="button" class="btn btn-primary" style="margin-left:45%"
                                     ng-disabled="curPage1 >= ListBeneficiariosHistoricos.length/pageSize1 - 1"
                                     ng-click="curPage1 = curPage1+1">
                                 NEXT &gt;
@@ -82,10 +82,10 @@
                         </button>
                     </li>
                     <li>
-                        <span>Page {{curPage2 + 1}} of {{ numberOfPages2() }}</span>
+                        <!--<span>Page {{curPage2 + 1}} of {{ numberOfPages2() }}</span>-->
                     </li>
                     <li>
-                        <button type="button" class="btn btn-primary"
+                        <button type="button" class="btn btn-primary" style="margin-left:45%"
                                 ng-disabled="curPage2 >= ListBeneficiariosCompras.length/pageSize2 - 1"
                                 ng-click="curPage2 = curPage2+1">
                             NEXT &gt;

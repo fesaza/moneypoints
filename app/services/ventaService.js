@@ -1,13 +1,17 @@
-﻿var app = angular.module('moneyPointsApp');
+﻿
+var app = angular.module('moneyPointsApp');
 app.value('$', $);
 app.service('ventaService', function ($, $rootScope) {
     var money;
+   var conexion;
     var initialize = function () {
         //Getting the connection object
         $.connection.hub.url = $rootScope.baseAddress + "/signalr";
         money = $.connection.money;
 
         money.client.confirmarCompra = function (message) {
+      
+            if(conexion != message)
             $rootScope.$emit("confirmarCompra", message);
         };
 
@@ -22,7 +26,7 @@ app.service('ventaService', function ($, $rootScope) {
     };
 
     var getConnectionId = function () {
-        debugger;
+        //debugger;
         return $.connection.hub.id;
     };
 

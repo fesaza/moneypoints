@@ -53,13 +53,21 @@
                  console.log('Error cargando beneficiario', errorPl);
              });
 
+            $scope.Preves = true;
+            $scope.Nextes = false;
+            $scope.pagees = 0;
+            $scope.rowses = 10;
+
             //Consultar estados de cuentas
             $scope.cuentasBeneficiarioOptions = {
                 dataSource: {
                     type: "json",
                     transport: {
                         read: {
-                            url: $rootScope.baseAddress + "/api/BeneficiariosClientes?$filter=BeneficiarioId eq " + beneficiarioId,
+                         url: function () {
+                             return $rootScope.baseAddress + "/api/BeneficiariosClientes/GetCuentasPaginado/" + beneficiarioId + "/" + $scope.pagees + "/" + $scope.rowses
+                            },
+                            //url: $rootScope.baseAddress + "/api/BeneficiariosClientes?$filter=BeneficiarioId eq " + beneficiarioId,
                             dataType: "json",
                             beforeSend: $rootScope.beforeSendRequest
                         },
@@ -144,7 +152,7 @@
 
                         $scope.goPath('/login');
                     } else {
-                        debugger;
+                        //debugger;
                         $scope.goPath('/beneficiarios');
                     }
                 },
@@ -196,6 +204,37 @@
         };
 
 
+
+        //EstadosCuentas paginados Prev
+        $scope.EstadosCuentasPaginadosPrev = function () {
+            //debugger;
+            $scope.pagees = $scope.pagees - 1;
+            $scope.Rowses = 10;
+            $scope.Nextes = false;
+            if ($scope.pagees == 0)
+                $scope.Preves = true;
+            angular.element("#gridCuentasBeneficiario").data("kendoMobileListView").dataSource.read();
+            angular.element("#gridCuentasBeneficiario").data("kendoMobileListView").refresh();
+
+        };
+
+        //EstadosCuentas paginados Next
+        $scope.EstadosCuentasPaginadosNext = function () {
+            //debugger;
+            $scope.pagees = $scope.pagees + 1;
+            $scope.Rowses = 10;
+            if ($scope.pagees > 0)
+                $scope.Preves = false;
+            var EstadosCuentas = beneficiariosService.EstadosCuentasPaginados(beneficiarioId, $scope.pagees, $scope.Rowses)
+            angular.element("#gridCuentasBeneficiario").data("kendoMobileListView").dataSource.read();
+            angular.element("#gridCuentasBeneficiario").data("kendoMobileListView").refresh();
+
+            EstadosCuentas.then(function (p1) {
+                var ben = p1.data;
+                if (ben.length < 10)
+                    $scope.Nextes = true;
+            })
+        };
     };
 
 })();

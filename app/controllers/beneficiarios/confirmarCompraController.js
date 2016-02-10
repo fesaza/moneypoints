@@ -2,12 +2,12 @@
     'use strict';
 
     angular.module("moneyPointsApp").controller('confirmarCompraController',
-        ['$scope', '$rootScope', '$', 'ventaService', 'dataVenta', confirmarCompraController]);
+        ['$scope', '$rootScope', '$', 'ventaService','beneficiariosClienteService', 'dataVenta', confirmarCompraController]);
 
-    function confirmarCompraController($scope, $rootScope, $, ventaService, dataVenta) {
+    function confirmarCompraController($scope, $rootScope, $, ventaService,beneficiariosClienteService, dataVenta) {
 
         $scope.canSolicitarPin = false;
-
+        $scope.Load = false;
         var venta = null;
 
         $rootScope.$on("finalizarCompraCompleted", function (e, message) {
@@ -18,6 +18,7 @@
 
         var finalizarCompraCallBack = function (message) {
             new PNotify({ text: message, type: 'info', delay: 3000});
+            
         };
 
         var consultarProgramas = function (apply) {
@@ -25,13 +26,24 @@
                 $scope.$apply();
             }
             venta = dataVenta.getDataVenta();
+            $scope.PrevCompra = true;
+            $scope.NextCompra = false;
+            $scope.pageCompra = 0;
+            $scope.rowsCompra = 10;
+            $scope.filterCompra = null;
+
+
+
             $scope.cuentasBeneficiarioOptionsCompra = {
                 
                 dataSource: {
                     type: "json",
                     transport: {
                         read: {
-
+                            //url: function () {
+                            //    return $rootScope.baseAddress + "/api/BeneficiariosClientes/GetCuentasByAliadoAndBeneficiarioPaginado/" + venta.AliadoId + "/" + venta.BeneficiarioId + "/" + $scope.pageCompra + "/" + $scope.rowsCompra + "/" + $scope.filterCompra
+                            //},
+                            
                             url: $rootScope.baseAddress + "/api/BeneficiariosClientes/GetCuentasByAliadoAndBeneficiario/" + venta.AliadoId + "/" + venta.BeneficiarioId,
                             dataType: "json",
                             beforeSend:$rootScope.beforeSendRequest
@@ -92,13 +104,48 @@
         };
 
         $scope.finalizarCompra = function () {
-            $scope.load = false;
+            //debugger;
+            $scope.Load = true;
             //permite finalizar la compra por parte del cliente
             venta.Pin = $('#formRegPin').val();  //Debe ser quitado, no se debe trabajar de esta manera
             venta.BeneficiariosClienteId = $scope.programa.BeneficiariosClienteId;
-            ventaService.finalizarCompra(venta);
-            $scope.load = true;
+            var Venta = ventaService.finalizarCompra(venta);
+            $scope.goPath('/HomeBeneficiario');
         };
+
+        ////CuentasByAliadoByBeneficiario paginados Prev
+        //$scope.CuentasByAliadoByBeneficiarioPaginadosPrev = function () {
+        //    //debugger;
+        //    $scope.pageCompra = $scope.pageCompra - 1;
+        //    $scope.rowsCompra = 10;
+        //    $scope.NextCompra = false;
+        //    if ($scope.pageCompra == 0)
+        //        $scope.PrevCompra
+        //            = true;
+        //    angular.element("#gridCuentasBeneficiario").data("kendoMobileListView").dataSource.read();
+        //    angular.element("#gridCuentasBeneficiario").data("kendoMobileListView").refresh();
+
+        //};
+
+        ////CuentasByAliadoByBeneficiario paginados Next
+        //$scope.CuentasByAliadoByBeneficiarioPaginadosNext = function () {
+        //    //debugger;
+        //    $scope.pageCompra = $scope.pageCompra + 1;
+        //    $scope.rowsCompra = 10;
+        //    if ($scope.pageCompra > 0)
+        //        $scope.PrevCompra = false;
+        //    var CuentasByAliadoByBeneficiario = beneficiariosClienteService.GetCuentasByAliadoAndBeneficiarioPaginado(clienteId, $scope.pageCompra, $scope.rowsCompra, $scope.filterCompra)
+        //    angular.element("#gridCuentasBeneficiario").data("kendoMobileListView").dataSource.read();
+        //    angular.element("#gridCuentasBeneficiario").data("kendoMobileListView").refresh();
+
+        //    CuentasByAliadoByBeneficiario.then(function (p1) {
+        //        var ben = p1.data;
+        //        if (ben.length < 10)
+        //            $scope.NextCompra = true;
+        //    })
+        //};
+
+       
 
         consultarProgramas(false);
     };
