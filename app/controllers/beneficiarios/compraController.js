@@ -105,7 +105,7 @@
                         var qr = result.text;
                         var posiciones = qr.split('_');
 
-                        if(posiciones.lenght == 4)
+                        if (posiciones.length == 4)
                         {
                                 new PNotify({ text: "verifique el QR que intenta leer", type: 'danger', delay: 3000 });
                         }
