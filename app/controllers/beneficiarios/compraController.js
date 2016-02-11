@@ -107,7 +107,8 @@
 
                         if (posiciones.length != 4)
                         {
-                                new PNotify({ text: "verifique el QR que intenta leer", type: 'danger', delay: 3000 });
+                            new PNotify({ text: "verifique el QR que intenta leer", type: 'danger', delay: 3000 });
+                            $scope.goPath('/compra');
                         }
                         else
                         {
