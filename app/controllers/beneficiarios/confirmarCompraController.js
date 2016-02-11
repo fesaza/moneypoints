@@ -18,8 +18,8 @@
 
         var finalizarCompraCallBack = function (message) {
             debugger;
-            //var factura = message;
-            //var numero = factura.split(".")[1];
+            var factura = message;
+            var numero = factura.split(".")[1];
             //$location.path('/CompraFinalizada/' + numero)
             ////$scope.goPath('/HomeBeneficiario');
             ////$location.path('/CompraFinalizada')
