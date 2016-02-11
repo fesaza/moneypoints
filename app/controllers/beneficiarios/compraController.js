@@ -1,6 +1,20 @@
-﻿var unavez = false;
+﻿
 (function () {
     'use strict';
+
+    angular.module("moneyPointsApp").factory('Scopes', function ($rootScope) {
+        var mem = {};
+
+        return {
+            store: function (key, value) {
+                mem[key] = value;
+            },
+            get: function (key) {
+                return mem[key];
+            }
+        };
+    });
+
 
     angular.module("moneyPointsApp").factory('dataVenta', function () {
         
@@ -21,10 +35,12 @@
     });
 
     angular.module("moneyPointsApp").controller('compraController',
-        ['$scope', '$rootScope', '$', 'ventaService', 'beneficiariosService', 'afiliadosService','clientesService', 'dataVenta', compraController]);
+        ['$scope', '$rootScope', '$', 'ventaService', 'beneficiariosService',
+            'afiliadosService', 'clientesService', 'dataVenta', 'Scopes', 'authorizationService', compraController]);
 
-    function compraController($scope, $rootScope, $, ventaService, beneficiariosService, afiliadosService, clientesService, dataVenta) {
-        
+    function compraController($scope, $rootScope, $, ventaService, beneficiariosService,
+        afiliadosService, clientesService, dataVenta, Scopes, authorizationService) {
+        Scopes.store("compraController", $scope);
         $scope.compra = null;
         $scope.text = "";
         var ventaServiceStarted = false;
@@ -112,18 +128,18 @@
         };
 
         var confirmarCompraCallBack = function (message) {
-           
-            ventaServiceStarted = true;
-            //new PNotify({ text: message, type: 'info', delay: 3000 });
-
-            $scope.goPath('/confirmarCompra');
-            dataVenta.setDataVenta($scope.compra);
-            $scope.$apply();
+            debugger;
+            if (authorizationService.getCurrentUser().rolId == 4) {
+                ventaServiceStarted = true;
+                //new PNotify({ text: message, type: 'info', delay: 3000 });
+                debugger;
+                $scope.goPath('/confirmarCompra');
+                dataVenta.setDataVenta($scope.compra);
+                $scope.$apply();
+            }
         };
 
-        if (unavez == false) {
-          
-            unavez = true;
+        
             $rootScope.$on("confirmarCompra", function (e, message) {
                 
                 e.stopPropagation();
@@ -131,6 +147,6 @@
                 confirmarCompraCallBack(message);
                 
             });
-        }
+        
     };
 })();

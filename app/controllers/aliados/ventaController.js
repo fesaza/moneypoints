@@ -5,7 +5,7 @@
     .controller('ventaController', ['$scope', '$rootScope', '$', 'ventaService', 'tercerosService', 'authorizationService', ventaController]);
 
     function ventaController($scope, $rootScope, $, ventaService, tercerosService, authorizationService) {
-    //debugger;
+        debugger;
         $scope.text = "";
         $scope.onlyNumber = /^\d+$/;
         $scope.QR = false;
@@ -28,16 +28,16 @@
         });
 
         var finalizarCompraCallBack = function (message) {
+            debugger;
+            var factura = message;
+            var numero = factura.split(".");
             new PNotify({ text: message, type: 'info', delay: 3000 });
       
         };
 
         ventaService.initialize();
 
-        $scope.greetAll = function () {
-            ventaService.sendRequest();
-        }
-
+        
         $scope.generarQR = function () {
             
             $scope.QR = true;

@@ -163,6 +163,11 @@ app.config(function ($routeProvider, $httpProvider) {
             templateUrl: 'app/views/beneficiarios/beneficiariosView.html',
             controller: 'beneficiariosController'
         })
+        //.when('/CompraFinalizada/:numero', {
+        //    templateUrl: 'app/views/beneficiarios/compra/CompraFinalizada.html',
+        //    controller: 'CompraFinalizada'
+
+        //})
          .otherwise({
              redirectTo: 'app/home.html'
          });
@@ -196,22 +201,25 @@ app.config(function ($routeProvider, $httpProvider) {
         };
     }]);
 
-app.controller('indexCtrl', function ($scope, CordovaService, $location, $rootScope, authenticationService) {
+app.controller('indexCtrl', function ($scope, CordovaService, $location, $rootScope, authenticationService,Scopes) {
     $scope.goPath = function (path) {
+
         $location.path(path);
     };
 
     $scope.logout = function () {
-
+        
         authenticationService.clearCredentials();
         $scope.asegurables = {};
         $location.path('/login');
+       
+        Scopes.get("compraController").$destroy();
     };
 
 
-    //$rootScope.baseAddress = "http://localhost/Se.MoneyPoints.Api";
+    $rootScope.baseAddress = "http://localhost/Se.MoneyPoints.Api";
     //$rootScope.baseAddress = "http://atenas:90/moneypoints_pru";
-     $rootScope.baseAddress = "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru";
+     //$rootScope.baseAddress = "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru";
 
     $scope.tcdevicePixelRatio = window.devicePixelRatio;
 

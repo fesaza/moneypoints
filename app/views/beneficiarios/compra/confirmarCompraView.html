@@ -1,7 +1,7 @@
 ﻿<div class="row-fluid banner-ventas">
     <img src="css\images\compra.png" />
 </div>
-<div class="container" ng-switch on="canSolicitarPin">
+<div class="container form-cliente" ng-switch on="canSolicitarPin" >
     <div ng-switch-when="false">
         Selecciona con qué puntos quieres pagar:
         <kendo-mobile-list-view id="gridCuentasBeneficiario" options="cuentasBeneficiarioOptionsCompra" />

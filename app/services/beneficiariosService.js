@@ -64,5 +64,9 @@
         return $http.get($rootScope.baseAddress + "/api/BeneficiariosClientes/GetCuentasPaginado/" + beneficiarioId + "/" + page + "/" + rows);
     }
 
+    this.getCompra = function (NumeroFactura) {
+        debugger;
+        return $http.get($rootScope.baseAddress + "api/Beneficiarios/Compra/" + NumeroFactura)
+    }
 
 });

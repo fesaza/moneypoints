@@ -5,6 +5,7 @@
         return $http.get($rootScope.baseAddress + "/api/BeneficiariosPuntos?$filter= BeneficiariosClienteId eq " + beneficiariosClienteId);
     }
     this.getbeneficiariosComprasHistorico = function (beneficiariosClienteId) {
+    debugger;
         return $http.get($rootScope.baseAddress + "/api/BeneficiariosClientesCompras?$filter= BeneficiariosClienteId eq " + beneficiariosClienteId);
     }
 

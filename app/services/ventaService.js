@@ -3,7 +3,7 @@ var app = angular.module('moneyPointsApp');
 app.value('$', $);
 app.service('ventaService', function ($, $rootScope) {
     var money;
-   var conexion;
+    //var numfactura;
     var initialize = function () {
         //Getting the connection object
         $.connection.hub.url = $rootScope.baseAddress + "/signalr";
@@ -11,11 +11,15 @@ app.service('ventaService', function ($, $rootScope) {
 
         money.client.confirmarCompra = function (message) {
       
-            if(conexion != message)
             $rootScope.$emit("confirmarCompra", message);
         };
 
         money.client.finalizarCompraCompleted = function (message) {
+            debugger;
+             //var factura = message;
+            //var numero = factura.split(".")[1];
+            //$scope.goPath('/CompraFinalizada/'+numero);
+         
             $rootScope.$emit("finalizarCompraCompleted", message);
         };
 

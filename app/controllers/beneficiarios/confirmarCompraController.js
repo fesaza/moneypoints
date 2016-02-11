@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module("moneyPointsApp").controller('confirmarCompraController',
-        ['$scope', '$rootScope', '$', 'ventaService','beneficiariosClienteService', 'dataVenta', confirmarCompraController]);
+        ['$scope', '$rootScope', '$', 'ventaService','beneficiariosClienteService', 'dataVenta','$location', confirmarCompraController]);
 
-    function confirmarCompraController($scope, $rootScope, $, ventaService,beneficiariosClienteService, dataVenta) {
+    function confirmarCompraController($scope, $rootScope, $, ventaService,beneficiariosClienteService, dataVenta,$location) {
 
         $scope.canSolicitarPin = false;
         $scope.Load = false;
@@ -17,9 +17,23 @@
         });
 
         var finalizarCompraCallBack = function (message) {
+            debugger;
+            //var factura = message;
+            //var numero = factura.split(".")[1];
+            //$location.path('/CompraFinalizada/' + numero)
+            ////$scope.goPath('/HomeBeneficiario');
+            ////$location.path('/CompraFinalizada')
+            //CompraFinalizada()
             new PNotify({ text: message, type: 'info', delay: 3000});
             
         };
+
+        //var CompraFinalizada = function(){
+        //debugger;
+        ////$scope.goPath('/HomeBeneficiario')
+        //$location.path('#/CompraFinalizada/' + numero)
+        //}
+
 
         var consultarProgramas = function (apply) {
             if (apply) {
@@ -110,40 +124,11 @@
             venta.Pin = $('#formRegPin').val();  //Debe ser quitado, no se debe trabajar de esta manera
             venta.BeneficiariosClienteId = $scope.programa.BeneficiariosClienteId;
             var Venta = ventaService.finalizarCompra(venta);
-            $scope.goPath('/HomeBeneficiario');
+            //CompraFinalizada()
+            //$scope.goPath('/CompraFinalizada');
         };
 
-        ////CuentasByAliadoByBeneficiario paginados Prev
-        //$scope.CuentasByAliadoByBeneficiarioPaginadosPrev = function () {
-        //    //debugger;
-        //    $scope.pageCompra = $scope.pageCompra - 1;
-        //    $scope.rowsCompra = 10;
-        //    $scope.NextCompra = false;
-        //    if ($scope.pageCompra == 0)
-        //        $scope.PrevCompra
-        //            = true;
-        //    angular.element("#gridCuentasBeneficiario").data("kendoMobileListView").dataSource.read();
-        //    angular.element("#gridCuentasBeneficiario").data("kendoMobileListView").refresh();
-
-        //};
-
-        ////CuentasByAliadoByBeneficiario paginados Next
-        //$scope.CuentasByAliadoByBeneficiarioPaginadosNext = function () {
-        //    //debugger;
-        //    $scope.pageCompra = $scope.pageCompra + 1;
-        //    $scope.rowsCompra = 10;
-        //    if ($scope.pageCompra > 0)
-        //        $scope.PrevCompra = false;
-        //    var CuentasByAliadoByBeneficiario = beneficiariosClienteService.GetCuentasByAliadoAndBeneficiarioPaginado(clienteId, $scope.pageCompra, $scope.rowsCompra, $scope.filterCompra)
-        //    angular.element("#gridCuentasBeneficiario").data("kendoMobileListView").dataSource.read();
-        //    angular.element("#gridCuentasBeneficiario").data("kendoMobileListView").refresh();
-
-        //    CuentasByAliadoByBeneficiario.then(function (p1) {
-        //        var ben = p1.data;
-        //        if (ben.length < 10)
-        //            $scope.NextCompra = true;
-        //    })
-        //};
+        
 
        
 

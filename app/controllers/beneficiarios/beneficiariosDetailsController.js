@@ -3,7 +3,8 @@
 
     angular.module("moneyPointsApp").controller('beneficiariosDetailsController', ['$rootScope', '$scope', '$routeParams', 'beneficiariosService', 'authorizationService', 'Base64', beneficiariosDetailsController]);
 
-    function beneficiariosDetailsController($rootScope, $scope, $routeParams, beneficiariosService, authorizationService, Base64) {      
+    function beneficiariosDetailsController($rootScope, $scope, $routeParams, beneficiariosService, authorizationService, Base64) {
+     
     
         var beneficiarioId = $routeParams.beneficiarioId;
         if (beneficiarioId.indexOf("-cuenta") > -1) {

@@ -14,7 +14,7 @@
             Recuperar.then(function (pl) {
                 //$scope.mensaje = "Eliminado satisfactoriamente.";
                 new PNotify({
-                    text: 'Se ha enviado un correo al e-mail que registro el beneficiario',
+                    text: 'Se ha enviado un correo al e-mail que registro el usuario',
                     type: 'info',
                     delay: 3000
                 });
