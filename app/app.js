@@ -213,7 +213,7 @@ app.controller('indexCtrl', function ($scope, CordovaService, $location, $rootSc
         $scope.asegurables = {};
         $location.path('/login');
        
-        Scopes.get("compraController").$destroy();
+        //Scopes.get("compraController").$destroy();
     };
 
 
