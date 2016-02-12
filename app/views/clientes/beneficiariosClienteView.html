@@ -3,12 +3,19 @@
 </div>
 
 <div class="form-cliente">
-    <div class="container pad-top" style="margin-left:-2%;   margin-top: 10px; margin-bottom: 10px;">
-        <select id="cmbBeneficiario" selectedIndex="-1" name="cmbBeneficiario" style="width:65%;"
-                kendo-drop-down-list="cmbBeneficiario" options="beneficiariosSelectOpts"
-                data-ng-model="benef"></select>
-        <button ng-click="agregarBeneficiario()" class="btn btn-info">Agregar</button>
-    </div>
+    <form name="form" ng-submit="agregarBeneficiario()" class="css-form " role="form">
+        <div class="container pad-top" style="margin-left:-2%;   margin-top: 10px; margin-bottom: 10px;">
+            <select id="cmbBeneficiario" selectedIndex="-1" name="cmbBeneficiario" style="width:65%;"
+                    kendo-drop-down-list="cmbBeneficiario" options="beneficiariosSelectOpts"
+                    data-ng-model="benef" required></select>
+            <!--<button ng-click="agregarBeneficiario()" class="btn btn-info">Agregar</button>-->
+            <button type="submit" ng-disabled="form.$invalid || Cargar " class="btn btn-info">Agregar</button>
+        </div>
+    </form>
+
+
+   
+
     <br />
     <div class="form-group">
         <input type="text" ng-model="filter6" class="form-control" id="txtFilter" name="txtFilter" style="width:80%; height:35px !important" placeholder="Search...">

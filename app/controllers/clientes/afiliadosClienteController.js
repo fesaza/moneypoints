@@ -8,6 +8,7 @@ function afiliadosClienteController($rootScope, $scope, $routeParams, authorizat
     var clienteId = authorizationService.getId();
 
     //obtener la lista de beneficiarios por cliente
+    $scope.Cargar1 = false;
     $scope.Prev5 = true;
     $scope.Next5 = false;
     $scope.page5 = 0;
@@ -68,6 +69,7 @@ function afiliadosClienteController($rootScope, $scope, $routeParams, authorizat
 
     $scope.agregarAliado = function () {
         //debugger;
+        $scope.Cargar1 = true;
         var aliadoCliente = {
             ClienteId: authorizationService.getId(),
             AfiliadoId: $scope.aliado,
@@ -81,6 +83,7 @@ function afiliadosClienteController($rootScope, $scope, $routeParams, authorizat
                 type: 'danger',
                 delay: 3000
             });
+            $scope.Cargar1 = false;
             return;
         }
 
@@ -92,6 +95,7 @@ function afiliadosClienteController($rootScope, $scope, $routeParams, authorizat
                     delay: 3000
 
                 });
+                $scope.Cargar1 = false;
                 $scope.aliado = null;
                 $scope.aliados.dataSource.read();
                 $scope.cmbAliado.dataSource.read();
@@ -99,6 +103,7 @@ function afiliadosClienteController($rootScope, $scope, $routeParams, authorizat
 
             },
             function (errorPl) {
+                $scope.Cargar1 = false;
                 console.log('Error registrando aliado', errorPl);
             });
     };

@@ -28,7 +28,7 @@
             <input type="text" readonly data-ng-model="beneficiario.Tercero.Nombre" class="form-control" id="txtBeneficiario" placeholder="Beneficiario">
         </div>
         <div id="buttons">
-            <input class="btn btn-primary btn-lg btn-block" type="button" name="confirmarCompra" value="Confirmar compra" ng-click="confirmarCompra()" />
+            <input class="btn btn-primary btn-lg btn-block" type="button" ng-disabled="Invalido" name="confirmarCompra" value="Confirmar compra" ng-click="confirmarCompra()" />
         </div>
         <span>{{text}}</span>
 

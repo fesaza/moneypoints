@@ -44,7 +44,7 @@
         $scope.compra = null;
         $scope.text = "";
         var ventaServiceStarted = false;
-
+        $scope.Invalido = false;
         var setData = function (r) {
 
             kendo.ui.progress($("#divVenta"), true);
@@ -108,7 +108,7 @@
                         if (posiciones.length != 4)
                         {
                             new PNotify({ text: "verifique el QR que intenta leer", type: 'danger', delay: 3000 });
-                            $scope.goPath('/HomeBeneficiario');
+                            $scope.Invalido = true;
                         }
                         else
                         {

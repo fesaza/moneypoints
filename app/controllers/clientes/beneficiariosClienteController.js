@@ -8,6 +8,7 @@ function beneficiariosClienteController($rootScope, $scope, $routeParams, author
     var clienteId = authorizationService.getId();
 
     //obtener la lista de beneficiarios por cliente
+    $scope.Cargar = false;
     $scope.Prev6 = true;
     $scope.Next6 = false;
     $scope.page6 = 0;
@@ -68,6 +69,7 @@ function beneficiariosClienteController($rootScope, $scope, $routeParams, author
     };
 
     $scope.agregarBeneficiario = function () {
+        $scope.Cargar = true;
         var benefCliente = {
             ClienteId: authorizationService.getId(),
             BeneficiarioId: $scope.benef,
@@ -81,7 +83,7 @@ function beneficiariosClienteController($rootScope, $scope, $routeParams, author
                 type: 'warning',
                 delay: 3000
             });
-
+            $scope.Cargar = false;
             return;
         }
 
@@ -96,13 +98,17 @@ function beneficiariosClienteController($rootScope, $scope, $routeParams, author
                 $scope.goPath('/beneficiariosCliente');
                 $scope.benefs.dataSource.read();
                 $scope.cmbBeneficiario.dataSource.read();
+                $scope.Cargar = false;
             },
             function (errorPl) {
+                $scope.Cargar = false;
                 handleError(errorPl);
                 console.log('Error registrando beneficiario', errorPl);
             });
 
-        //BeneficiariosClientes paginados Prev
+        
+    };
+    //BeneficiariosClientes paginados Prev
         $scope.BeneficiariosClientesPaginadosPrev = function () {
             //debugger;
             $scope.page6 = $scope.page6 - 1;
@@ -150,7 +156,5 @@ function beneficiariosClienteController($rootScope, $scope, $routeParams, author
             })
             $scope.filter6 = null;
         }
-    };
-
 
 }

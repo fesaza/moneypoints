@@ -6,7 +6,7 @@
         '$routeParams', 'conciliacionesService', 'authorizationService', recibirConciliacionesController]);
 
     function recibirConciliacionesController($rootScope, $scope, $routeParams, conciliacionesService, authorizationService) {
-
+        debugger;
         var conciliacionId = $routeParams.conciliacionId;
         $scope.conciliacion = {};
 
@@ -17,7 +17,7 @@
 
             //Obtener la conciliacion
             conciliacionesService.get(conciliacionId).then(function (pl) {
-             
+                debugger;
                 var res = pl.data;
                 $scope.conciliacion = res;
 
