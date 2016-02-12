@@ -420,7 +420,7 @@ label {
   /* background:#3088A1;*/
     padding: 3%;
     padding-bottom: 6%;
-    min-height: 600px;
+    min-height: 700px;
   max-height: 2800px;
 }
 
@@ -438,7 +438,7 @@ label {
     padding: 3%;
     padding-bottom: 6%;
     
-  max-height: 768px;
+  max-height: 850px;
 }
 
 /*--------styles listas----------*/
