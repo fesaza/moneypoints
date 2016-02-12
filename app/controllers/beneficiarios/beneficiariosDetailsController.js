@@ -1,9 +1,9 @@
 ﻿(function () {
     'use strict';
 
-    angular.module("moneyPointsApp").controller('beneficiariosDetailsController', ['$rootScope', '$scope', '$routeParams', 'beneficiariosService', 'authorizationService', 'Base64', beneficiariosDetailsController]);
+    angular.module("moneyPointsApp").controller('beneficiariosDetailsController', ['$rootScope', '$scope', '$routeParams', 'beneficiariosService','beneficiariosClienteService', 'authorizationService', 'Base64', beneficiariosDetailsController]);
 
-    function beneficiariosDetailsController($rootScope, $scope, $routeParams, beneficiariosService, authorizationService, Base64) {
+    function beneficiariosDetailsController($rootScope, $scope, $routeParams, beneficiariosService, beneficiariosClienteService, authorizationService, Base64) {
      
     
         var beneficiarioId = $routeParams.beneficiarioId;
@@ -54,10 +54,25 @@
                  console.log('Error cargando beneficiario', errorPl);
              });
 
+            $scope.TotalPagesCuentas = 0;
+            $scope.ShowPagingCuentas = false;
             $scope.Preves = true;
             $scope.Nextes = false;
             $scope.pagees = 0;
             $scope.rowses = 10;
+
+            $scope.ConsultarCuentasBeneficiarios = beneficiariosClienteService.get(beneficiarioId);
+            $scope.ConsultarCuentasBeneficiarios.then(function (pl) {
+              debugger;
+              var res = pl.data;
+              $scope.ListCuentasBeneficiarios = res;
+              $scope.TotalPagesCuentas = Math.ceil($scope.ListCuentasBeneficiarios.length / $scope.rows);
+              if ($scope.ListCuentasBeneficiarios.length > $scope.rowses)
+                  $scope.ShowPagingCuentas = true;
+              else
+                  $scope.ShowPagingCuentas = false;
+          
+          })
 
             //Consultar estados de cuentas
             $scope.cuentasBeneficiarioOptions = {

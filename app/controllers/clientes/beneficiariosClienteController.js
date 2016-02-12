@@ -14,6 +14,23 @@ function beneficiariosClienteController($rootScope, $scope, $routeParams, author
     $scope.page6 = 0;
     $scope.rows6 = 10;
     $scope.filter6 = null;
+    $scope.TotalPagesBeneficiariosClientes = 0;
+    $scope.ShowPagingBeneficiariosClientes = false;;
+
+    //$scope.ConsultarBeneficiariosClientes = beneficiariosClienteService.get(clienteId);
+
+    //$scope.ConsultarBeneficiariosClientes.then(function (pl) {
+    //    debugger;
+    //    var res = pl.data;
+    //    $scope.ListBeneficiariosClientes = res;
+    //    $scope.TotalPagesBeneficiariosClientes = Math.ceil($scope.ListBeneficiariosClientes.length / $scope.rows6)
+    //    if ($scope.ListBeneficiariosClientes.length > $scope.rows6)
+    //        $scope.ShowPagingBeneficiariosClientes = true;
+    //    else
+    //        $scope.ShowPagingBeneficiariosClientes = false;
+    //})
+
+
     $scope.benefClienteOpts = {
         dataSource: {
             type: "json",

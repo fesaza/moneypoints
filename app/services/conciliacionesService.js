@@ -17,8 +17,12 @@ angular.module('moneyPointsApp').service('conciliacionesService', function ($htt
         return $http.get($rootScope.baseAddress + "/api/conciliaciones/" + conciliacionId);
     }
 
-    this.GetConciliacionesByCliente = function () {
+    this.GetConciliacionesByCliente = function (clienteId) {
         return $http.get($rootScope.baseAddress + "/api/Conciliaciones/ConciliacionesByCliente/" + clienteId);
+    }
+
+    this.GetConciliacionesByAliado = function (clientesId) {
+        return $http.get($rootScope.baseAddress + "/api/Conciliaciones/ConciliacionesByAliado/" + clientesId);
     }
 
     //Get All conciliaciones

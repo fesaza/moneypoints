@@ -3,35 +3,39 @@
 </div>
 
 <div class="css-form form-cliente">
-    <div style="padding: 1em">
-        <div class="col-md-12">
-            <div class="space1"></div>
+    <form name="form" ng-submit="guardarConciliacion()" class="css-form " role="form">
+        <div style="padding: 1em">
+            <div class="col-md-12">
+                <div class="space1"></div>
 
-            <div id="example">
-                <label>Aliado</label>
-                <span class="help-block"></span>
-                <div>
-                    <select kendo-drop-down-list options="SeleccionarOptions" data-ng-model="conciliacion.AfiliadosClienteId" style="width: 100%"></select>
+                <div id="example">
+                    <label>Aliado <a style="color:brown !important">*</a></label>
+                    <span class="help-block"></span>
+                    <div>
+                        <select kendo-drop-down-list options="SeleccionarOptions" data-ng-model="conciliacion.AfiliadosClienteId" style="width: 100%" required></select>
+                    </div>
+                    <span class="help-block"></span>
                 </div>
-                <span class="help-block"></span>
-            </div>
-            <div class="form-group">
-                <label>Valor</label>
-                <input type="number" class="form-control" data-ng-model="conciliacion.Valor" id="formConci" placeholder="Valor">
-                <span class="help-block"></span>
-            </div>
-            <div class="form-group">
-                <label>Observación</label>
-                <input type="text" class="form-control" data-ng-model="conciliacion.Observacion" id="formConci" placeholder="Obsevación">
+                <div class="form-group">
+                    <label>Valor <a style="color:brown !important">*</a></label>
+                    <input type="number" class="form-control" data-ng-model="conciliacion.Valor" id="formConci" placeholder="Valor" required>
+                    <span class="help-block"></span>
+                </div>
+                <div class="form-group">
+                    <label>Observación</label>
+                    <input type="text" class="form-control" data-ng-model="conciliacion.Observacion" id="formConci" placeholder="Obsevación">
+                </div>
             </div>
         </div>
-    </div>
 
 
-    <div class="spbut"></div>
-    <div id="buttons">
-        <button class="btn btn-info" ng-click="guardarConciliacion()">Guardar</button>
+        <div class="spbut"></div>
+        <div id="buttons">
+            <button type="submit" ng-disabled="form.$invalid " class="btn btn-info">Guardar</button>
+            <!--<button class="btn btn-info" ng-click="guardarConciliacion()">Guardar</button>-->
 
-        <button class="btn btn-success" ng-click="goPath('/conciliaciones')">Cancelar</button>
-    </div>
+            <button class="btn btn-success" ng-click="goPath('/conciliaciones')">Cancelar</button>
+        </div>
+    </form>
+    
 </div>

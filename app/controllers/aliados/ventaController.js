@@ -5,7 +5,7 @@
     .controller('ventaController', ['$scope', '$rootScope', '$', 'ventaService', 'tercerosService', 'authorizationService', ventaController]);
 
     function ventaController($scope, $rootScope, $, ventaService, tercerosService, authorizationService) {
-        debugger;
+    
         $scope.text = "";
         $scope.onlyNumber = /^\d+$/;
         $scope.QR = false;
@@ -56,14 +56,18 @@
           
 
             promiseGetbeneficiario.then(function (pl) {
-                //debugger;
+              
                 var res = pl.data;
 
                 if (res.length == 0) {
+                 
+                    $scope.QR = false;
+                  
                     new PNotify({ text: 'La identificación no existe.', type: 'danger', delay: 3000 });
                 } else {
                     var tercero = res[0];
                     if (tercero.Beneficiarios.length == 0) {
+                        $scope.QR = false;
                         new PNotify({ text: 'La identificación no esta registrada como beneficiario.', type: 'danger', delay: 3000 });
                         return;
                     }
@@ -107,7 +111,7 @@
         });
 
         var confirmarCompraCallBack = function (message) {
-            new PNotify({ text: message + " Esperando PIN.", type: 'info', delay: 3000 });
+            //new PNotify({ text: message + " Esperando PIN.", type: 'info', delay: 3000 });
         };
 
         $rootScope.$on("confirmarCompra", function (e, message) {

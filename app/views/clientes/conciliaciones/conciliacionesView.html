@@ -11,8 +11,8 @@
         </ul>
 
         <!-- Primer tab -->
-        <div style="padding:0em .0em !important; position:static">
-            <div class="bg-body">
+        <div style="padding:0em .0em !important; position:static" class="form-cliente">
+            <div ">
                 <div id="example">
                     <div class="padd-btn">
                         <button ng-click="goPath('/conciliacionesNew')" class="btn btn-primary btn-lg btn-block">Nueva Conciliación</button>
@@ -27,18 +27,20 @@
 
                 </div>
                 <br />
-                <button type="button" class="btn btn-primary" ng-click="ConciliacionespaginadasByClientePrev()" ng-disabled="Prev8">
-                    &lt; PREV
-                </button>
-                <button type="button" class="btn btn-primary" ng-click="ConciliacionespaginadasByClienteNext()" ng-disabled="Next8" style="margin-left:42%">
-                    NEXT &gt;
-                </button>
+                <div ng-show="ShowPagingConciliaciones1">
+                    <button type="button" class="btn btn-primary" ng-click="ConciliacionespaginadasByClientePrev()" ng-disabled="Prev8">
+                        &lt; PREV
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="ConciliacionespaginadasByClienteNext()" ng-disabled="Next8" style="margin-left:42%">
+                        NEXT &gt;
+                    </button>
+                </div>
             </div>
         </div>
 
         <!-- Segundo tab -->
         <div style="padding:0em .0em !important;">
-            <div class="bg-body">
+            <div >
 
                 <div class="form-group">
                     <input type="text" ng-model="filter10" class="form-control" id="txtFilter" name="txtFilter" style="width:80%; height:35px !important" placeholder="Search...">
@@ -48,12 +50,14 @@
                 <kendo-mobile-list-view options="conciliacionClientesGridOptions" id="GridConciliaciones2"/>
             </div>
             <br />
-            <button type="button" class="btn btn-primary" ng-click="ConciliacionespaginadasByAliadoPrev()" ng-disabled="Prev10">
-                &lt; PREV
-            </button>
-            <button type="button" class="btn btn-primary" ng-click="ConciliacionespaginadasByAliadoNext()" ng-disabled="Next10" style="margin-left:42%">
-                NEXT &gt;
-            </button>
+            <div ng-show="ShowPagingConciliaciones2">
+                <button type="button" class="btn btn-primary" ng-click="ConciliacionespaginadasByAliadoPrev()" ng-disabled="Prev10">
+                    &lt; PREV
+                </button>
+                <button type="button" class="btn btn-primary" ng-click="ConciliacionespaginadasByAliadoNext()" ng-disabled="Next10" style="margin-left:42%">
+                    NEXT &gt;
+                </button>
+            </div>
         </div>
     </div>
 </div>

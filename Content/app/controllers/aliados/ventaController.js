@@ -97,7 +97,7 @@
         });
 
         var confirmarCompraCallBack = function (message) {
-            new PNotify({ text: message + " Esperando PIN.", type: 'info', delay: 3000 });
+            //new PNotify({ text: message + " Esperando PIN.", type: 'info', delay: 3000 });
         };
 
         $rootScope.$on("confirmarCompra", function (e, message) {

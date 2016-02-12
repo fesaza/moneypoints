@@ -109,7 +109,7 @@
 
         var confirmarCompraCallBack = function (message) {
             ventaServiceStarted = true;
-            new PNotify({ text: message, type: 'info', delay: 3000 });
+            //new PNotify({ text: message, type: 'info', delay: 3000 });
 
             $scope.goPath('/confirmarCompra');
             dataVenta.setDataVenta($scope.compra);

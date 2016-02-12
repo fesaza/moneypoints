@@ -12,7 +12,7 @@
 
     //Get beneficiariosCliente
     this.get = function (beneficiariosClienteId) {
-        return $http.get($rootScope.baseAddress + "/api/beneficiariosClientes/" + beneficiariosClienteId);
+        return $http.get($rootScope.baseAddress + "/api/BeneficiariosClientes/" + beneficiariosClienteId);
     }
 
     //Get todos los beneficiariosClientes

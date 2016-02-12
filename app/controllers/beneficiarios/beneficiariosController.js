@@ -5,11 +5,30 @@
     angular.module("moneyPointsApp").controller('beneficiariosController', ['$scope', '$rootScope', 'beneficiariosService', beneficiariosController]);
 
     function beneficiariosController($scope, $rootScope, beneficiariosService) {
+
+      
+        $scope.TotalPages = 0;
         $scope.Prev = true;
         $scope.Next = false;
         $scope.page = 0;
         $scope.rows = 10;
         $scope.filter = null;
+        $scope.ShowPagingbeneficiario = false;
+
+        $scope.ConsularBeneficiarios = beneficiariosService.getbeneficiarios();
+
+          $scope.ConsularBeneficiarios.then(function (pl) {
+              //debugger;
+              var res = pl.data;
+              $scope.ListBeneficiarios = res;
+              $scope.TotalPages = Math.ceil($scope.ListBeneficiarios.length / $scope.rows);
+              if ($scope.ListBeneficiarios.length > $scope.rows)
+                  $scope.ShowPagingbeneficiario = true;
+              else
+                  $scope.ShowPagingbeneficiario = false;
+          
+          })
+
         $scope.beneficiariosGridOptions = {
             dataSource: {
                 type: "json",
@@ -87,16 +106,11 @@
             $scope.Rows = 10;
             if ($scope.page > 0)
                 $scope.Prev = false;
-            var beneficiarios = beneficiariosService.BeneficiariosPaginados($scope.page, $scope.rows, $scope.filter)
+            if ($scope.page == ($scope.TotalPages - 1))
+                $scope.Next = true;
            angular.element("#gridBeneficiarios").data("kendoMobileListView").dataSource.read();
            angular.element("#gridBeneficiarios").data("kendoMobileListView").refresh();
 
-           beneficiarios.then(function(p1)
-           {
-               var ben = p1.data;
-               if (ben.length < 10)
-                   $scope.Next = true;
-           })
         };
 
         //Beneficiarios Paginados filtrar
@@ -104,7 +118,7 @@
         {
             $scope.page = 0;
             $scope.filter;
-            $scope.Next = false;
+
             if ($scope.filter == "")
                 $scope.filter = "null"
             angular.element("#gridBeneficiarios").data("kendoMobileListView").dataSource.read();
@@ -113,7 +127,8 @@
             beneficiarios.then(function (p1) {
                 var ben = p1.data;
                 if (ben.length < 10)
-                    $scope.Next = true;
+                    $scope.ShowPagingbeneficiario = false;
+
             })
             $scope.filter = null;
         }

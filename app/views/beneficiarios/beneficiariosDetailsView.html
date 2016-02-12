@@ -151,12 +151,14 @@
                 
             </div>
             <br />
-            <button type="button" class="btn btn-primary" ng-click="EstadosCuentasPaginadosPrev()" ng-disabled="Preves">
-                &lt; PREV
-            </button>
-            <button type="button" class="btn btn-primary" ng-click="EstadosCuentasPaginadosNext()" ng-disabled="Nextes" style="margin-left:42%">
-                NEXT &gt;
-            </button>
+            <div ng-show="ShowPagingCuentas">
+                <button type="button" class="btn btn-primary" ng-click="EstadosCuentasPaginadosPrev()" ng-disabled="Preves">
+                    &lt; PREV
+                </button>
+                <button type="button" class="btn btn-primary" ng-click="EstadosCuentasPaginadosNext()" ng-disabled="Nextes" style="margin-left:42%">
+                    NEXT &gt;
+                </button>
+            </div>
         </div>
 
         

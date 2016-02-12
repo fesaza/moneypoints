@@ -20,19 +20,24 @@
             debugger;
             var factura = message;
             var numero = factura.split(".")[1];
+            if (factura != "Compra realizada exitosamente.") {
+                $scope.Load = false;
+                CompraFinalizada()
+            }
             //$location.path('/CompraFinalizada/' + numero)
             ////$scope.goPath('/HomeBeneficiario');
             ////$location.path('/CompraFinalizada')
-            //CompraFinalizada()
+           
             new PNotify({ text: message, type: 'info', delay: 3000});
             
         };
 
-        //var CompraFinalizada = function(){
-        //debugger;
-        ////$scope.goPath('/HomeBeneficiario')
+        var CompraFinalizada = function(){
+            debugger;
+            $scope.Load = false;
+        //$scope.goPath('/HomeBeneficiario')
         //$location.path('#/CompraFinalizada/' + numero)
-        //}
+        }
 
 
         var consultarProgramas = function (apply) {

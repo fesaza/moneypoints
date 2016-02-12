@@ -3,7 +3,7 @@
 
 function equivalenciasController($scope, $rootScope, authorizationService, equivalenciasService) {
     var clienteId = authorizationService.getId();
-
+    $scope.Equivalencia = false;
     equivalenciasService.GetEquivalenciasByCliente(clienteId).then(function (pl) {
         var data = pl.data;
 
@@ -18,7 +18,9 @@ function equivalenciasController($scope, $rootScope, authorizationService, equiv
         $scope.equivalencia.ClienteId = clienteId;
         equivalenciasService.post($scope.equivalencia).then(function (pl) {
             new PNotify({ text: "Se ingresó correctamente la nueva equivalencia", type: "info", delay: 3000 });
+            $scope.Equivalencia = true;
         }, function (errorPl) {
+        $scope.Equivalencia = false;
             handleError(errorPl);
         });
     };

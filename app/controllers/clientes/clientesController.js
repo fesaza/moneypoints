@@ -5,11 +5,27 @@
     angular.module("moneyPointsApp").controller('clientesController', ['$http', '$scope', '$rootScope', 'clientesService', clientesController]);
 
     function clientesController($http, $scope, $rootScope, clientesService) {
+        $scope.totalPagesCliente = 0;
+        $scope.ShowPagingClientes = false;
         $scope.Prev2 = true;
         $scope.Next = false;
         $scope.page2 = 0;
         $scope.rows2 = 10;
         $scope.filter2 = null;
+
+        $scope.ConsularClientes = clientesService.getClientes();
+        $scope.ConsularClientes.then(function (pl) {
+              //debugger;
+              var res = pl.data;
+              $scope.ListClientes = res; 
+              $scope.totalPagesCliente = Math.ceil($scope.ListClientes.length / $scope.rows2);
+              if ($scope.ListClientes.length > $scope.rows2)
+                  $scope.ShowPagingClientes = true;
+              else
+                  $scope.ShowPagingClientes = false;
+          
+          })
+
         $scope.clientesGridOptions = {
             dataSource: {
                 type: "json",
@@ -97,22 +113,17 @@
             $scope.Rows2 = 10;
             if ($scope.page2 > 0)
                 $scope.Prev2 = false;
-            var clientes = clientesService.ClientesPaginados($scope.page2, $scope.rows2, $scope.filter2)
+            if ($scope.page2 == ($scope.totalPagesCliente - 1))
+                $scope.Next2 = true;
             angular.element("#gridClientes").data("kendoMobileListView").dataSource.read();
             angular.element("#gridClientes").data("kendoMobileListView").refresh();
-
-            clientes.then(function (p1) {
-                var cli = p1.data;
-                if (cli.length < 10)
-                    $scope.Next2 = true;
-            })
         };
 
         //Clientes paginados Filtrar
         $scope.ClientesFiltrar = function () {
             $scope.page2 = 0;
             $scope.filter2;
-            $scope.Next2 = false;
+
             if ($scope.filter2 == "")
                 $scope.filter2 = "null"
             angular.element("#gridClientes").data("kendoMobileListView").dataSource.read();
@@ -121,7 +132,7 @@
             clientes.then(function (p1) {
                 var cli = p1.data;
                 if (cli.length < 10)
-                    $scope.Next2 = true;
+                    $scope.ShowPagingClientes = false;
             })
             $scope.filter2 = null;
         }

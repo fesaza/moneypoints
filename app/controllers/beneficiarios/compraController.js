@@ -140,11 +140,11 @@
         };
 
         var confirmarCompraCallBack = function (message) {
-            debugger;
+            
             if (authorizationService.getCurrentUser().rolId == 4) {
                 ventaServiceStarted = true;
                 //new PNotify({ text: message, type: 'info', delay: 3000 });
-                debugger;
+                
                 $scope.goPath('/confirmarCompra');
                 dataVenta.setDataVenta($scope.compra);
                 $scope.$apply();
