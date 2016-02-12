@@ -145,6 +145,9 @@
             <div>
                 <h2 class="titles-vw">Estado de cuentas</h2>  
 
+                <div ng-show="Notiene">
+                    <h2 class="titles-vw">El beneficiario no tiene un programa de puntos asociado</h2>
+                </div>
                 <kendo-mobile-list-view id="gridCuentasBeneficiario" options="cuentasBeneficiarioOptions" />
 
                     

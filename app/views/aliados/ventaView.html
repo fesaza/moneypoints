@@ -17,9 +17,11 @@
             </div>
             <div class="form-group">
                 <label>Cédula cliente <a style="color:brown !important">*</a></label>
-                <input type="text" data-ng-model="venta.Identificacion" class="form-control" name="txtCedula" id="txtCedula" placeholder="Cédula" required ng-pattern="onlyNumber">
+                <input type="text" data-ng-model="venta.Identificacion" class="form-control" ng-change="error = false ; error2 = false" name="txtCedula" id="txtCedula" placeholder="Cédula" required ng-pattern="onlyNumber">
                 <span ng-show="form.txtCedula.$dirty && form.txtIdentificacion.$error.required" class="help-block">Cedula es requerida</span>
                 <span ng-show="form.txtCedula.$error.pattern" class="help-block">Verifique que la cédula sea numérica </span>
+                <span ng-show="error"  class="help-block">La identificación no existe.</span>
+                <span ng-show="error2" class="help-block">La identificación no esta registrada como beneficiario.</span>
             </div>
 
 
@@ -32,7 +34,7 @@
                 <input type="text" ng-model="terceroBeneficiario.Apellidos" class="form-control" id="formRegCli" placeholder="Apellidos" readonly>
             </div>
             <div id="buttons1">
-                <input ng-show="form.$valid" class="btn btn-primary btn-lg btn-block" type="button" name="generarQR" value="Generar QR" ng-click="generarQR()" ng-disabled="QR " />
+                <input ng-show="form.$valid" class="btn btn-primary btn-lg btn-block" type="button" name="generarQR" value="Generar QR" ng-click="generarQR()" ng-disabled="QR || error || error2" />
             </div>
         </form>
     </div>

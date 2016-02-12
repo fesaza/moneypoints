@@ -60,18 +60,21 @@
             $scope.Nextes = false;
             $scope.pagees = 0;
             $scope.rowses = 10;
+            $scope.Notiene = false;
 
-            $scope.ConsultarCuentasBeneficiarios = beneficiariosClienteService.get(beneficiarioId);
+            $scope.ConsultarCuentasBeneficiarios = beneficiariosService.get(beneficiarioId);
             $scope.ConsultarCuentasBeneficiarios.then(function (pl) {
               debugger;
               var res = pl.data;
-              $scope.ListCuentasBeneficiarios = res;
+              $scope.ListCuentasBeneficiarios = res.BeneficiariosClientes;
               $scope.TotalPagesCuentas = Math.ceil($scope.ListCuentasBeneficiarios.length / $scope.rows);
               if ($scope.ListCuentasBeneficiarios.length > $scope.rowses)
                   $scope.ShowPagingCuentas = true;
               else
                   $scope.ShowPagingCuentas = false;
-          
+              debugger;
+              if ($scope.ListCuentasBeneficiarios.length == 0)
+                  $scope.Notiene = true;
           })
 
             //Consultar estados de cuentas

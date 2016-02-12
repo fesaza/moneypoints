@@ -19,6 +19,7 @@ function equivalenciasController($scope, $rootScope, authorizationService, equiv
         equivalenciasService.post($scope.equivalencia).then(function (pl) {
             new PNotify({ text: "Se ingresó correctamente la nueva equivalencia", type: "info", delay: 3000 });
             $scope.Equivalencia = true;
+            $scope.goPath('/HomeBeneficiario');
         }, function (errorPl) {
         $scope.Equivalencia = false;
             handleError(errorPl);

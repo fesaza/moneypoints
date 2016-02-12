@@ -12,6 +12,7 @@ angular.module('moneyPointsApp')
             kendo.ui.progress($("#form"), true);
             $scope.dataLoading = true;
             $scope.error = "";
+            $scope.errorlogin = false;
             authenticationService.login($scope.username, $scope.password, function (response) {
     
                 if (!response.success) {
@@ -21,6 +22,7 @@ angular.module('moneyPointsApp')
                         type: 'danger',
                         delay: 3000
                     });
+                    $scope.errorlogin = true;
                     $scope.dataLoading = false;
                     kendo.ui.progress($("#form"), false);
                 }

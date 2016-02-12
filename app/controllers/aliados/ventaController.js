@@ -39,7 +39,8 @@
 
         
         $scope.generarQR = function () {
-            
+            $scope.error = false;
+            $scope.error2 = false;
             $scope.QR = true;
             kendo.ui.progress($("#frmVenta"), true);
 
@@ -62,12 +63,13 @@
                 if (res.length == 0) {
                  
                     $scope.QR = false;
-                  
+                    $scope.error = true;
                     new PNotify({ text: 'La identificación no existe.', type: 'danger', delay: 3000 });
                 } else {
                     var tercero = res[0];
                     if (tercero.Beneficiarios.length == 0) {
                         $scope.QR = false;
+                        $scope.error2 = true;
                         new PNotify({ text: 'La identificación no esta registrada como beneficiario.', type: 'danger', delay: 3000 });
                         return;
                     }

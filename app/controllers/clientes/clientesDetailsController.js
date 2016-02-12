@@ -8,6 +8,7 @@
     function clientesDetailsController($rootScope, $scope, $routeParams, clientesService, beneficiariosService,
         equivalenciasService, afiliadosClientesService, authorizationService, Base64) {
 
+        $scope.Cambios = false;
         var clienteId = $routeParams.ClienteId;
         $scope.onlyNumber = /^\d+$/;
        
@@ -58,6 +59,7 @@
                         type: 'info',
                         delay: 3000
                     });
+                    $scope.Cambios = false;
                     kendo.ui.progress($("#divDetailCliente"), false);
                         if (user && user.rolId == 1) {
                             $scope.goPath('/clientes');
@@ -86,6 +88,7 @@
                     $scope.goPath('/clientes');
                 },
                 function (errorPl) {
+                    $scope.Cambios = false;
                     $scope.Load = false;
                     handleError(errorPl);
                     kendo.ui.progress($("#divDetailCliente"), false);

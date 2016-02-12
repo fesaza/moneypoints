@@ -421,7 +421,7 @@ label {
     padding: 3%;
     padding-bottom: 6%;
     min-height: 700px;
-  max-height: 3000px;
+  max-height: 3200px;
 }
 
 .form-home{
@@ -429,7 +429,7 @@ label {
   /* background:#3088A1;*/
     padding-bottom: 6%;
     min-height: 510px;
-  max-height: 800px;
+  max-height: 900px;
 }
 
 .form-password{
