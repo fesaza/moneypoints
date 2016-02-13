@@ -17,18 +17,18 @@ function beneficiariosClienteController($rootScope, $scope, $routeParams, author
     $scope.TotalPagesBeneficiariosClientes = 0;
     $scope.ShowPagingBeneficiariosClientes = false;;
 
-    //$scope.ConsultarBeneficiariosClientes = beneficiariosClienteService.get(clienteId);
+    $scope.ConsultarBeneficiariosClientes = beneficiariosClienteService.GetBeneficiariosByCliente(clienteId);
 
-    //$scope.ConsultarBeneficiariosClientes.then(function (pl) {
-    //    debugger;
-    //    var res = pl.data;
-    //    $scope.ListBeneficiariosClientes = res;
-    //    $scope.TotalPagesBeneficiariosClientes = Math.ceil($scope.ListBeneficiariosClientes.length / $scope.rows6)
-    //    if ($scope.ListBeneficiariosClientes.length > $scope.rows6)
-    //        $scope.ShowPagingBeneficiariosClientes = true;
-    //    else
-    //        $scope.ShowPagingBeneficiariosClientes = false;
-    //})
+    $scope.ConsultarBeneficiariosClientes.then(function (pl) {
+        //debugger;
+        var res = pl.data;
+        $scope.ListBeneficiariosClientes = res;
+        $scope.TotalPagesBeneficiariosClientes = Math.ceil($scope.ListBeneficiariosClientes.length / $scope.rows6)
+        if ($scope.ListBeneficiariosClientes.length > $scope.rows6)
+            $scope.ShowPagingBeneficiariosClientes = true;
+        else
+            $scope.ShowPagingBeneficiariosClientes = false;
+    })
 
 
     $scope.benefClienteOpts = {
@@ -145,22 +145,21 @@ function beneficiariosClienteController($rootScope, $scope, $routeParams, author
             $scope.Rows6 = 10;
             if ($scope.page6 > 0)
                 $scope.Prev6 = false;
-            var BeneficiariosClientes = beneficiariosClienteService.BeneficiariosClientesPaginados(clienteId, $scope.page6, $scope.rows6, $scope.filter6)
+            if ($scope.page6 == ($scope.TotalPagesBeneficiariosClientes - 1))
+                $scope.Next6 = true;
             angular.element("#divBenefCliente").data("kendoMobileListView").dataSource.read();
             angular.element("#divBenefCliente").data("kendoMobileListView").refresh();
-
-            BeneficiariosClientes.then(function (p1) {
-                var ben = p1.data;
-                if (ben.length < 10)
-                    $scope.Next6 = true;
-            })
         };
 
         //BeneficiariosClientes Paginados filtrar
         $scope.BeneficiariosClientesFiltrar = function () {
             $scope.page6 = 0;
             $scope.filter6;
-            $scope.Next6 = false;
+            //$scope.Next6 = false;
+            $scope.Prev6 = true;
+            if ($scope.TotalPagesBeneficiariosClientes > 1)
+            
+                    $scope.ShowPagingBeneficiariosClientes = true;
             if ($scope.filter6 == "")
                 $scope.filter6 = "null"
             angular.element("#divBenefCliente").data("kendoMobileListView").dataSource.read();
@@ -168,8 +167,9 @@ function beneficiariosClienteController($rootScope, $scope, $routeParams, author
             var BeneficiariosClientes = beneficiariosClienteService.BeneficiariosClientesPaginados(clienteId, $scope.page6, $scope.rows6, $scope.filter6)
             BeneficiariosClientes.then(function (p1) {
                 var ben = p1.data;
+                
                 if (ben.length < 10)
-                    $scope.Next6 = true;
+                    $scope.ShowPagingBeneficiariosClientes = false;
             })
             $scope.filter6 = null;
         }

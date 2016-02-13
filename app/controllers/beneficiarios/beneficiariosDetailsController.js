@@ -64,7 +64,7 @@
 
             $scope.ConsultarCuentasBeneficiarios = beneficiariosService.get(beneficiarioId);
             $scope.ConsultarCuentasBeneficiarios.then(function (pl) {
-              debugger;
+            
               var res = pl.data;
               $scope.ListCuentasBeneficiarios = res.BeneficiariosClientes;
               $scope.TotalPagesCuentas = Math.ceil($scope.ListCuentasBeneficiarios.length / $scope.rows);
@@ -72,7 +72,7 @@
                   $scope.ShowPagingCuentas = true;
               else
                   $scope.ShowPagingCuentas = false;
-              debugger;
+          
               if ($scope.ListCuentasBeneficiarios.length == 0)
                   $scope.Notiene = true;
           })

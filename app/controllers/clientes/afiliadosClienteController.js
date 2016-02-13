@@ -8,8 +8,8 @@ function afiliadosClienteController($rootScope, $scope, $routeParams, authorizat
     var clienteId = authorizationService.getId();
 
     //obtener la lista de beneficiarios por cliente
-    //$scope.TotalpagesAfiliadosClientes = 0;
-    //$scope.ShowPagingAfiliadosClientes = false;
+    $scope.TotalpagesAfiliadosClientes = 0;
+    $scope.ShowPagingAfiliadosClientes = false;
     $scope.Cargar1 = false;
     $scope.Prev5 = true;
     $scope.Next5 = false;
@@ -17,19 +17,19 @@ function afiliadosClienteController($rootScope, $scope, $routeParams, authorizat
     $scope.rows5 = 10;
     $scope.filter5 = null;
 
-    //$scope.ConsularAfiliadosClientes = afiliadosClientesService.GetAfiliadosClientesByClientes(clienteId);
+    $scope.ConsularAfiliadosClientes = afiliadosClientesService.GetAfiliadosClientesByClientes(clienteId);
 
-    //$scope.ConsularAfiliadosClientes.then(function (pl) {
-    //    debugger;
-    //    var res = pl.data;
-    //    $scope.ListAfiliadosClientes = res;
-    //    $scope.TotalpagesAfiliadosClientes = Math.ceil($scope.ListAfiliadosClientes.length / $scope.rows5);
-    //    if ($scope.ListAfiliadosClientes.length > $scope.rows5)
-    //        $scope.ShowPagingAfiliadosClientes = true;
-    //    else
-    //        $scope.ShowPagingAfiliadosClientes = false;
+    $scope.ConsularAfiliadosClientes.then(function (pl) {
+        debugger;
+        var res = pl.data;
+        $scope.ListAfiliadosClientes = res;
+        $scope.TotalpagesAfiliadosClientes = Math.ceil($scope.ListAfiliadosClientes.length / $scope.rows5);
+        if ($scope.ListAfiliadosClientes.length > $scope.rows5)
+            $scope.ShowPagingAfiliadosClientes = true;
+        else
+            $scope.ShowPagingAfiliadosClientes = false;
 
-    //})
+    })
 
 
     $scope.aliadosClienteOpts = {

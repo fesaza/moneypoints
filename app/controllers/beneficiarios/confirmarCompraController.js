@@ -1,4 +1,5 @@
-﻿(function () {
+﻿
+(function () {
     'use strict';
 
     angular.module("moneyPointsApp").controller('confirmarCompraController',
@@ -9,7 +10,7 @@
         $scope.canSolicitarPin = false;
         $scope.Load = false;
         var venta = null;
-
+        $scope.finCompra = true;
         $rootScope.$on("finalizarCompraCompleted", function (e, message) {
 
             finalizarCompraCallBack(message)
@@ -19,7 +20,7 @@
         var finalizarCompraCallBack = function (message) {
             debugger;
             var factura = message;
-            var numero = factura.split(".")[1];
+
             if (factura != "Compra realizada exitosamente.") {
                 $scope.Load = false;
                 CompraFinalizada()
@@ -27,9 +28,10 @@
             //$location.path('/CompraFinalizada/' + numero)
             ////$scope.goPath('/HomeBeneficiario');
             ////$location.path('/CompraFinalizada')
-           
-            new PNotify({ text: message, type: 'info', delay: 3000});
-            
+            if ($scope.finCompra == true) {
+                new PNotify({ text: message, type: 'info', delay: 3000 });
+                $scope.finCompra = false;
+            }
         };
 
         var CompraFinalizada = function(){

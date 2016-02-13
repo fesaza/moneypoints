@@ -157,7 +157,7 @@ app.config(function ($routeProvider, $httpProvider) {
         .when('/recuperarContraseña', {
             templateUrl: 'app/views/beneficiarios/RecuperarContrasena.html',
             controller: 'RecuperarContrasenaController'
-            
+
         })
         .when('/Listabeneficiarios', {
             templateUrl: 'app/views/beneficiarios/beneficiariosView.html',
@@ -201,25 +201,25 @@ app.config(function ($routeProvider, $httpProvider) {
         };
     }]);
 
-app.controller('indexCtrl', function ($scope, CordovaService, $location, $rootScope, authenticationService,Scopes) {
+app.controller('indexCtrl', function ($scope, CordovaService, $location, $rootScope, authenticationService, Scopes) {
     $scope.goPath = function (path) {
 
         $location.path(path);
     };
 
     $scope.logout = function () {
-        
+
         authenticationService.clearCredentials();
         $scope.asegurables = {};
         $location.path('/login');
-       
+
         //Scopes.get("compraController").$destroy();
     };
 
 
     //$rootScope.baseAddress = "http://localhost/Se.MoneyPoints.Api";
     //$rootScope.baseAddress = "http://atenas:90/moneypoints_pru";
-     $rootScope.baseAddress = "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru";
+    $rootScope.baseAddress = "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru";
 
     $scope.tcdevicePixelRatio = window.devicePixelRatio;
 

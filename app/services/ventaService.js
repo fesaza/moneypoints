@@ -16,10 +16,7 @@ app.service('ventaService', function ($, $rootScope) {
 
         money.client.finalizarCompraCompleted = function (message) {
             debugger;
-             //var factura = message;
-            //var numero = factura.split(".")[1];
-            //$scope.goPath('/CompraFinalizada/'+numero);
-         
+
             $rootScope.$emit("finalizarCompraCompleted", message);
         };
 

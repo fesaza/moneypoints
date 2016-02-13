@@ -118,6 +118,9 @@
         {
             $scope.page = 0;
             $scope.filter;
+            $scope.Prev = true;
+            if ($scope.TotalPages > 1)
+                $scope.ShowPagingbeneficiario = true;
 
             if ($scope.filter == "")
                 $scope.filter = "null"
@@ -128,7 +131,6 @@
                 var ben = p1.data;
                 if (ben.length < 10)
                     $scope.ShowPagingbeneficiario = false;
-
             })
             $scope.filter = null;
         }

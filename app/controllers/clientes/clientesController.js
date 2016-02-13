@@ -123,7 +123,9 @@
         $scope.ClientesFiltrar = function () {
             $scope.page2 = 0;
             $scope.filter2;
-
+            $scope.Prev2 = true;
+            if ($scope.totalPagesCliente > 1)
+                $scope.ShowPagingClientes = true;
             if ($scope.filter2 == "")
                 $scope.filter2 = "null"
             angular.element("#gridClientes").data("kendoMobileListView").dataSource.read();

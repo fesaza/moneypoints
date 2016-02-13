@@ -47,4 +47,8 @@
     this.GetCuentasByAliadoAndBeneficiarioPaginado = function (aliadoId, BeneficiarioId, page, rows, filter) {
         return $http.get($rootScope.baseAddress + "/api/BeneficiariosClientes/GetCuentasByAliadoAndBeneficiarioPaginado/" + aliadoId + "/" + BeneficiarioId + "/" + page + "/" + rows + "/" + filter);
     }
+
+    this.GetBeneficiariosByCliente = function (ClienteId) {
+        return $http.get($rootScope.baseAddress + "/api/BeneficiariosClientes/BeneficiariosClientesByCliente/" + ClienteId);
+    }
 });

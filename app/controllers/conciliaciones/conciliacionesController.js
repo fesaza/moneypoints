@@ -191,7 +191,9 @@ requestEnd: function (e) {
         $scope.ConciliacionespaginadasByClienteFiltrar = function () {
             $scope.pagina = 0;
             $scope.filter8;
-
+            $scope.Prev8 = true;
+            if ($scope.TotalPagesConciliaciones1 > 1)
+                $scope.ShowPagingConciliaciones1 = true;
             if ($scope.filter8 == "")
                 $scope.filter8 = "null"
             angular.element("#divConciliacionesEnvia").data("kendoMobileListView").dataSource.read();
@@ -235,7 +237,9 @@ requestEnd: function (e) {
         $scope.ConciliacionespaginadasByAliadoFiltrar = function () {
             $scope.page10 = 0;
             $scope.filter10;
-       
+            $scope.Prev10 = false;
+            if ($scope.TotalPagesConciliaciones2 > 1)
+                $scope.ShowPagingConciliaciones2 = true;
             if ($scope.filter10 == "")
                 $scope.filter10 = "null"
             angular.element("#GridConciliaciones2").data("kendoMobileListView").dataSource.read();
