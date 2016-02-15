@@ -33,7 +33,7 @@
 
 
     <script id="rowBeneficiariosTemplate2" type="text/x-kendo-tmpl">
-        <a class="container list-style line-list" href="\#/beneficiariosDetails/{{dataItem.BeneficiarioId}}">
+        <a class="container list-style line-list" href="\#/beneficiariosDetails/{{dataItem.BeneficiarioId}}" ng-click="form.Location = new Point(100, 100);">
             <div>
 
                 {{dataItem.Tercero.Nombre}}

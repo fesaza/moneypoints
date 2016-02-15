@@ -155,7 +155,7 @@ function beneficiariosClienteController($rootScope, $scope, $routeParams, author
         $scope.BeneficiariosClientesFiltrar = function () {
             $scope.page6 = 0;
             $scope.filter6;
-            //$scope.Next6 = false;
+            $scope.Next6 = false;
             $scope.Prev6 = true;
             if ($scope.TotalPagesBeneficiariosClientes > 1)
             

@@ -39,7 +39,7 @@
     }
 
     this.getByClienteId = function (ClienteId) {
-    debugger;
+    //debugger;
         return $http.get($rootScope.baseAddress + "api/Afiliados/GetAfiliadoByClienteId/" + ClienteId);
     }
 });

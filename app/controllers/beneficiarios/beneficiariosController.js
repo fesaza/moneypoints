@@ -119,6 +119,7 @@
             $scope.page = 0;
             $scope.filter;
             $scope.Prev = true;
+            $scope.Next = false;
             if ($scope.TotalPages > 1)
                 $scope.ShowPagingbeneficiario = true;
 

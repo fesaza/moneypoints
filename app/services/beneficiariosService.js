@@ -65,7 +65,7 @@
     }
 
     this.getCompra = function (NumeroFactura) {
-        debugger;
+        ////debugger;
         return $http.get($rootScope.baseAddress + "api/Beneficiarios/Compra/" + NumeroFactura)
     }
 

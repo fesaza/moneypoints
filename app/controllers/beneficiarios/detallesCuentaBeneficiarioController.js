@@ -20,7 +20,7 @@
         $scope.beneficiariosPuntosHistoricos = beneficiariosPuntosService.getbeneficiariosPuntosHistoricos(beneficiariosClienteId);
        
         $scope.beneficiariosPuntosHistoricos.then(function (pl) {
-debugger;
+
             var res = pl.data;
             $scope.ListBeneficiariosHistoricos = res;
             if ($scope.ListBeneficiariosHistoricos.length > $scope.pageSize1)
@@ -38,7 +38,7 @@ debugger;
         $scope.beneficiariosComprasHistoricos = beneficiariosPuntosService.getbeneficiariosComprasHistorico(beneficiariosClienteId);
 
         $scope.beneficiariosComprasHistoricos.then(function (pl) {
-debugger;
+
             var res = pl.data;
             $scope.ListBeneficiariosCompras = res;
             if ($scope.ListBeneficiariosCompras.length > $scope.pageSize2)

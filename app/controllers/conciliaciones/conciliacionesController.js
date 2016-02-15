@@ -87,6 +87,7 @@
         $scope.ShowPagingConciliaciones1 = false;
         $scope.Prev10 = true;
         $scope.Next10 = false;
+
         $scope.page10 = 0;
         $scope.rows10 = 10;
         $scope.filter10 = null;
@@ -94,7 +95,7 @@
         $scope.ConsultarConciliaciones2 = conciliacionesService.GetConciliacionesByAliado(authorizationService.getId());
 
         $scope.ConsultarConciliaciones2.then(function (pl) {
-            debugger;
+            //debugger;
             var res = pl.data;
             $scope.ListConciliaciones2 = res;
             $scope.TotalPagesConciliaciones2 = Math.ceil($scope.ListConciliaciones2.length / $scope.rows10);
@@ -192,13 +193,14 @@ requestEnd: function (e) {
             $scope.pagina = 0;
             $scope.filter8;
             $scope.Prev8 = true;
+            $scope.Next8 = false;
             if ($scope.TotalPagesConciliaciones1 > 1)
                 $scope.ShowPagingConciliaciones1 = true;
             if ($scope.filter8 == "")
                 $scope.filter8 = "null"
             angular.element("#divConciliacionesEnvia").data("kendoMobileListView").dataSource.read();
             angular.element("#divConciliacionesEnvia").data("kendoMobileListView").refresh();
-            var ConciliacionespaginadasByCliente = conciliacionesService.ConciliacionesPaginadosByCliente(authorizationService.getId(), $scope.pagina, $scope.rows8, $scope.filter8)
+            var ConciliacionespaginadasByCliente = conciliacionesService.ConciliacionesPaginadosByCliente(authorizationService.getId(), $scope.Numero, $scope.rows8, $scope.filter8)
             ConciliacionespaginadasByCliente.then(function (p1) {
                 var ben = p1.data;
                 if (ben.length < 10)
@@ -237,7 +239,8 @@ requestEnd: function (e) {
         $scope.ConciliacionespaginadasByAliadoFiltrar = function () {
             $scope.page10 = 0;
             $scope.filter10;
-            $scope.Prev10 = false;
+            $scope.Prev10 = true;
+            $scope.Next10 = false;
             if ($scope.TotalPagesConciliaciones2 > 1)
                 $scope.ShowPagingConciliaciones2 = true;
             if ($scope.filter10 == "")

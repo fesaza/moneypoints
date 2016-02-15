@@ -17,10 +17,11 @@ function afiliadosClienteController($rootScope, $scope, $routeParams, authorizat
     $scope.rows5 = 10;
     $scope.filter5 = null;
 
-    $scope.ConsularAfiliadosClientes = afiliadosClientesService.GetAfiliadosClientesByClientes(clienteId);
+    
+    $scope.ConsularAfiliadosClientes = afiliadosClientesService.AfiliadosByClienteId(clienteId);
 
     $scope.ConsularAfiliadosClientes.then(function (pl) {
-        debugger;
+        //debugger;
         var res = pl.data;
         $scope.ListAfiliadosClientes = res;
         $scope.TotalpagesAfiliadosClientes = Math.ceil($scope.ListAfiliadosClientes.length / $scope.rows5);
@@ -141,7 +142,7 @@ function afiliadosClienteController($rootScope, $scope, $routeParams, authorizat
 
     //Beneficiarios paginados Next
     $scope.AfiliadosClientesPaginadosNext = function () {
-        //debugger;
+        debugger;
         $scope.page5 = $scope.page5 + 1;
         $scope.Rows5 = 10;
         if ($scope.page5 > 0)
@@ -150,20 +151,19 @@ function afiliadosClienteController($rootScope, $scope, $routeParams, authorizat
             $scope.Next5 = true;
         angular.element("#divAfiliadosCliente").data("kendoMobileListView").dataSource.read();
         angular.element("#divAfiliadosCliente").data("kendoMobileListView").refresh();
-        var AfiliadosClientes = afiliadosClientesService.afiliadosClientesPaginados(clienteId, $scope.page5, $scope.rows5, $scope.filter5)
-        AfiliadosClientes.then(function (p1) {
-            var ben = p1.data;
-            if (ben.length < 10)
-                $scope.Next5 = true;
-        })
+ 
     };
 
  
     //Beneficiarios Paginados filtrar
     $scope.AfiliadosClientesFiltrar = function () {
+        debugger;
         $scope.page5 = 0;
         $scope.filter5;
-     $scope.Next5 = false;
+        $scope.Next5 = false;
+        $scope.Prev5 = true;
+        if ($scope.TotalpagesAfiliadosClientes > 1)
+            $scope.ShowPagingAfiliadosClientes = true;
         if ($scope.filter5 == "")
             $scope.filter5 = "null"
         angular.element("#divAfiliadosCliente").data("kendoMobileListView").dataSource.read();
@@ -171,9 +171,12 @@ function afiliadosClienteController($rootScope, $scope, $routeParams, authorizat
         var AfiliadosClientes = afiliadosClientesService.afiliadosClientesPaginados(clienteId, $scope.page5, $scope.rows5, $scope.filter5)
         AfiliadosClientes.then(function (p1) {
             var ben = p1.data;
-            if (ben.length < 10)
-                $scope.Next5 = true;
+            if (ben.length < 10) {
+                $scope.ShowPagingAfiliadosClientes = false;
+                
+            }
         })
         $scope.filter5 = null;
+        
     }
 }

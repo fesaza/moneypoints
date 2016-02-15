@@ -4,7 +4,7 @@
     angular.module("moneyPointsApp").controller('CompraFinalizada', ['$rootScope', '$scope', '$routeParams', 'beneficiariosService', CompraFinalizada]);
 
     function beneficiariosDetailsController($rootScope, $scope, $routeParams, authorizationService) {
-        debugger;
+        //debugger;
         var NumeroFactura = $routeParams.numero;
 
         var promiseGetCompra = beneficiariosService.getCompra(NumeroFactura);

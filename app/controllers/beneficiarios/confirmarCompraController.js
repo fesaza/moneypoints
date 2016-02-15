@@ -18,7 +18,7 @@
         });
 
         var finalizarCompraCallBack = function (message) {
-            debugger;
+            //debugger;
             var factura = message;
 
             if (factura != "Compra realizada exitosamente.") {
@@ -35,7 +35,7 @@
         };
 
         var CompraFinalizada = function(){
-            debugger;
+            //debugger;
             $scope.Load = false;
         //$scope.goPath('/HomeBeneficiario')
         //$location.path('#/CompraFinalizada/' + numero)

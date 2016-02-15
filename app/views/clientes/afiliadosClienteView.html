@@ -21,7 +21,7 @@
     <div id="divAfiliadosCliente"  kendo-mobile-list-view="aliados" options="aliadosClienteOpts" />
 
     <br />
-    <div >
+    <div ng-show="ShowPagingAfiliadosClientes">
         <button type="button" class="btn btn-primary" ng-click="AfiliadosClientesPaginadosPrev()" ng-disabled="Prev5">
             &lt; PREV
         </button>

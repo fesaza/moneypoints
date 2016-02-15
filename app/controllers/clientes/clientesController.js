@@ -123,6 +123,7 @@
         $scope.ClientesFiltrar = function () {
             $scope.page2 = 0;
             $scope.filter2;
+            $scope.Next2 = false;
             $scope.Prev2 = true;
             if ($scope.totalPagesCliente > 1)
                 $scope.ShowPagingClientes = true;

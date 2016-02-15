@@ -17,6 +17,7 @@
     }
 
     this.GetAfiliadosClientesByClientes = function (clienteId) {
+        //debugger;
         return $http.get($rootScope.baseAddress + "api/AfiliadosClientes/AfiliadosClientesByCliente/" + clienteId);
     }
 
@@ -47,6 +48,11 @@
     //Beneficiarios con paginacion
     this.afiliadosClientesPaginados = function (clienteId, page, rows, filter) {
         return $http.get($rootScope.baseAddress + "/api/AfiliadosClientes/AfiliadosClientesByClientePaginado/"+clienteId+"/" + page + "/" + rows + "/" + filter);
+    }
+
+    this.AfiliadosByClienteId = function (clienteId) {
+ 
+        return $http.get($rootScope.baseAddress + "/api/BeneficiariosClientes/AfiliadosClientesByCliente/" + clienteId);
     }
 
 });

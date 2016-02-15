@@ -15,7 +15,7 @@ app.service('ventaService', function ($, $rootScope) {
         };
 
         money.client.finalizarCompraCompleted = function (message) {
-            debugger;
+            //debugger;
 
             $rootScope.$emit("finalizarCompraCompleted", message);
         };
@@ -27,7 +27,7 @@ app.service('ventaService', function ($, $rootScope) {
     };
 
     var getConnectionId = function () {
-        //debugger;
+        //////debugger;
         return $.connection.hub.id;
     };
 

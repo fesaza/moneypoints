@@ -17,13 +17,13 @@ function cargarPuntosController($rootScope, $routeParams, $scope, beneficiariosC
     });
 
     $scope.cargarPuntos = function () {
-        debugger;
+        //debugger;
         $scope.benefPuntos.BeneficiariosClienteId = id;
         $scope.benefPuntos.Fecha = new Date();
         $scope.benefPuntos.Valor = 0;
 
         beneficiariosPuntosService.post($scope.benefPuntos).then(function (pl) {
-            debugger;
+            //debugger;
             new PNotify({
                 text: 'Se cargaron los puntos correctamente',
                 type: 'info',

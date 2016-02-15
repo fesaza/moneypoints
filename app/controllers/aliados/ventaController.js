@@ -28,7 +28,7 @@
         });
 
         var finalizarCompraCallBack = function (message) {
-            debugger;
+            ////debugger;
             var factura = message;
             var numero = factura.split(".");
             new PNotify({ text: message, type: 'info', delay: 3000 });

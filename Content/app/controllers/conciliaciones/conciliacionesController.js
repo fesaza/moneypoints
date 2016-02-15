@@ -5,11 +5,28 @@
     angular.module("moneyPointsApp").controller('conciliacionesController', ['$scope', '$rootScope', '$routeParams', 'conciliacionesService', 'authorizationService', conciliacionesController]);
 
     function conciliacionesController($scope, $rootScope, $routeParams, conciliacionesService, authorizationService) {
-        //$scope.Prev3 = true;
-        //$scope.Next3 = false;
-        //$scope.page3 = 0;
-        //$scope.rows3 = 10;
-        //$scope.filter3 = null;
+
+        $scope.TotalPagesConciliaciones1 = 0;
+        $scope.ShowPagingConciliaciones1 = false;
+        $scope.Prev8 = true;
+        $scope.Next8 = false;
+        $scope.pagina = 0;
+        $scope.rows8 = 10;
+        $scope.filter8 = null;
+
+        $scope.ConsultarConciliaciones1 = conciliacionesService.GetConciliacionesByCliente(authorizationService.getId());
+
+        $scope.ConsultarConciliaciones1.then(function (pl) {
+            //debugger;
+            var res = pl.data;
+            $scope.ListConciliaciones1 = res;
+            $scope.TotalPagesConciliaciones1 = Math.ceil($scope.ListConciliaciones1.length / $scope.rows8);
+            if ($scope.ListConciliaciones1.length > $scope.rows8)
+                $scope.ShowPagingConciliaciones1 = true;
+            else
+                $scope.ShowPagingConciliaciones1 = false;
+
+        })
 
         //ConciliacionAfiliadosClientes
         $scope.conciliacionAliadosGridOptions = {
@@ -17,10 +34,11 @@
                 type: "json",
                 transport: {
                     read: {
-                        //url: function () {
-                        //    return $rootScope.baseAddress + "/api/Conciliaciones/ConciliacionespaginadasByCliente/"+authorizationService.getId()+"/" + $scope.page3 + "/" + $scope.rows3 + "/" + $scope.filter3
-                        //},
-                        url: $rootScope.baseAddress + "/api/Conciliaciones/ConciliacionesByCliente/" + authorizationService.getId(),
+                        url: function () {
+                            return $rootScope.baseAddress + "/api/Conciliaciones/ConciliacionespaginadasByCliente/" + authorizationService.getId() + "/" + 0 + "/" + $scope.rows8 + "/" + $scope.filter8
+                            //return  conciliacionesService.ConciliacionesPaginadosByCliente(authorizationService.getId(), $scope.pagina, $scope.rows8, $scope.filter8)
+                        },
+                        //url: $rootScope.baseAddress + "/api/Conciliaciones/ConciliacionesByCliente/" + authorizationService.getId(),
                         dataType: "json",
                         beforeSend: $rootScope.beforeSendRequest
                     }
@@ -38,10 +56,10 @@
             },
             sortable: true,
             pageable: true,
-            filterable: {
-                field: "AfiliadosCliente.Afiliado.Cliente.Tercero.Nombre",
-                operator: "contains"
-            },
+            //filterable: {
+            //    field: "AfiliadosCliente.Afiliado.Cliente.Tercero.Nombre",
+            //    operator: "contains"
+            //},
             scrollable: {
                 virtual: true
             },
@@ -64,29 +82,50 @@
             template: kendo.template($("#tmpConciliacionxAliado").html()),
         };
 
-        //$scope.Prev4 = true;
-        //$scope.Next4 = false;
-        //$scope.page4 = 0;
-        //$scope.rows4 = 10;
-        //$scope.filter4 = null;
+
+        $scope.TotalPagesConciliaciones2 = 0;
+        $scope.ShowPagingConciliaciones1 = false;
+        $scope.Prev10 = true;
+        $scope.Next10 = false;
+        $scope.page10 = 0;
+        $scope.rows10 = 10;
+        $scope.filter10 = null;
+
+        $scope.ConsultarConciliaciones2 = conciliacionesService.GetConciliacionesByAliado(authorizationService.getId());
+
+        $scope.ConsultarConciliaciones2.then(function (pl) {
+            //debugger;
+            var res = pl.data;
+            $scope.ListConciliaciones2 = res;
+            $scope.TotalPagesConciliaciones2 = Math.ceil($scope.ListConciliaciones2.length / $scope.rows10);
+            if ($scope.ListConciliaciones2.length > $scope.rows10)
+                $scope.ShowPagingConciliaciones2 = true;
+            else
+                $scope.ShowPagingConciliaciones2 = false;
+
+        })
+
         $scope.conciliacionClientesGridOptions = {
             dataSource: {
                 type: "json",
                 transport: {
                     read: {
-                        //url: function () {
-                        //    return $rootScope.baseAddress + "/api/Conciliaciones/ConciliacionespaginadasByAliado/" + authorizationService.getId() +"/"+ $scope.page4 + "/" + $scope.rows4 + "/" + $scope.filter4
-                        //},
-                        url: $rootScope.baseAddress + "/api/Conciliaciones/ConciliacionesByAliado/" + authorizationService.getId(),
+
+                        url: function () {
+                            return $rootScope.baseAddress + "/api/Conciliaciones/ConciliacionespaginadasByAliado/" + authorizationService.getId() + "/" + $scope.page10 + "/" + $scope.rows10 + "/" + $scope.filter10
+
+                        },
+
+                        //url: $rootScope.baseAddress + "/api/Conciliaciones/ConciliacionesByAliado/" + authorizationService.getId(),
                         dataType: "json",
                         beforeSend: $rootScope.beforeSendRequest
                     }
                 },
-                //requestStart: function (e) {
-                //    kendo.ui.progress($("#divConciliacionesEnvia2"), true);
-                //},
-                //requestEnd: function (e) {
-                //    kendo.ui.progress($("#divConciliacionesEnvia2"), false);
+                requestStart: function (e) {
+                    kendo.ui.progress($("#GridConciliaciones2"), true);
+                },
+                requestEnd: function (e) {
+                    kendo.ui.progress($("#GridConciliaciones2"), false);
                 },
                 group: "Estado",
                 pageSize: 100,
@@ -95,10 +134,10 @@
             },
             sortable: true,
             pageable: true,
-            filterable: {
-                field: "AfiliadosCliente.Cliente.Tercero.Nombre",
-                operator: "contains"
-            },
+            //filterable: {
+            //    field: "AfiliadosCliente.Cliente.Tercero.Nombre",
+            //    operator: "contains"
+            //},
             scrollable: {
                 virtual: true
             },
@@ -122,104 +161,97 @@
         };
 
 
-        ////ConciliacionesByCliente paginados Prev
-        //$scope.ConciliacionesByClientePaginadosPrev = function () {
-        //    //debugger;
-        //    $scope.page3 = $scope.page3 - 1;
-        //    $scope.Rows3 = 10;
-        //    $scope.Next3 = false;
-        //    if ($scope.page3 == 0)
-        //        $scope.Prev3 = true;
-        //    angular.element("#divConciliacionesEnvia").data("kendoMobileListView").dataSource.read();
-        //    angular.element("#divConciliacionesEnvia").data("kendoMobileListView").refresh();
+        //ConciliacionespaginadasByCliente Prev
+        $scope.ConciliacionespaginadasByClientePrev = function () {
+            //debugger;
+            $scope.pagina = $scope.pagina - 1;
+            $scope.Rows8 = 10;
+            $scope.Next8 = false;
+            if ($scope.pagina == 0)
+                $scope.Prev8 = true;
+            angular.element("#divConciliacionesEnvia").data("kendoMobileListView").dataSource.read();
+            angular.element("#divConciliacionesEnvia").data("kendoMobileListView").refresh();
 
-        //};
+        };
 
-        ////ConciliacionesByCliente paginados Next
-        //$scope.ConciliacionesByClientePaginadosNext = function () {
-        //    //debugger;
-        //    $scope.page3 = $scope.page3 + 1;
-        //    $scope.Rows3 = 10;
-        //    if ($scope.page3 > 0)
-        //        $scope.Prev3 = false;
-        //    var ConciliacionesByCliente = conciliacionesService.ConciliacionesPaginadosByCliente(authorizationService.getId(), $scope.page3, $scope.rows3, $scope.filter3)
-        //    angular.element("#divConciliacionesEnvia").data("kendoMobileListView").dataSource.read();
-        //    angular.element("#divConciliacionesEnvia").data("kendoMobileListView").refresh();
+        //ConciliacionespaginadasByCliente Next
+        $scope.ConciliacionespaginadasByClienteNext = function () {
+            //debugger;
+            $scope.pagina = $scope.pagina + 1;
+            $scope.Rows8 = 10;
+            if ($scope.pagina > 0)
+                $scope.Prev8 = false;
+            if ($scope.pagina == ($scope.TotalPagesConciliaciones1 - 1))
+                $scope.Next8 = true;
+            angular.element("#divConciliacionesEnvia").data("kendoMobileListView").dataSource.read();
+            angular.element("#divConciliacionesEnvia").data("kendoMobileListView").refresh();
+        };
 
-        //    ConciliacionesByCliente.then(function (p1) {
-        //        var Con = p1.data;
-        //        if (Con.length < 10)
-        //            $scope.Next3 = true;
-        //    })
-        //};
+        //ConciliacionespaginadasByCliente filtrar
+        $scope.ConciliacionespaginadasByClienteFiltrar = function () {
+            $scope.pagina = 0;
+            $scope.filter8;
+            $scope.Prev8 = true;
+            if ($scope.TotalPagesConciliaciones1 > 1)
+                $scope.ShowPagingConciliaciones1 = true;
+            if ($scope.filter8 == "")
+                $scope.filter8 = "null"
+            angular.element("#divConciliacionesEnvia").data("kendoMobileListView").dataSource.read();
+            angular.element("#divConciliacionesEnvia").data("kendoMobileListView").refresh();
+            var ConciliacionespaginadasByCliente = conciliacionesService.ConciliacionesPaginadosByCliente(authorizationService.getId(), $scope.pagina, $scope.rows8, $scope.filter8)
+            ConciliacionespaginadasByCliente.then(function (p1) {
+                var ben = p1.data;
+                if (ben.length < 10)
+                    $scope.ShowPagingConciliaciones1 = false;
+            })
+            $scope.filter8 = null;
+        }
 
-        ////ConciliacionesByCliente Paginados filtrar
-        //$scope.ConciliacionesByClienteFiltrar = function () {
-        //    $scope.page3 = 0;
-        //    $scope.filter3;
-        //    $scope.Next3 = false;
-        //    if ($scope.filter3 == "")
-        //        $scope.filter3 = "null"
-        //    angular.element("#divConciliacionesEnvia").data("kendoMobileListView").dataSource.read();
-        //    angular.element("#divConciliacionesEnvia").data("kendoMobileListView").refresh();
-        //    var ConciliacionesByCliente = conciliacionesService.ConciliacionesPaginadosByCliente(authorizationService.getId(), $scope.page3, $scope.rows3, $scope.filter3)
-        //    ConciliacionesByCliente.then(function (p1) {
-        //        var con = p1.data;
-        //        if (con.length < 10)
-        //            $scope.Next3 = true;
-        //    })
-        //    $scope.filter3 = null;
-        //}
+        //ConciliacionespaginadasByAliado Prev
+        $scope.ConciliacionespaginadasByAliadoPrev = function () {
+            //debugger;
+            $scope.page10 = $scope.page10 - 1;
+            $scope.Rows10 = 10;
+            $scope.Next10 = false;
+            if ($scope.page10 == 0)
+                $scope.Prev10 = true;
+            angular.element("#GridConciliaciones2").data("kendoMobileListView").dataSource.read();
+            angular.element("#GridConciliaciones2").data("kendoMobileListView").refresh();
 
-        ////ConciliacionesByAliado paginados Prev
-        //$scope.ConciliacionesByAliadoPaginadosPrev = function () {
-        //    //debugger;
-        //    $scope.page4 = $scope.page4 - 1;
-        //    $scope.Rows4 = 10;
-        //    $scope.Next4 = false;
-        //    if ($scope.page4 == 0)
-        //        $scope.Prev4 = true;
-        //    angular.element("#divConciliacionesEnvia2").data("kendoMobileListView").dataSource.read();
-        //    angular.element("#divConciliacionesEnvia2").data("kendoMobileListView").refresh();
+        };
 
-        //};
+        //ConciliacionespaginadasByAliado Next
+        $scope.ConciliacionespaginadasByAliadoNext = function () {
+            //debugger;
+            $scope.page10 = $scope.page10 + 1;
+            $scope.Rows10 = 10;
+            if ($scope.page10 > 0)
+                $scope.Prev10 = false;
+            if ($scope.page10 == ($scope.TotalPagesConciliaciones2 - 1))
+                $scope.Next10 = true;
+            angular.element("#GridConciliaciones2").data("kendoMobileListView").dataSource.read();
+            angular.element("#GridConciliaciones2").data("kendoMobileListView").refresh();
+        };
 
-        ////ConciliacionesByAliado paginados Next
-        //$scope.ConciliacionesByAliadoPaginadosNext = function () {
-        //    //debugger;
-        //    $scope.page4 = $scope.page4 + 1;
-        //    $scope.Rows4 = 10;
-        //    if ($scope.page4 > 0)
-        //        $scope.Prev4 = false;
-        //    var ConciliacionesByAliado = conciliacionesService.ConciliacionesPaginadosByAliado(authorizationService.getId(), $scope.page4, $scope.rows4, $scope.filter4)
-        //    angular.element("#divConciliacionesEnvia2").data("kendoMobileListView").dataSource.read();
-        //    angular.element("#divConciliacionesEnvia2").data("kendoMobileListView").refresh();
-
-        //    ConciliacionesByAliado.then(function (p1) {
-        //        var Con = p1.data;
-        //        if (Con.length < 10)
-        //            $scope.Next4 = true;
-        //    })
-        //};
-
-        ////ConciliacionesByAliado Paginados filtrar
-        //$scope.ConciliacionesByAliadoFiltrar = function () {
-        //    $scope.page4 = 0;
-        //    $scope.filter4;
-        //    $scope.Next4 = false;
-        //    if ($scope.filter4 == "")
-        //        $scope.filte4 = "null"
-        //    angular.element("#divConciliacionesEnvia2").data("kendoMobileListView").dataSource.read();
-        //    angular.element("#divConciliacionesEnvia2").data("kendoMobileListView").refresh();
-        //    var ConciliacionesByAliado = conciliacionesService.ConciliacionesPaginadosByAliado(authorizationService.getId(), $scope.page4, $scope.rows4, $scope.filter4)
-        //    ConciliacionesByAliado.then(function (p1) {
-        //        var con = p1.data;
-        //        if (con.length < 10)
-        //            $scope.Next4 = true;
-        //    })
-        //    $scope.filter4 = null;
-        //}
-
+        //ConciliacionespaginadasByAliado filtrar
+        $scope.ConciliacionespaginadasByAliadoFiltrar = function () {
+            $scope.page10 = 0;
+            $scope.filter10;
+            $scope.Prev10 = false;
+            if ($scope.TotalPagesConciliaciones2 > 1)
+                $scope.ShowPagingConciliaciones2 = true;
+            if ($scope.filter10 == "")
+                $scope.filter10 = "null"
+            angular.element("#GridConciliaciones2").data("kendoMobileListView").dataSource.read();
+            angular.element("#GridConciliaciones2").data("kendoMobileListView").refresh();
+            var ConciliacionespaginadasByAliado = conciliacionesService.ConciliacionesPaginadosByAliado(authorizationService.getId(), $scope.page10, $scope.rows10, $scope.filter10)
+            ConciliacionespaginadasByAliado.then(function (p1) {
+                var ben = p1.data;
+                if (ben.length < 10)
+                    $scope.ShowPagingConciliaciones2 = false;
+            })
+            $scope.filter10 = null;
+        }
     };
 
 })();

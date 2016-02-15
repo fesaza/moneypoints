@@ -51,7 +51,7 @@ angular.module('moneyPointsApp').service('conciliacionesService', function ($htt
 
     //ConciliacioneByCliente con paginacion
     this.ConciliacionesPaginadosByCliente = function (clienteId, page, rows, filter) {
-        debugger;
+        //debugger;
         return $http.get($rootScope.baseAddress + "/api/Conciliaciones/ConciliacionespaginadasByCliente/" + clienteId + "/" + page + "/" + rows + "/" + filter);
     }
 
