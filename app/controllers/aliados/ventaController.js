@@ -42,6 +42,7 @@
             $scope.error = false;
             $scope.error2 = false;
             $scope.QR = true;
+            $scope.finCompra2 = true;
             kendo.ui.progress($("#frmVenta"), true);
 
             //Limpiar div
