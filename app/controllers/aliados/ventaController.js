@@ -14,7 +14,7 @@
         var clienteId = authorizationService.getId();
         //$scope.onlyNumber = /^\d+$/;
         $scope.venta = null;
-
+        $scope.finCompra2 = true;
         var updateGreetingMessage = function (text) {
             $scope.text = text;
         }
@@ -28,11 +28,11 @@
         });
 
         var finalizarCompraCallBack = function (message) {
-            ////debugger;
-            var factura = message;
-            var numero = factura.split(".");
-            new PNotify({ text: message, type: 'info', delay: 3000 });
-      
+           
+           if ($scope.finCompra2 == true) {
+               new PNotify({ text: message, type: 'info', delay: 3000 });
+               $scope.finCompra2 = false;
+           }
         };
 
         ventaService.initialize();

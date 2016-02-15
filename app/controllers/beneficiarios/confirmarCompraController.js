@@ -25,9 +25,6 @@
                 $scope.Load = false;
                 CompraFinalizada()
             }
-            //$location.path('/CompraFinalizada/' + numero)
-            ////$scope.goPath('/HomeBeneficiario');
-            ////$location.path('/CompraFinalizada')
             if ($scope.finCompra == true) {
                 new PNotify({ text: message, type: 'info', delay: 3000 });
                 $scope.finCompra = false;
