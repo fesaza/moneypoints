@@ -1,5 +1,6 @@
-﻿<div class="container  form-home">
-    <div class="container form-home  ">
+﻿<br />
+<div class="container  form-home" style="height:100%">
+    <div class="container form-home  " style="height:100%">
         <form name="formRecuperar" role="form" ng-submit="RecuperarContrasena()">
             <br />
             <hr />
@@ -27,7 +28,7 @@
                 <input type="password" ng-model="beneficiario.Tercero.Pregunta3" class="form-control" id="txtpregunta3" name="txtpregunta3" required>
                 <span ng-show="form.txtpregunta3.$dirty && form.txtpregunta3.$error.required" class="help-block">Pregunta es requerida</span>
             </div>
-
+            <br />
             <button class="btn btn-lg btn-block btn-marg btn-registrar" ng-disabled="form.$invalid || dataLoading"  type="submit">Aceptar</button>
 
         </form>
