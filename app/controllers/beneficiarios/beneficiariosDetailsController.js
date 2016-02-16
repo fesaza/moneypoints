@@ -162,7 +162,7 @@
                 promiseGuadarbeneficiario.then(function (pl) {
                    
                     new PNotify({
-                        text: 'Se insertó Correctamente',
+                        text: 'El registro fue exitoso',
                         type: 'info',
                         delay: 3000
                     });

@@ -8,6 +8,12 @@
     function clientesDetailsController($rootScope, $scope, $routeParams, clientesService, beneficiariosService,
         equivalenciasService, afiliadosClientesService, authorizationService, Base64) {
 
+        //var EsteEs = document.getElementById("EsteES");
+        //EsteEs.scrollTop(0);
+        $('#EsteES').css('transform', 'translate3d(0, 0, 0)');
+        $('#S2').css('transform', 'translate3d(0, 20px, 0)');
+
+
         $scope.Cambios = false;
         var clienteId = $routeParams.ClienteId;
         $scope.onlyNumber = /^\d+$/;
