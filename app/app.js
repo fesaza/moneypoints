@@ -163,11 +163,7 @@ app.config(function ($routeProvider, $httpProvider) {
             templateUrl: 'app/views/beneficiarios/beneficiariosView.html',
             controller: 'beneficiariosController'
         })
-        //.when('/CompraFinalizada/:numero', {
-        //    templateUrl: 'app/views/beneficiarios/compra/CompraFinalizada.html',
-        //    controller: 'CompraFinalizada'
 
-        //})
          .otherwise({
              redirectTo: 'app/home.html'
          });

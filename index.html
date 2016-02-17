@@ -34,7 +34,7 @@
 
         <div ng-include="'menu.html'" ng-show="hideMenus"  style="align-content:center" class="bs-box" ng-controller="indexCtrl">
         </div>
-        <kendo-mobile-view use-native-scrolling="true" ng-controller="indexCtrl"  scroller='{"elastic": false}'>
+        <kendo-mobile-view use-native-scrolling="true" ng-controller="indexCtrl"  scroller='{"elastic": false}' id="S3">
             <div ng-view autoscroll>
             </div>
         </kendo-mobile-view>
@@ -96,6 +96,6 @@
     <script src="app/controllers/clientes/equivalenciasController.js"></script>
     <script src="app/controllers/beneficiarios/HomeBeneficiarioController.js"></script>
     <script src="app/controllers/beneficiarios/RecuperarContrasenaController.js"></script>
-    <!--<script src="app/comtrollers/beneficiarios/CompraFinalizada.js"></script>-->
+
 </body>
 </html>

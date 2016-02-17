@@ -2,7 +2,8 @@
     ['$rootScope', '$routeParams', '$scope', 'beneficiariosClienteService', 'beneficiariosPuntosService', cargarPuntosController]);
 
 function cargarPuntosController($rootScope, $routeParams, $scope, beneficiariosClienteService, beneficiariosPuntosService) {
-
+    $('#EsteES').css('transform', 'translate3d(0, 0, 0)');
+    $("#S2").scrollTop(0);
     var id = $routeParams.beneficiariosClienteId;
 
     beneficiariosClienteService.get(id).then(function (pl) {

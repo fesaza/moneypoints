@@ -6,7 +6,8 @@
         '$routeParams', 'conciliacionesService', 'authorizationService', conciliacionesDetailsController]);
 
     function conciliacionesDetailsController($rootScope, $scope, $routeParams, conciliacionesService, authorizationService) {
-
+        $('#EsteES').css('transform', 'translate3d(0, 0, 0)');
+        $("#S2").scrollTop(0);
         var conciliacionId = $routeParams.conciliacionId;
         $scope.conciliacion = {};
 

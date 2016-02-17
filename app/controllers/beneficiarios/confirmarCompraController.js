@@ -6,6 +6,8 @@
         ['$scope', '$rootScope', '$', 'ventaService','beneficiariosClienteService', 'dataVenta','$location', confirmarCompraController]);
 
     function confirmarCompraController($scope, $rootScope, $, ventaService,beneficiariosClienteService, dataVenta,$location) {
+    $('#EsteES').css('transform', 'translate3d(0, 0, 0)');
+        $("#S2").scrollTop(0);
 
         $scope.canSolicitarPin = false;
         $scope.Load = false;
@@ -34,8 +36,6 @@
         var CompraFinalizada = function(){
             //debugger;
             $scope.Load = false;
-        //$scope.goPath('/HomeBeneficiario')
-        //$location.path('#/CompraFinalizada/' + numero)
         }
 
 
@@ -128,8 +128,7 @@
             venta.Pin = $('#formRegPin').val();  //Debe ser quitado, no se debe trabajar de esta manera
             venta.BeneficiariosClienteId = $scope.programa.BeneficiariosClienteId;
             var Venta = ventaService.finalizarCompra(venta);
-            //CompraFinalizada()
-            //$scope.goPath('/CompraFinalizada');
+
         };
 
         

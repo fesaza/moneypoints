@@ -4,8 +4,7 @@
     <img src="css\images\beneficiario.png" />
 </div>
 <div class="container form-cliente">
-    <h2 class="titles-vw">
-        Listar beneficiarios</h2>
+    <h2 class="titles-vw"> Listar beneficiarios</h2>
 
         <button ng-click="goPath('/beneficiariosDetails/0')" class="btn btn-primary btn-lg btn-block">Nuevo beneficiario</button>
         <div id="space"></div>
@@ -33,7 +32,7 @@
 
 
     <script id="rowBeneficiariosTemplate2" type="text/x-kendo-tmpl">
-        <a class="container list-style line-list" href="\#/beneficiariosDetails/{{dataItem.BeneficiarioId}}" ng-click="form.Location = new Point(100, 100);">
+        <a class="container list-style line-list" href="\#/beneficiariosDetails/{{dataItem.BeneficiarioId}}" >
             <div>
 
                 {{dataItem.Tercero.Nombre}}
