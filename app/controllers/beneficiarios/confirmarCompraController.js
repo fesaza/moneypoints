@@ -6,8 +6,8 @@
         ['$scope', '$rootScope', '$', 'ventaService','beneficiariosClienteService', 'dataVenta','$location', confirmarCompraController]);
 
     function confirmarCompraController($scope, $rootScope, $, ventaService,beneficiariosClienteService, dataVenta,$location) {
-    $('#EsteES').css('transform', 'translate3d(0, 0, 0)');
-        $("#S2").scrollTop(0);
+    //$('#EsteES').css('transform', 'translate3d(0, 0, 0)');
+    //    $("#S2").scrollTop(0);
 
         $scope.canSolicitarPin = false;
         $scope.Load = false;

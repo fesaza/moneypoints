@@ -8,8 +8,8 @@
     function recibirConciliacionesController($rootScope, $scope, $routeParams, conciliacionesService, authorizationService) {
         //debugger;
 
-        $('#EsteES').css('transform', 'translate3d(0, 0, 0)');
-        $("#S2").scrollTop(0);
+        //$('#EsteES').css('transform', 'translate3d(0, 0, 0)');
+        //$("#S2").scrollTop(0);
         var conciliacionId = $routeParams.conciliacionId;
         $scope.conciliacion = {};
 

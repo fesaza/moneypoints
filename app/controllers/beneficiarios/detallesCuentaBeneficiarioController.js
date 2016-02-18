@@ -4,8 +4,8 @@
     angular.module("moneyPointsApp").controller('detallesCuentaBeneficiarioController', ['$rootScope', '$scope', '$routeParams', 'beneficiariosPuntosService', detallesCuentaBeneficiarioController]);
 
     function detallesCuentaBeneficiarioController($rootScope, $scope, $routeParams, beneficiariosPuntosService) {
-        $('#EsteES').css('transform', 'translate3d(0, 0, 0)');
-        $("#S2").scrollTop(0);
+        //$('#EsteES').css('transform', 'translate3d(0, 0, 0)');
+        //$("#S2").scrollTop(0);
 
         kendo.ui.progress($("#form"), true);
         var beneficiariosClienteId = $routeParams.beneficiariosClienteId;

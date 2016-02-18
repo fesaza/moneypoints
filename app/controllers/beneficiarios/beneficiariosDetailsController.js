@@ -5,8 +5,8 @@
 
     function beneficiariosDetailsController($rootScope, $scope, $routeParams, beneficiariosService, beneficiariosClienteService, authorizationService, Base64) {
      
-    $('#EsteES').css('transform', 'translate3d(0, 0, 0)');
-    $("#S2").scrollTop(0);
+    //$('#EsteES').css('transform', 'translate3d(0, 0, 0)');
+    //$("#S2").scrollTop(0);
 
         var beneficiarioId = $routeParams.beneficiarioId;
         if (beneficiarioId.indexOf("-cuenta") > -1) {

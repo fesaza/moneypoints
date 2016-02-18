@@ -9,10 +9,6 @@
         equivalenciasService, afiliadosClientesService, authorizationService, Base64) {
 
 
-        $('#EsteES').css('transform', 'translate3d(0, 0, 0)');
-        $("#S2").scrollTop(0);
-
-
         $scope.Cambios = false;
         var clienteId = $routeParams.ClienteId;
         $scope.onlyNumber = /^\d+$/;

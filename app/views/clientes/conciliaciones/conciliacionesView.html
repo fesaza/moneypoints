@@ -2,12 +2,12 @@
 <div class="row-fluid banner-ventas">
     <img src="css\images\Conciliaciones.jpg" />
 </div>
-<div class="container css-form form-cliente" style="width:97%; position:static">
+<div class="container css-form form-cliente" >
     <div kendo-tab-strip k-content-urls="[ null, null]" id="" style=" ;background-color: rgba(255, 255, 255, 0) !important">
         <!-- tab list -->
         <ul>
             <li class="k-state-active">Enviar</li>
-            <li >Recibir</li>
+            <li style="width:49%" >Recibir</li>
         </ul>
 
         <!-- Primer tab -->
@@ -20,7 +20,7 @@
 
                     <div class="form-group">
                         <input type="text" ng-model="filter8" class="form-control" id="txtFilter" name="txtFilter" style="width:80%; height:35px !important" placeholder="Search...">
-                        <button ng-click="ConciliacionespaginadasByClienteFiltrar()" class="btn btn-primary btn-lg btn-block fa fa-search" style="height:35px; width:35px; margin-left:87%; margin-top:-18%"></button>
+                        <button ng-click="ConciliacionespaginadasByClienteFiltrar()" class="btn btn-primary btn-lg btn-block fa fa-search" style="height:15px; width:13px; margin-left:91%; margin-top:-23%"></button>
                     </div>
 
                     <kendo-mobile-list-view id="divConciliacionesEnvia" options="conciliacionAliadosGridOptions" />

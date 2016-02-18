@@ -5,7 +5,7 @@
 
     function RecuperarContrasenaController($rootScope, $scope, $routeParams, beneficiariosService,  Base64) {
 
-
+        $scope.dataLoading = false;
         //Recuperar Contraseña
         $scope.RecuperarContrasena = function () {
             var Recuperar = beneficiariosService.RecuperarContrasena($scope.beneficiario.Tercero);

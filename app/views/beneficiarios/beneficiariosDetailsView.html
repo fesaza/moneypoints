@@ -3,13 +3,13 @@
 
     <img style="margin-top:-43px"src="css\images\Informacion-beneficiario6.png" />
 </div>
-<div class="container css-form form-cliente" style="width:97%"  position:static">
+<div class="container css-form form-cliente"  >
     <div id="form" kendo-tab-strip k-content-urls="[ null, null]"  style="background-color: rgba(255, 255, 255, 0) !important">
         <!-- tab list -->
         <ul>
 
             <li id="perfil" ng-show="showEstados" >Perfil</li>
-            <li id="cuenta" ng-show="showEstados" >Cuentas</li>
+            <li style="width:49%" id="cuenta" ng-show="showEstados" >Cuentas</li>
         </ul>
 
 
@@ -22,61 +22,61 @@
 
                     <div class="form-group">
                         <label style="font-size:13px">Cédula <a style="color:brown !important">*</a></label>
-                        <input type="text" ng-model="beneficiario.Tercero.Identificacion" class="form-control" id="txtIdentificacion" name="txtIdentificacion" required placeholder="Cédula" ng-pattern="onlyNumber" >
+                        <input type="text" style="height:20px !important" ng-model="beneficiario.Tercero.Identificacion" class="form-control" id="txtIdentificacion" name="txtIdentificacion" required placeholder="Cédula" ng-pattern="onlyNumber" >
                         <span ng-show="form.txtIdentificacion.$dirty && form.txtIdentificacion.$error.required" class="help-block">Identificación es requerida</span>
                         <span ng-show="form.txtIdentificacion.$error.pattern" class="help-block">Verifique que la identificación sea numérica</span>
                     </div>
 
                     <div class="form-group">
                         <label style="font-size:13px">Nombre <a style="color:brown !important">*</a></label>
-                        <input type="text" ng-model="beneficiario.Tercero.Nombre" class="form-control" id="txtNombre" name="txtNombre" required placeholder="Nombre">
+                        <input type="text" style="height:20px !important" ng-model="beneficiario.Tercero.Nombre" class="form-control" id="txtNombre" name="txtNombre" required placeholder="Nombre">
                         <span ng-show="form.txtNombre.$dirty && form.txtNombre.$error.required" class="help-block">Nombre es requerido</span>
                     </div>
 
                     <div class="form-group">
                         <label style="font-size:13px">Apellidos <a style="color:brown !important">*</a></label>
-                        <input type="text" ng-model="beneficiario.Tercero.Apellidos" class="form-control" id="txtApellidos" required placeholder="Apellidos">
+                        <input type="text" style="height:20px !important" ng-model="beneficiario.Tercero.Apellidos" class="form-control" id="txtApellidos" required placeholder="Apellidos">
                         <span ng-show="form.txtApellidos.$dirty && form.txtApellidos.$error.required" class="help-block">Apellido es requerido</span>
                     </div>
 
                     <div class="form-group">
                         <label style="font-size:13px">Dirección</label>
-                        <input type="text" ng-model="beneficiario.Tercero.Direccion" class="form-control" id="formRegBen" placeholder="Dirección">
+                        <input type="text" style="height:20px !important" ng-model="beneficiario.Tercero.Direccion" class="form-control" id="formRegBen" placeholder="Dirección">
                         <span class="help-block"></span>
                     </div>
                     <div class="form-group">
                         <label style="font-size:13px">Teléfono</label>
-                        <input type="text" ng-model="beneficiario.Tercero.Telefono" class="form-control" id="formRegBen" placeholder="Teléfono" name="txtTelefono" ng-pattern="onlyNumber">
+                        <input type="text" style="height:20px !important" ng-model="beneficiario.Tercero.Telefono" class="form-control" id="formRegBen" placeholder="Teléfono" name="txtTelefono" ng-pattern="onlyNumber">
                         <span ng-show="form.txtTelefono.$error.pattern" class="help-block">Verifique que el teléfono sea numérico </span>
                         <span class="help-block"></span>
                     </div>
                     <div class="form-group">
                         <label style="font-size:13px">Celular</label>
-                        <input type="text" class="form-control" ng-model="beneficiario.Tercero.Celular" id="formRegBen" placeholder="Celular" name="txtCelular" ng-pattern="onlyNumber">
+                        <input type="text" style="height:20px !important" class="form-control" ng-model="beneficiario.Tercero.Celular" id="formRegBen" placeholder="Celular" name="txtCelular" ng-pattern="onlyNumber">
                         <span ng-show="form.txtCelular.$error.pattern" class="help-block">Verifique que el celular sea numérico </span>
                         <span class="help-block"></span>
                     </div>
                     <div class="form-group">
                         <label style="font-size:13px">Email <a style="color:brown !important">*</a></label>
-                        <input type="email" class="form-control" ng-model="beneficiario.Tercero.Correo" id="formRegBen" placeholder="Email" name="txtEmail" required>
+                        <input type="email"  style="height:20px !important" class="form-control" ng-model="beneficiario.Tercero.Correo" id="formRegBen" placeholder="Email" name="txtEmail" required>
                         <span ng-show="form.txtEmail.$error.pattern" class="help-block">Verifique que el email sea valido</span>
                         <span class="help-block"></span>
                     </div>
                     <div class="form-group">
                         <label style="font-size:13px">Nombre de su primera mascota? <a style="color:brown !important">*</a></label>
-                        <input type="text" ng-model="beneficiario.Tercero.Pregunta1" class="form-control" id="txtpregunta1" name="txtpregunta1" required>
+                        <input type="text" style="height:20px !important" ng-model="beneficiario.Tercero.Pregunta1" class="form-control" id="txtpregunta1" name="txtpregunta1" required>
                         <span ng-show="form.txtpregunta1.$dirty && form.txtpregunta1.$error.required" class="help-block">Pregunta es requerida</span>
                     </div>
 
                     <div class="form-group">
                         <label style="font-size:13px">Nombre de su tío preferido? <a style="color:brown !important">*</a></label>
-                        <input type="text" ng-model="beneficiario.Tercero.Pregunta2" class="form-control" id="txtpregunta2" name="txtpregunta2" required>
+                        <input type="text" style="height:20px !important" ng-model="beneficiario.Tercero.Pregunta2" class="form-control" id="txtpregunta2" name="txtpregunta2" required>
                         <span ng-show="form.txtpregunta2.$dirty && form.txtpregunta2.$error.required" class="help-block">Pregunta es requerida</span>
                     </div>
 
                     <div class="form-group">
                         <label style="font-size:13px">En que ciudad naciste? <a style="color:brown !important">*</a></label>
-                        <input type="text" ng-model="beneficiario.Tercero.Pregunta3" class="form-control" id="txtpregunta3" name="txtpregunta3" required>
+                        <input type="text" style="height:20px !important" ng-model="beneficiario.Tercero.Pregunta3" class="form-control" id="txtpregunta3" name="txtpregunta3" required>
                         <span ng-show="form.txtpregunta3.$dirty && form.txtpregunta3.$error.required" class="help-block">Pregunta es requerida</span>
                     </div>
                     <div class="form-group">
@@ -97,33 +97,33 @@
                         <h3>Login</h3>
                         <div class="form-group">
                             <label>Login <a style="color:brown !important">*</a></label>
-                            <input type="text" ng-required="!IsEditing" class="form-control" ng-model="security.Login" id="txtLogin" name="txtLogin" placeholder="Login">
+                            <input type="text" style="height:20px !important" ng-required="!IsEditing" class="form-control" ng-model="security.Login" id="txtLogin" name="txtLogin" placeholder="Login">
                             <span ng-show="form.txtLogin.$dirty && form.txtLogin.$error.required" class="help-block">Login es requerido</span>
                         </div>
 
                         <div class="form-group">
                             <label>Nueva Clave <a style="color:brown !important">*</a></label>
-                            <input type="password" ng-required="!IsEditing" data-ng-model="security.newClave" class="form-control" id="txtClaveNew" name="txtClaveNew" placeholder="Nueva clave">
+                            <input type="password" style="height:20px !important" ng-required="!IsEditing" data-ng-model="security.newClave" class="form-control" id="txtClaveNew" name="txtClaveNew" placeholder="Nueva clave">
                             <span ng-show="form.txtClaveNew.$dirty && form.txtClaveNew.$error.required" class="help-block">Clave es requerida</span>
                         </div>
 
                         <div class="form-group">
                             <label>Confirmar Clave <a style="color:brown !important">*</a></label>
-                            <input type="password" ng-required="!IsEditing" data-ng-model="security.newClaveConfirm" class="form-control" id="txtClaveConfirm" name="txtClaveConfirm" placeholder="Confirmar clave">
+                            <input type="password" style="height:20px !important" ng-required="!IsEditing" data-ng-model="security.newClaveConfirm" class="form-control" id="txtClaveConfirm" name="txtClaveConfirm" placeholder="Confirmar clave">
                             <span ng-show="form.txtClaveConfirm.$dirty && form.txtClaveConfirm.$error.required" class="help-block">Clave es requerida</span>
                             <span ng-show="form.txtClaveConfirm.$dirty && security.newClave != security.newClaveConfirm" class="help-block">La clave no coincide</span>
                         </div>
 
                         <div class="form-group">
                             <label>Nuevo PIN <a style="color:brown !important">*</a></label>
-                            <input type="password" ng-required="!IsEditing" ng-maxlength="4" ng-minlength="4" data-ng-model="security.newPIN" class="form-control" id="txtPINNew" name="txtPINNew" placeholder="Nuevo PIN">
+                            <input type="password" style="height:20px !important" ng-required="!IsEditing" ng-maxlength="4" ng-minlength="4" data-ng-model="security.newPIN" class="form-control" id="txtPINNew" name="txtPINNew" placeholder="Nuevo PIN">
                             <span ng-show="form.txtPINNew.$dirty && form.txtPINNew.$error.required" class="help-block">PIN es requerido</span>
                             <span ng-show="form.txtPINNew.$dirty && security.newPIN.length!=4" class="help-block">PIN es de 4 digitos</span>
                         </div>
 
                         <div class="form-group">
                             <label>Confirmar PIN <a style="color:brown !important">*</a></label>
-                            <input type="password" ng-required="!IsEditing" ng-maxlength="4" ng-minlength="4" data-ng-model="security.newPINConfirm" class="form-control" id="txtPINConfirm" name="txtPINConfirm" placeholder="Confirmar PIN">
+                            <input type="password" style="height:20px !important" ng-required="!IsEditing" ng-maxlength="4" ng-minlength="4" data-ng-model="security.newPINConfirm" class="form-control" id="txtPINConfirm" name="txtPINConfirm" placeholder="Confirmar PIN">
                             <span ng-show="form.txtPINConfirm.$dirty && form.txtPINConfirm.$error.required" class="help-block">PIN es requerido</span>
                             <span ng-show="form.txtPINConfirm.$dirty && security.newPIN != security.newPINConfirm" class="help-block">El nuevo PIN no coincide</span>
                             <span ng-show="form.txtPINConfirm.$dirty && security.newPINConfirm.length!=4" class="help-block">PIN es de 4 digitos</span>
@@ -133,7 +133,7 @@
 
                 <div id="buttons">
                     <button type="submit" ng-disabled="form.$invalid || (security.newClave != security.newClaveConfirm && !IsEditing) || Load" class="btn btn-info">Guardar</button>
-                    <button class="btn btn-success" style="background: brown !important; border-color:brown !important " ng-show="canDelete && !Nuevo" ng-click="deletebeneficiario()" >Eliminar</button>
+                    <button class="btn btn-success"  style="background: brown !important; border-color:brown !important ;height:20px !important" ng-show="canDelete && !Nuevo" ng-click="deletebeneficiario()" >Eliminar</button>
                     <button class="btn btn-danger" style="border-color:#018478 !important" ng-show="canCancel" ng-click="goPath('/beneficiarios')">Cancelar</button>
                 </div>
             </form>
