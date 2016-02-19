@@ -537,7 +537,7 @@ color:#c9c9c9 !important;
 }
 
 
-/*-------------styles otro login-------------*/
+/*-------------styles login-------------*/
     
 .login-logo{
       width: 98%;
@@ -547,9 +547,9 @@ color:#c9c9c9 !important;
 
 .bg-login{
       width: 100%;
-  min-height: 100%;
+  min-height: 920px;
   background-color: #46474b;
-  max-height: 200%;
+  max-height: 2500px;
 }
 
  .control-log {
