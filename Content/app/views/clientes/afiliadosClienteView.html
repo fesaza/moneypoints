@@ -1,0 +1,27 @@
+﻿<div class="row-fluid banner-ventas">
+    <img src="css\images\afiliados.png" />
+</div>
+
+<div class="form-cliente">
+    <div style="margin-left:3%;   margin-top: 10px; margin-bottom: 10px;">
+        <select id="cmbAliado" name="cmbAliado" style="width:68%"
+                kendo-drop-down-list="cmbAliado" options="aliadosSelectOpts"
+                data-ng-model="aliado"></select>
+        <button ng-click="agregarAliado()" class="btn btn-info">Agregar</button>
+    </div>
+
+    <div id="divAfiliadosCliente"  kendo-mobile-list-view="aliados" options="aliadosClienteOpts" />
+</div>
+
+<script id="tmpAfiliadosCliente" type="text/x-kendo-tmpl">
+
+    <div>
+        <h3>
+            {{dataItem.Afiliado.Cliente.Tercero.Nombre}}
+        </h3>
+        <div>
+            {{dataItem.FechaIngreso | date : 'dd-MM-yyyy'}}
+        </div>
+    </div>
+
+</script>
