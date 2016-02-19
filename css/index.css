@@ -541,9 +541,9 @@ color:#c9c9c9 !important;
 
 .bg-login{
       width: 100%;
-  min-height: 150%;
+  min-height: 300%
   background-color: #46474b;
-  max-height: 150%;
+  max-height: 300%
 }
 
  .control-log {
