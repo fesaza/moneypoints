@@ -36,7 +36,7 @@
           
             if (response.success == false) {
                 $scope.cargar = false;
-                new PNotify({ text: "Error: " + response.Message, type: "danger", delay: 3000 });
+                new PNotify({ text: "Error: " + response.data.Message, type: "danger", delay: 3000 });
                 $scope.ErrorPassword = true;
                 $scope.ErrorPin = true;
 
@@ -51,7 +51,7 @@
                 new PNotify({ text: "La información se modificó satisfactoriamente", type: "info", delay: 3000 });
                 $scope.ErrorPassword = false;
                 $scope.ErrorPin = false;
-                $scope.cargar = false;
+                 $scope.cargar = false;
                 authenticationService.navigateDefaultPage();
             }
         }

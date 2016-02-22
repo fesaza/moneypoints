@@ -26,7 +26,7 @@
              function (errorPl) {
                  handleError(errorPl);
                  kendo.ui.progress($("#form"), false);
-                 console.log('Error calculaando el saldo', errorPl);
+                 console.log('Error calculando el saldo', errorPl);
              });
          
         } 
