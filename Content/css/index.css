@@ -493,7 +493,7 @@ color:#c9c9c9 !important;
 
 @font-face {
     font-family: 'Confidel';
-    src: url('../../css/fonts/DejaVu/Confidel.otf') format('opentype');
+    src: url('css/fonts/DejaVu/Confidel.otf') format('opentype');
 }
 
 .title-list {
