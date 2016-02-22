@@ -8,6 +8,8 @@
         //var beneficiarioId = $routeParams.beneficiarioId
         var user = authorizationService.getCurrentUser();
 
+        $scope.ErrorPassword = false;
+        $scope.ErrorPin = false;
         $scope.canCambiarPIN = true;
 
         if (user && user.rolId != 4) {
@@ -33,6 +35,9 @@
           
             if (response.success == false) {
                 new PNotify({ text: "Error: " + response.Message, type: "danger", delay: 3000 });
+                $scope.ErrorPassword = true;
+                $scope.ErrorPin = true;
+
             } else {               
                 var sec = $scope.security;
                 sec.clave = null;
@@ -42,6 +47,9 @@
                 sec.newPIN = null;
                 sec.newPINConfirm = null;
                 new PNotify({ text: "La información se modificó satisfactoriamente", type: "info", delay: 3000 });
+                $scope.ErrorPassword = false;
+                $scope.ErrorPin = false;
+
                 authenticationService.navigateDefaultPage();
             }
         }
