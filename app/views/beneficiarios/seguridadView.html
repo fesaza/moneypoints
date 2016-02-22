@@ -26,7 +26,7 @@
         </div>
 
         <div class="form-actions">
-            <button type="submit" ng-disabled="form.$invalid || dataLoading ||ErrorPassword|| security.newClave != security.newClaveConfirm || security.newClave == security.clave" class="btn btn-info">Guardar</button>
+            <button type="submit" ng-disabled="form.$invalid ||cargar|| dataLoading ||ErrorPassword|| security.newClave != security.newClaveConfirm || security.newClave == security.clave" class="btn btn-info">Guardar</button>
         </div>
     </form>
 
@@ -58,7 +58,7 @@
         </div>
 
         <div class="form-actions">
-            <button type="submit" ng-disabled="form2.$invalid || dataLoading ||ErrorPin|| security.newPIN != security.newPINConfirm || security.PIN == security.newPIN" class="btn btn-info">Guardar</button>
+            <button type="submit" ng-disabled="form2.$invalid ||cargar|| dataLoading ||ErrorPin|| security.newPIN != security.newPINConfirm || security.PIN == security.newPIN" class="btn btn-info">Guardar</button>
         </div>
     </form>
 </div>

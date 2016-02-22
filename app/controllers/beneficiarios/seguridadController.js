@@ -11,6 +11,7 @@
         $scope.ErrorPassword = false;
         $scope.ErrorPin = false;
         $scope.canCambiarPIN = true;
+        $scope.cargar = false;
 
         if (user && user.rolId != 4) {
             $scope.canCambiarPIN = false;
@@ -18,7 +19,7 @@
 
         $scope.cambiarClave = function () {
             var sec = $scope.security;
-
+            $scope.cargar = true;
             var opts = {
                 UsuarioId: user.usuarioId,
                 Password: Base64.encode(sec.clave),
@@ -34,6 +35,7 @@
         function changePasswordCompleted(response) {
           
             if (response.success == false) {
+                $scope.cargar = false;
                 new PNotify({ text: "Error: " + response.Message, type: "danger", delay: 3000 });
                 $scope.ErrorPassword = true;
                 $scope.ErrorPin = true;
@@ -49,7 +51,7 @@
                 new PNotify({ text: "La información se modificó satisfactoriamente", type: "info", delay: 3000 });
                 $scope.ErrorPassword = false;
                 $scope.ErrorPin = false;
-
+                $scope.cargar = false;
                 authenticationService.navigateDefaultPage();
             }
         }
@@ -57,7 +59,7 @@
         $scope.cambiarPIN = function () {
          
             var sec = $scope.security;
-
+            $scope.cargar = true;
             var opts = {
                 UsuarioId: user.usuarioId,
                 PIN: Base64.encode(sec.PIN),
