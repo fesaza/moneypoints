@@ -36,7 +36,7 @@
           
             if (response.success == false) {
                 $scope.cargar = false;
-                new PNotify({ text: "Error: " + response.Message, type: "danger", delay: 3000 });
+                new PNotify({ text: "Error: " + "Verifique la información ingresada.", type: "danger", delay: 3000 });
                 $scope.ErrorPassword = true;
                 $scope.ErrorPin = true;
 

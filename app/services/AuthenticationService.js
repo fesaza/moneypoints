@@ -22,7 +22,7 @@ angular.module('moneyPointsApp')
                     callback(response);
                 }).error(function (data, status, headers, config) {
                     data.success = false;
-                    callback(data.Message);
+                    callback(data);
                 });
         }
 
@@ -37,7 +37,7 @@ angular.module('moneyPointsApp')
                     callback(response);
                 }).error(function (data, status, headers, config) {
                     data.success = false;
-                    callback(data.Message);
+                    callback(data);
                 });
         }
 
