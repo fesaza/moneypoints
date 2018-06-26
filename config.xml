@@ -16,10 +16,10 @@
   <allow-navigation href="*://*.softwareestrategico.com:90/*" />
   <access origin="http://*.softwareestrategico.com:90" />
   <platform name="android">
-    <icon src="res/icons/android/logo-mp1.png" density="ldpi" />
-    <icon src="res/icons/android/logo-mp1.png" density="mdpi" />
-    <icon src="res/icons/android/logo-mp1.png" density="hdpi" />
-    <icon src="res/icons/android/logo-mp1.png" density="xhdpi" />
+    <icon src="res/icons/android/logo-mp.png" density="ldpi" />
+    <icon src="res/icons/android/logo-mp.png" density="mdpi" />
+    <icon src="res/icons/android/logo-mp.png" density="hdpi" />
+    <icon src="res/icons/android/logo-mp.png" density="xhdpi" />
   </platform>
   <platform name="ios">
     <!-- iOS 8.0+ -->
@@ -67,14 +67,14 @@
     <icon src="res/icons/wp8/Background.png" width="173" height="173" />
   </platform>
   <platform name="android">
-    <splash src="res/icons/android/logo-mp1.png" density="land-hdpi" />
-    <splash src="res/icons/android/logo-mp1.png" density="land-ldpi" />
-    <splash src="res/icons/android/logo-mp1.png" density="land-mdpi" />
-    <splash src="res/icons/android/logo-mp1.png" density="land-xhdpi" />
-    <splash src="res/icons/android/logo-mp1.png" density="port-hdpi" />
-    <splash src="res/icons/android/logo-mp1.png" density="port-ldpi" />
-    <splash src="res/icons/android/logo-mp1.png" density="port-mdpi" />
-    <splash src="res/icons/android/logo-mp1.png" density="port-xhdpi" />
+    <splash src="res/icons/android/logo-mp.png" density="land-hdpi" />
+    <splash src="res/icons/android/logo-mp.png" density="land-ldpi" />
+    <splash src="res/icons/android/logo-mp.png" density="land-mdpi" />
+    <splash src="res/icons/android/logo-mp.png" density="land-xhdpi" />
+    <splash src="res/icons/android/logo-mp.png" density="port-hdpi" />
+    <splash src="res/icons/android/logo-mp.png" density="port-ldpi" />
+    <splash src="res/icons/android/logo-mp.png" density="port-mdpi" />
+    <splash src="res/icons/android/logo-mp.png" density="port-xhdpi" />
   </platform>
   <platform name="ios">
     <splash src="res/screens/ios/screen-iphone-portrait.png" width="320" height="480" />
