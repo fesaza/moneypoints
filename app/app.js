@@ -219,8 +219,6 @@ app.controller('indexCtrl', function ($scope, CordovaService, $location, $rootSc
     //$rootScope.baseAddress = "http://aplicaciones.softwareestrategico.com:90/moneypoints_pru";
     $rootScope.baseAddress = "http://developer.lappiz.io/MoneyPoints";
 
-    
-
     $scope.tcdevicePixelRatio = window.devicePixelRatio;
 
     $rootScope.$on('refreshMenu', function (event, data) {
